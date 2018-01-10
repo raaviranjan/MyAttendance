@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark">
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mon"
+                android:id="@+id/ButtonTimeTableMon"
+                android:textColor="@color/colorAccent"
+                style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tue"
+                android:id="@+id/ButtonTimeTableTue"
+                style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wed"
+                android:id="@+id/ButtonTimeTableWed"
+                style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thu"
+                android:id="@+id/ButtonTimeTableThu"
+                style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fri"
+                android:id="@+id/ButtonTimeTableFri"
+                style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sat"
+                android:id="@+id/ButtonTimeTableSat"
+                style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sun"
+                android:id="@+id/ButtonTimeTableSun"
+                style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"/>
+        </LinearLayout>
+
+    </HorizontalScrollView>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sub1"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:textStyle="italic|bold"
+                android:visibility="gone"
+                android:id="@+id/TVTimetable1"
+                android:background="@drawable/border_for_timetable" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sub2"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:visibility="gone"
+                android:textStyle="italic|bold"
+                android:id="@+id/TVTimetable2"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border_for_timetable"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sub3"
+                android:textSize="20dp"
+                android:visibility="gone"
+                android:gravity="center"
+                android:textStyle="italic|bold"
+                android:id="@+id/TVTimetable3"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border_for_timetable"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sub4"
+                android:visibility="gone"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:textStyle="italic|bold"
+                android:id="@+id/TVTimetable4"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border_for_timetable"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sub5"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:textStyle="italic|bold"
+                android:id="@+id/TVTimetable5"
+                android:visibility="gone"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border_for_timetable"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sub6"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:textStyle="italic|bold"
+                android:id="@+id/TVTimetable6"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:background="@drawable/border_for_timetable"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sub7"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:textStyle="italic|bold"
+                android:id="@+id/TVTimetable7"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:background="@drawable/border_for_timetable"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:id="@+id/TimeTableoffLayout"
+                android:background="@drawable/border"
+
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="!!! Relax !!!"
+                    android:textSize="25dp"
+                    android:textStyle="italic|bold"
+                    android:textColor="#000000"
+                    android:gravity="center" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:src="@drawable/relax"
+                    android:scaleType="fitCenter"
+                    android:layout_marginTop="-25dp"
+                    android:layout_marginBottom="-25dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="It's your off today."
+                    android:textSize="25dp"
+                    android:textStyle="italic"
+                    android:gravity="center" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

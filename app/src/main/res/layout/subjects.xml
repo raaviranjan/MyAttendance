@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimaryDark">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter Subjects"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:textColor="#FFFFFF"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:orientation="horizontal"
+            android:layout_weight="8.23">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add more fields? Click this."
+                android:textSize="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_gravity="center_vertical"
+                android:textColor="#FFFFFF" />
+            <ImageButton
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:src="@drawable/plus"
+                 android:layout_gravity="center"
+                 android:scaleType="fitCenter"
+                 android:background="@null"
+                 android:id="@+id/plus"
+                 android:layout_marginTop="20dp"
+                 android:layout_marginBottom="20dp"/>
+        </LinearLayout>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Subject 1"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:id="@+id/ed1"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/mLayout">
+
+        </LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="done"
+            android:layout_marginTop="20dp"
+            android:id="@+id/buttonDone"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+</ScrollView>

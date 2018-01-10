@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:layout_weight="1">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight=".5"
+        android:gravity="bottom">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitCenter"
+            android:layout_marginBottom="15dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/ic_launcher_1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Attendance"
+            android:layout_gravity="center"
+            android:textSize="25dp"
+            android:textColor="#FFFFFF"
+            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Version: 1.1"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:textSize="15dp"
+            android:textColor="#FFFFFF"
+            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight=".5"
+        android:gravity="bottom|center_horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rate Us  "
+            android:textColor="#FFFFFF"
+            android:textSize="25dp"
+            android:id="@+id/bRate"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+            android:drawableRight="@drawable/ic_launcher_4_2"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="All Rights Reserved"
+            android:textColor="#FFFFFF"
+            android:textSize="17dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"/>/>
+
+    </LinearLayout>
+
+</LinearLayout>

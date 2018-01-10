@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        android:fitsSystemWindows="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Provide us your name "
+            android:textSize="25dp"
+            android:gravity="center_horizontal"
+            android:textColor="#FFFFFF"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="Name"
+            android:textColor="#FFFFFF"
+            android:ems="10"
+            android:id="@+id/editText"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Attendance Criteria "
+            android:textSize="25dp"
+            android:gravity="center_horizontal"
+            android:textColor="#FFFFFF"/>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+            <SeekBar
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:max="20"
+                android:progress="3"
+                android:id="@+id/seekBar"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight=".9"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="25dp"
+                android:text="15"
+                android:id="@+id/textnum"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:layout_weight=".05"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="%"
+                android:textSize="25dp"
+                android:id="@+id/textper"
+                android:textColor="#FFFFFF"
+                android:gravity="center_vertical"
+                android:layout_weight=".05"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gender?"
+            android:textSize="25dp"
+            android:gravity="center_horizontal"
+            android:textColor="#FFFFFF"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:weightSum="1">
+
+            <ImageButton
+                android:layout_width="145dp"
+                android:layout_height="111dp"
+                android:src="@drawable/male"
+                android:id="@+id/imageButton1"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center"
+                android:background="@null" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Or"
+                android:textSize="25dp"
+                android:gravity="center_vertical"
+                android:textColor="#FFFFFF"
+                android:id="@+id/textView" />
+
+            <ImageButton
+                android:layout_width="145dp"
+                android:layout_height="111dp"
+                android:src="@drawable/female"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:id="@+id/imageButton2"
+                android:background="@null"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"/>
+
+        </LinearLayout>
+
+        <Button
+            android:text="Ok"
+            android:layout_width="111dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/button"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+</ScrollView>
+

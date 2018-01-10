@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="subjects_list">
+        <item>Sub 1</item>
+        <item>Sub 2</item>
+        <item>Sub 3</item>
+        <item>Sub 4</item>
+        <item>Sub 5</item>
+        <item>Sub 6</item>
+        <item>Sub 7</item>
+    </string-array>
+</resources>

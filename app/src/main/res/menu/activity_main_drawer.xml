@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/user"
+            android:title="Profile" />
+        <item
+            android:id="@+id/nav_timetable"
+            android:icon="@drawable/timetable"
+            android:title="Time Table" />
+        <item
+            android:id="@+id/nav_overall"
+            android:icon="@drawable/overall"
+            android:title="Overall" />
+        <item
+            android:id="@+id/nav_extra_class"
+            android:icon="@drawable/ic_add_circle_outline_black_24dp"
+            android:title="Extra Class" />
+    </group>
+
+    <item android:title="Edit">
+        <menu>
+            <item
+                android:id="@+id/nav_edit_profile"
+                android:icon="@drawable/ic_mode_edit_black_24dp"
+                android:title="Edit Profile" />
+            <item
+                android:id="@+id/nav_edit_subjects"
+                android:icon="@drawable/ic_mode_edit_black_24dp"
+                android:title="Edit Subjects" />
+            <item
+                android:id="@+id/nav_edit_timetable"
+                android:icon="@drawable/ic_mode_edit_black_24dp"
+                android:title="Edit Schedule" />
+        </menu>
+    </item>
+
+    <item android:title="Reset">
+        <menu>
+            <item
+                android:id="@+id/nav_reset"
+                android:icon="@drawable/ic_delete_black_24dp"
+                android:title="Reset All Data" />
+            <item
+                android:id="@+id/nav_reset_attendance"
+                android:icon="@drawable/ic_delete_black_24dp"
+                android:title="Reset Attendance" />
+        </menu>
+    </item>
+
+</menu>
