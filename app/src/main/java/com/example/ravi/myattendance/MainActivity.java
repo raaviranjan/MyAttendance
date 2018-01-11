@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (itemId) {
             case R.id.nav_profile:
                 id=1;
-                fragment = new Profile();
+                fragment = new EditMon();
                 break;
             case R.id.nav_timetable:
                 id=2;
