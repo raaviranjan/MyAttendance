@@ -7,14 +7,31 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <TextView
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Monday Schedule"
-            android:textSize="25dp"
-            android:textColor="#FFFFFF"
-            android:gravity="center_horizontal"
-            android:layout_marginBottom="20dp"/>
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Monday Schedule"
+                android:textSize="25dp"
+                android:layout_weight=".5"
+                android:textColor="#FFFFFF"
+                android:gravity="center_horizontal" />
+            <ImageButton
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@drawable/plus"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:scaleType="fitCenter"
+                android:background="@null"
+                android:id="@+id/IBAddSub"/>
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -28,11 +45,12 @@
                 android:textColor="@color/colorAccent"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse" />
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Subject 1"
+                android:hint="Click + to add sub1"
                 android:layout_weight=".90"
+                android:textSize="19dp"
                 android:id="@+id/mons1"
                 android:textColor="#FFFFFF"
                 android:gravity="center_horizontal"/>
@@ -41,7 +59,8 @@
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_delete_white_24dp"
                 android:scaleType="fitCenter"
-                android:layout_marginRight="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:background="@null"
                 android:id="@+id/IBd1"/>
         </LinearLayout>
@@ -56,11 +75,12 @@
                 android:id="@+id/btue"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"/>
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Subject 2"
+                android:hint="Click + to add sub2"
                 android:id="@+id/mons2"
+                android:textSize="19dp"
                 android:layout_weight=".90"
                 android:textColor="#FFFFFF"
                 android:gravity="center_horizontal"/>
@@ -69,7 +89,8 @@
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_delete_white_24dp"
                 android:scaleType="fitCenter"
-                android:layout_marginRight="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:background="@null"
                 android:id="@+id/IBd2"/>
         </LinearLayout>
@@ -84,12 +105,13 @@
                 android:id="@+id/bwed"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"/>
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Subject 3"
+                android:hint="Click + to add sub3"
                 android:layout_weight=".90"
                 android:id="@+id/mons3"
+                android:textSize="19dp"
                 android:textColor="#FFFFFF"
                 android:gravity="center_horizontal"/>
             <ImageButton
@@ -97,7 +119,8 @@
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_delete_white_24dp"
                 android:scaleType="fitCenter"
-                android:layout_marginRight="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:background="@null"
                 android:id="@+id/IBd3"/>
         </LinearLayout>
@@ -112,12 +135,13 @@
                 android:id="@+id/bthu"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"/>
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Subject 4"
+                android:hint="Click + to add sub4"
                 android:layout_weight=".90"
                 android:id="@+id/mons4"
+                android:textSize="19dp"
                 android:textColor="#FFFFFF"
                 android:gravity="center_horizontal"/>
             <ImageButton
@@ -125,7 +149,8 @@
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_delete_white_24dp"
                 android:scaleType="fitCenter"
-                android:layout_marginRight="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:background="@null"
                 android:id="@+id/IBd4"/>
         </LinearLayout>
@@ -140,12 +165,13 @@
                 android:id="@+id/bfri"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"/>
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Subject 5"
+                android:hint="Click + to add sub5"
                 android:layout_weight=".90"
                 android:id="@+id/mons5"
+                android:textSize="19dp"
                 android:textColor="#FFFFFF"
                 android:gravity="center_horizontal"/>
             <ImageButton
@@ -153,7 +179,8 @@
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_delete_white_24dp"
                 android:scaleType="fitCenter"
-                android:layout_marginRight="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:background="@null"
                 android:id="@+id/IBd5"/>
         </LinearLayout>
@@ -168,12 +195,13 @@
                 android:id="@+id/bsat"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"/>
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Subject 6"
+                android:hint="Click + to add sub6"
                 android:layout_weight=".90"
                 android:id="@+id/mons6"
+                android:textSize="19dp"
                 android:textColor="#FFFFFF"
                 android:gravity="center_horizontal"/>
             <ImageButton
@@ -181,7 +209,8 @@
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_delete_white_24dp"
                 android:scaleType="fitCenter"
-                android:layout_marginRight="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:background="@null"
                 android:id="@+id/IBd6"/>
         </LinearLayout>
@@ -196,12 +225,13 @@
                 android:id="@+id/bsun"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"/>
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Subject 7"
+                android:hint="Click + to add sub7"
                 android:layout_weight=".90"
                 android:id="@+id/mons7"
+                android:textSize="19dp"
                 android:textColor="#FFFFFF"
                 android:gravity="center_horizontal"/>
             <ImageButton
@@ -209,9 +239,10 @@
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_delete_white_24dp"
                 android:scaleType="fitCenter"
-                android:layout_marginRight="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:background="@null"
-                android:id="@+id/IBd7"/>
+                android:id="@+id/IBd7" />
         </LinearLayout>
         <Button
             android:layout_width="wrap_content"

@@ -8,8 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -18,11 +18,11 @@ import android.widget.Toast;
 
 public class EditMon extends Fragment {
     Button bmon,btue,bwed,bthu,bfri,bsat,bsun,buttonOk;
-    EditText mons1,mons2,mons3,mons4,mons5,mons6,mons7;
-    ImageButton IBd1,IBd2,IBd3,IBd4,IBd5,IBd6,IBd7;
+    TextView mons1,mons2,mons3,mons4,mons5,mons6,mons7;
+    ImageButton IBd1,IBd2,IBd3,IBd4,IBd5,IBd6,IBd7,IBAddSub;
     Fragment fragment=null;
     SessionManager sessionManager;
-    int sizeof,count=0;
+    int sizeof,count;
     String[] totalSubjects;
     String[] exactSub;
     @Override
@@ -45,13 +45,13 @@ public class EditMon extends Fragment {
         bsun=(Button)view.findViewById(R.id.bsun);
         buttonOk=(Button)view.findViewById(R.id.buttonOk);
 
-        mons1=(EditText)view.findViewById(R.id.mons1);
-        mons2=(EditText)view.findViewById(R.id.mons2);
-        mons3=(EditText)view.findViewById(R.id.mons3);
-        mons4=(EditText)view.findViewById(R.id.mons4);
-        mons5=(EditText)view.findViewById(R.id.mons5);
-        mons6=(EditText)view.findViewById(R.id.mons6);
-        mons7=(EditText)view.findViewById(R.id.mons7);
+        mons1=(TextView) view.findViewById(R.id.mons1);
+        mons2=(TextView) view.findViewById(R.id.mons2);
+        mons3=(TextView) view.findViewById(R.id.mons3);
+        mons4=(TextView) view.findViewById(R.id.mons4);
+        mons5=(TextView) view.findViewById(R.id.mons5);
+        mons6=(TextView) view.findViewById(R.id.mons6);
+        mons7=(TextView) view.findViewById(R.id.mons7);
 
         IBd1=(ImageButton)view.findViewById(R.id.IBd1);
         IBd2=(ImageButton)view.findViewById(R.id.IBd2);
@@ -60,6 +60,7 @@ public class EditMon extends Fragment {
         IBd5=(ImageButton)view.findViewById(R.id.IBd5);
         IBd6=(ImageButton)view.findViewById(R.id.IBd6);
         IBd7=(ImageButton)view.findViewById(R.id.IBd7);
+        IBAddSub=(ImageButton)view.findViewById(R.id.IBAddSub);
 
         IBd1.setVisibility(View.GONE);
         IBd2.setVisibility(View.GONE);
@@ -69,15 +70,7 @@ public class EditMon extends Fragment {
         IBd6.setVisibility(View.GONE);
         IBd7.setVisibility(View.GONE);
 
-        mons1.setVisibility(View.GONE);
-        mons2.setVisibility(View.GONE);
-        mons3.setVisibility(View.GONE);
-        mons4.setVisibility(View.GONE);
-        mons5.setVisibility(View.GONE);
-        mons6.setVisibility(View.GONE);
-        mons7.setVisibility(View.GONE);
-
-        bsun.setOnClickListener(new View.OnClickListener() {
+        IBAddSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -85,47 +78,122 @@ public class EditMon extends Fragment {
                 builder.setItems(exactSub, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int item) {
                         // Do something with the selection
-                        count++;
-                        if(count==1)
+                        //count++;
+                        if(mons1.getText().equals(""))
                         {
-                            mons1.setVisibility(View.VISIBLE);
+                            IBd1.setVisibility(View.VISIBLE);
                             mons1.setText(exactSub[item]);
                         }
-                        else if(count==2)
+                        else if(mons2.getText().equals(""))
                         {
-                            mons2.setVisibility(View.VISIBLE);
+                            IBd2.setVisibility(View.VISIBLE);
                             mons2.setText(exactSub[item]);
                         }
-                        else if(count==3)
+                        else if(mons3.getText().equals(""))
                         {
-                            mons3.setVisibility(View.VISIBLE);
+                            IBd3.setVisibility(View.VISIBLE);
                             mons3.setText(exactSub[item]);
                         }
-                        else if(count==4)
+                        else if(mons4.getText().equals(""))
                         {
-                            mons4.setVisibility(View.VISIBLE);
+                            IBd4.setVisibility(View.VISIBLE);
                             mons4.setText(exactSub[item]);
                         }
-                        else if(count==5)
+                        else if(mons5.getText().equals(""))
                         {
-                            mons5.setVisibility(View.VISIBLE);
+                            IBd5.setVisibility(View.VISIBLE);
                             mons5.setText(exactSub[item]);
                         }
-                        else if(count==6)
+                        else if(mons6.getText().equals(""))
                         {
-                            mons6.setVisibility(View.VISIBLE);
+                            IBd6.setVisibility(View.VISIBLE);
                             mons6.setText(exactSub[item]);
                         }
-                        else if(count==7)
+                        else if(mons7.getText().equals(""))
                         {
-                            mons7.setVisibility(View.VISIBLE);
+                            IBd7.setVisibility(View.VISIBLE);
                             mons7.setText(exactSub[item]);
                         }
-                        Toast.makeText(getActivity(), exactSub[item], Toast.LENGTH_SHORT).show();
+                        else
+                            Toast.makeText(getActivity(), "Only 7 lectures allowed", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getActivity(), exactSub[item], Toast.LENGTH_SHORT).show();
                     }
                 });
                 AlertDialog alert = builder.create();
                 alert.show();
+            }
+        });
+
+        IBd1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mons1.setText("");
+                IBd1.setVisibility(View.GONE);
+            }
+        });
+        IBd2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mons2.setText("");
+                IBd2.setVisibility(View.GONE);
+            }
+        });
+        IBd3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mons3.setText("");
+                IBd3.setVisibility(View.GONE);
+            }
+        });
+        IBd4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mons4.setText("");
+                IBd4.setVisibility(View.GONE);
+            }
+        });
+        IBd5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mons5.setText("");
+                IBd5.setVisibility(View.GONE);
+            }
+        });
+        IBd6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mons6.setText("");
+                IBd6.setVisibility(View.GONE);
+            }
+        });
+        IBd7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mons7.setText("");
+                IBd7.setVisibility(View.GONE);
+            }
+        });
+
+        buttonOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                count=0;
+                if(!mons1.getText().toString().equals(""))
+                    count++;
+                if(!mons2.getText().toString().equals(""))
+                    count++;
+                if(!mons3.getText().toString().equals(""))
+                    count++;
+                if(!mons4.getText().toString().equals(""))
+                    count++;
+                if(!mons5.getText().toString().equals(""))
+                    count++;
+                if(!mons6.getText().toString().equals(""))
+                    count++;
+                if(!mons7.getText().toString().equals(""))
+                    count++;
+                String as=String.valueOf(count);
+                Toast.makeText(getActivity(), as, Toast.LENGTH_SHORT).show();
             }
         });
 
