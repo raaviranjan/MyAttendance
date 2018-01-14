@@ -19,6 +19,7 @@
                 android:text="Monday Schedule"
                 android:textSize="25dp"
                 android:layout_weight=".5"
+                android:id="@+id/scheduleTV"
                 android:textColor="#FFFFFF"
                 android:gravity="center_horizontal" />
             <ImageButton
@@ -30,224 +31,216 @@
                 android:scaleType="fitCenter"
                 android:background="@null"
                 android:id="@+id/IBAddSub"/>
-
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <Button
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight=".01">
+                <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mon"
                 android:id="@+id/bmon"
-                android:textColor="@color/colorAccent"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Click + to add sub1"
-                android:layout_weight=".90"
-                android:textSize="19dp"
-                android:id="@+id/mons1"
-                android:textColor="#FFFFFF"
-                android:gravity="center_horizontal"/>
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_delete_white_24dp"
-                android:scaleType="fitCenter"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:background="@null"
-                android:id="@+id/IBd1"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
+                <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tue"
                 android:id="@+id/btue"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Click + to add sub2"
-                android:id="@+id/mons2"
-                android:textSize="19dp"
-                android:layout_weight=".90"
-                android:textColor="#FFFFFF"
-                android:gravity="center_horizontal"/>
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_delete_white_24dp"
-                android:scaleType="fitCenter"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:background="@null"
-                android:id="@+id/IBd2"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
+                <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Wed"
                 android:id="@+id/bwed"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Click + to add sub3"
-                android:layout_weight=".90"
-                android:id="@+id/mons3"
-                android:textSize="19dp"
-                android:textColor="#FFFFFF"
-                android:gravity="center_horizontal"/>
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_delete_white_24dp"
-                android:scaleType="fitCenter"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:background="@null"
-                android:id="@+id/IBd3"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
+                <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Thu"
                 android:id="@+id/bthu"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Click + to add sub4"
-                android:layout_weight=".90"
-                android:id="@+id/mons4"
-                android:textSize="19dp"
-                android:textColor="#FFFFFF"
-                android:gravity="center_horizontal"/>
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_delete_white_24dp"
-                android:scaleType="fitCenter"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:background="@null"
-                android:id="@+id/IBd4"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
+                <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Fri"
                 android:id="@+id/bfri"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Click + to add sub5"
-                android:layout_weight=".90"
-                android:id="@+id/mons5"
-                android:textSize="19dp"
-                android:textColor="#FFFFFF"
-                android:gravity="center_horizontal"/>
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_delete_white_24dp"
-                android:scaleType="fitCenter"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:background="@null"
-                android:id="@+id/IBd5"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
+                <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sat"
                 android:id="@+id/bsat"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Click + to add sub6"
-                android:layout_weight=".90"
-                android:id="@+id/mons6"
-                android:textSize="19dp"
-                android:textColor="#FFFFFF"
-                android:gravity="center_horizontal"/>
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_delete_white_24dp"
-                android:scaleType="fitCenter"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:background="@null"
-                android:id="@+id/IBd6"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
+                <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sun"
                 android:id="@+id/bsun"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Click + to add sub7"
-                android:layout_weight=".90"
-                android:id="@+id/mons7"
-                android:textSize="19dp"
-                android:textColor="#FFFFFF"
-                android:gravity="center_horizontal"/>
-            <ImageButton
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_delete_white_24dp"
-                android:scaleType="fitCenter"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:background="@null"
-                android:id="@+id/IBd7" />
+                android:orientation="vertical"
+                android:layout_weight=".5">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:hint="Click + to add sub1"
+                    android:textSize="19dp"
+                    android:id="@+id/mons1"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:visibility="gone"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="Click + to add sub2"
+                    android:id="@+id/mons2"
+                    android:textSize="19dp"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:visibility="gone"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="Click + to add sub3"
+                    android:id="@+id/mons3"
+                    android:textSize="19dp"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:visibility="gone"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="Click + to add sub4"
+                    android:id="@+id/mons4"
+                    android:textSize="19dp"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:visibility="gone"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="Click + to add sub5"
+                    android:id="@+id/mons5"
+                    android:textSize="19dp"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:visibility="gone"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="Click + to add sub6"
+                    android:id="@+id/mons6"
+                    android:textSize="19dp"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:visibility="gone"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="Click + to add sub7"
+                    android:id="@+id/mons7"
+                    android:textSize="19dp"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:visibility="gone"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Click \n'+'\n button\n to\n add\n subjects"
+                    android:gravity="center"
+                    android:textSize="19dp"
+                    android:id="@+id/clickPlus" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight=".12">
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="47dp"
+                    android:src="@drawable/ic_delete_white_24dp"
+                    android:scaleType="fitCenter"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:background="@null"
+                    android:id="@+id/IBd1"/>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_delete_white_24dp"
+                    android:scaleType="fitCenter"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:background="@null"
+                    android:id="@+id/IBd2"/>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_delete_white_24dp"
+                    android:scaleType="fitCenter"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:background="@null"
+                    android:id="@+id/IBd3"/>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_delete_white_24dp"
+                    android:scaleType="fitCenter"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:background="@null"
+                    android:id="@+id/IBd4"/>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_delete_white_24dp"
+                    android:scaleType="fitCenter"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:background="@null"
+                    android:id="@+id/IBd5"/>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_delete_white_24dp"
+                    android:scaleType="fitCenter"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:background="@null"
+                    android:id="@+id/IBd6"/>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_delete_white_24dp"
+                    android:scaleType="fitCenter"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:background="@null"
+                    android:id="@+id/IBd7" />
+            </LinearLayout>
         </LinearLayout>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ok"
+            android:text="DONE"
             android:id="@+id/buttonOk"
             android:layout_gravity="center_horizontal" />
 

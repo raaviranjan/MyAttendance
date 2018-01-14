@@ -1,13 +1,18 @@
 package com.example.ravi.myattendance;
 
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.HashMap;
@@ -17,24 +22,26 @@ import java.util.HashMap;
  */
 
 public class EditFriday extends Fragment {
-    Button bmon,btue,bwed,bthu,bfri,bsat,bsun,buttonOkfri,buttonNo;
-    EditText fris1,fris2,fris3,fris4,fris5,fris6,fris7;
-    String frisub1,frisub2,frisub3,frisub4,frisub5,frisub6,frisub7;
+    Button bmon,btue,bwed,bthu,bfri,bsat,bsun,buttonOk;
+    TextView mons1,mons2,mons3,mons4,mons5,mons6,mons7,clickPlus,scheduleTV;
+    String msub1,msub2,msub3,msub4,msub5,msub6,msub7;
+    ImageButton IBd1,IBd2,IBd3,IBd4,IBd5,IBd6,IBd7,IBAddSub;
     Fragment fragment=null;
     SessionManager sessionManager;
-    String[] subjectOfFriday;
-    int sizeof;
+    int sizeof,count=0,cnt;
     String[] totalSubjects;
-    int count=0;
+    String[] exactSub;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState){
 
-        View view=inflater.inflate(R.layout.friday,viewGroup,false);
+        View view=inflater.inflate(R.layout.mon,viewGroup,false);
 
         sessionManager=new SessionManager(getActivity());
-        subjectOfFriday=new String[7];
         sizeof=sessionManager.getSize();
         totalSubjects=sessionManager.loadArray("mySubject");
+        exactSub=new String[sizeof];
+        for(int i=0;i<sizeof;i++)
+            exactSub[i]=totalSubjects[i];
 
         bmon=(Button)view.findViewById(R.id.bmon);
         btue=(Button)view.findViewById(R.id.btue);
@@ -43,106 +50,289 @@ public class EditFriday extends Fragment {
         bfri=(Button)view.findViewById(R.id.bfri);
         bsat=(Button)view.findViewById(R.id.bsat);
         bsun=(Button)view.findViewById(R.id.bsun);
-        buttonOkfri=(Button)view.findViewById(R.id.buttonOkfri);
-        buttonNo=(Button)view.findViewById(R.id.bNo);
+        buttonOk=(Button)view.findViewById(R.id.buttonOk);
 
-        fris1=(EditText)view.findViewById(R.id.fris1);
-        fris2=(EditText)view.findViewById(R.id.fris2);
-        fris3=(EditText)view.findViewById(R.id.fris3);
-        fris4=(EditText)view.findViewById(R.id.fris4);
-        fris5=(EditText)view.findViewById(R.id.fris5);
-        fris6=(EditText)view.findViewById(R.id.fris6);
-        fris7=(EditText)view.findViewById(R.id.fris7);
+        mons1=(TextView)view.findViewById(R.id.mons1);
+        mons2=(TextView)view.findViewById(R.id.mons2);
+        mons3=(TextView)view.findViewById(R.id.mons3);
+        mons4=(TextView)view.findViewById(R.id.mons4);
+        mons5=(TextView)view.findViewById(R.id.mons5);
+        mons6=(TextView)view.findViewById(R.id.mons6);
+        mons7=(TextView)view.findViewById(R.id.mons7);
+        clickPlus=(TextView) view.findViewById(R.id.clickPlus);
+        scheduleTV=(TextView) view.findViewById(R.id.scheduleTV);
+
+        bfri.setTextColor(Color.parseColor("#FF4081"));
+        scheduleTV.setText("Friday Schedule");
+
+        IBd1=(ImageButton)view.findViewById(R.id.IBd1);
+        IBd2=(ImageButton)view.findViewById(R.id.IBd2);
+        IBd3=(ImageButton)view.findViewById(R.id.IBd3);
+        IBd4=(ImageButton)view.findViewById(R.id.IBd4);
+        IBd5=(ImageButton)view.findViewById(R.id.IBd5);
+        IBd6=(ImageButton)view.findViewById(R.id.IBd6);
+        IBd7=(ImageButton)view.findViewById(R.id.IBd7);
+        IBAddSub=(ImageButton)view.findViewById(R.id.IBAddSub);
+
+        IBd1.setVisibility(View.GONE);
+        IBd2.setVisibility(View.GONE);
+        IBd3.setVisibility(View.GONE);
+        IBd4.setVisibility(View.GONE);
+        IBd5.setVisibility(View.GONE);
+        IBd6.setVisibility(View.GONE);
+        IBd7.setVisibility(View.GONE);
 
         if(sessionManager.isLoggedIn())
         {
             count=sessionManager.getCountFri();
+            if(count<1)
+                clickPlus.setVisibility(View.VISIBLE);
+            else
+                clickPlus.setVisibility(View.GONE);
             HashMap<String ,String> subfri=sessionManager.getFriSubjects();
             if(count>=1)
-                fris1.setText(subfri.get(SessionManager.KEY_FRI_SUB_1));
+            {
+                mons1.setVisibility(View.VISIBLE);
+                mons1.setText(subfri.get(SessionManager.KEY_FRI_SUB_1));
+                IBd1.setVisibility(View.VISIBLE);
+            }
             if(count>=2)
-                fris2.setText(subfri.get(SessionManager.KEY_FRI_SUB_2));
+            {
+                mons2.setVisibility(View.VISIBLE);
+                mons2.setText(subfri.get(SessionManager.KEY_FRI_SUB_2));
+                IBd2.setVisibility(View.VISIBLE);
+            }
             if(count>=3)
-                fris3.setText(subfri.get(SessionManager.KEY_FRI_SUB_3));
+            {
+                mons3.setVisibility(View.VISIBLE);
+                mons3.setText(subfri.get(SessionManager.KEY_FRI_SUB_3));
+                IBd3.setVisibility(View.VISIBLE);
+            }
             if(count>=4)
-                fris4.setText(subfri.get(SessionManager.KEY_FRI_SUB_4));
+            {
+                mons4.setVisibility(View.VISIBLE);
+                mons4.setText(subfri.get(SessionManager.KEY_FRI_SUB_4));
+                IBd4.setVisibility(View.VISIBLE);
+            }
             if(count>=5)
-                fris5.setText(subfri.get(SessionManager.KEY_FRI_SUB_5));
+            {
+                mons5.setVisibility(View.VISIBLE);
+                mons5.setText(subfri.get(SessionManager.KEY_FRI_SUB_5));
+                IBd5.setVisibility(View.VISIBLE);
+            }
             if(count>=6)
-                fris6.setText(subfri.get(SessionManager.KEY_FRI_SUB_6));
+            {
+                mons6.setVisibility(View.VISIBLE);
+                mons6.setText(subfri.get(SessionManager.KEY_FRI_SUB_6));
+                IBd6.setVisibility(View.VISIBLE);
+            }
             if(count>=7)
-                fris7.setText(subfri.get(SessionManager.KEY_FRI_SUB_7));
-            buttonOkfri.setOnClickListener(new View.OnClickListener() {
+            {
+                mons7.setVisibility(View.VISIBLE);
+                mons7.setText(subfri.get(SessionManager.KEY_FRI_SUB_7));
+                IBd7.setVisibility(View.VISIBLE);
+            }
+            IBAddSub.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
-                    int abc=save();
-
-                    if(abc==1)
-                    {
-                        fragment = new EditSaturday();
-                        FragmentTransaction ft = getFragmentManager().beginTransaction();
-                        ft.replace(R.id.content_frame, fragment);
-                        ft.commit();
-                    }
-
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setTitle("Select Subjects for Friday");
+                    builder.setItems(exactSub, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int item) {
+                            // Do something with the selection
+                            //count++;
+                            clickPlus.setVisibility(View.GONE);
+                            if(mons1.getText().equals(""))
+                            {
+                                mons1.setVisibility(View.VISIBLE);
+                                IBd1.setVisibility(View.VISIBLE);
+                                mons1.setText(exactSub[item]);
+                            }
+                            else if(mons2.getText().equals(""))
+                            {
+                                mons2.setVisibility(View.VISIBLE);
+                                IBd2.setVisibility(View.VISIBLE);
+                                mons2.setText(exactSub[item]);
+                            }
+                            else if(mons3.getText().equals(""))
+                            {
+                                mons3.setVisibility(View.VISIBLE);
+                                IBd3.setVisibility(View.VISIBLE);
+                                mons3.setText(exactSub[item]);
+                            }
+                            else if(mons4.getText().equals(""))
+                            {
+                                mons4.setVisibility(View.VISIBLE);
+                                IBd4.setVisibility(View.VISIBLE);
+                                mons4.setText(exactSub[item]);
+                            }
+                            else if(mons5.getText().equals(""))
+                            {
+                                mons5.setVisibility(View.VISIBLE);
+                                IBd5.setVisibility(View.VISIBLE);
+                                mons5.setText(exactSub[item]);
+                            }
+                            else if(mons6.getText().equals(""))
+                            {
+                                mons6.setVisibility(View.VISIBLE);
+                                IBd6.setVisibility(View.VISIBLE);
+                                mons6.setText(exactSub[item]);
+                            }
+                            else if(mons7.getText().equals(""))
+                            {
+                                mons7.setVisibility(View.VISIBLE);
+                                IBd7.setVisibility(View.VISIBLE);
+                                mons7.setText(exactSub[item]);
+                            }
+                            else
+                                Toast.makeText(getActivity(), "Only 7 lectures allowed", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getActivity(), exactSub[item], Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    AlertDialog alert = builder.create();
+                    alert.show();
                 }
             });
 
-            buttonNo.setOnClickListener(new View.OnClickListener() {
+            IBd1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int abc=save();
+                    mons1.setVisibility(View.VISIBLE);
+                    mons1.setText("");
+                    IBd1.setVisibility(View.INVISIBLE);
+                }
+            });
+            IBd2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mons2.setVisibility(View.VISIBLE);
+                    mons2.setText("");
+                    IBd2.setVisibility(View.INVISIBLE);
+                }
+            });
+            IBd3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mons3.setVisibility(View.VISIBLE);
+                    mons3.setText("");
+                    IBd3.setVisibility(View.INVISIBLE);
+                }
+            });
+            IBd4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mons4.setVisibility(View.VISIBLE);
+                    mons4.setText("");
+                    IBd4.setVisibility(View.INVISIBLE);
+                }
+            });
+            IBd5.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mons5.setVisibility(View.VISIBLE);
+                    mons5.setText("");
+                    IBd5.setVisibility(View.INVISIBLE);
+                }
+            });
+            IBd6.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mons6.setVisibility(View.VISIBLE);
+                    mons6.setText("");
+                    IBd6.setVisibility(View.INVISIBLE);
+                }
+            });
+            IBd7.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mons7.setVisibility(View.VISIBLE);
+                    mons7.setText("");
+                    IBd7.setVisibility(View.INVISIBLE);
+                }
+            });
+            buttonOk.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getEnteredSubjects();
+                    sessionManager.friSubjects(msub1,msub2,msub3,msub4,msub5,msub6,msub7);
+                    sessionManager.setCountFri(cnt);
 
-                    if(abc==1)
-                    {
-                        fragment = new Main();
-                        FragmentTransaction ft = getFragmentManager().beginTransaction();
-                        ft.replace(R.id.content_frame, fragment);
-                        ft.commit();
-                    }
+                    fragment = new Main();
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.replace(R.id.content_frame, fragment);
+                    ft.commit();
+
                 }
             });
             bmon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getActivity(), "Kindly press YES to go to next day or NO to proceed", Toast.LENGTH_SHORT).show();
+                    getEnteredSubjects();
+                    sessionManager.friSubjects(msub1,msub2,msub3,msub4,msub5,msub6,msub7);
+                    sessionManager.setCountFri(cnt);
+
+                    fragment = new EditMonday();
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.replace(R.id.content_frame, fragment);
+                    ft.commit();
                 }
             });
             btue.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getActivity(), "Kindly press YES to go to next day or NO to proceed", Toast.LENGTH_SHORT).show();
+                    getEnteredSubjects();
+                    sessionManager.friSubjects(msub1,msub2,msub3,msub4,msub5,msub6,msub7);
+                    sessionManager.setCountFri(cnt);
+
+                    fragment = new EditTuesday();
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.replace(R.id.content_frame, fragment);
+                    ft.commit();
                 }
             });
             bwed.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getActivity(), "Kindly press YES to go to next day or NO to proceed", Toast.LENGTH_SHORT).show();
+                    getEnteredSubjects();
+                    sessionManager.friSubjects(msub1,msub2,msub3,msub4,msub5,msub6,msub7);
+                    sessionManager.setCountFri(cnt);
+
+                    fragment = new EditWednesday();
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.replace(R.id.content_frame, fragment);
+                    ft.commit();
                 }
             });
             bthu.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getActivity(), "Kindly press YES to go to next day or NO to proceed", Toast.LENGTH_SHORT).show();
-                }
-            });
-            bfri.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(getActivity(), "Kindly press YES to go to next day or NO to proceed", Toast.LENGTH_SHORT).show();
+                    getEnteredSubjects();
+                    sessionManager.friSubjects(msub1,msub2,msub3,msub4,msub5,msub6,msub7);
+                    sessionManager.setCountFri(cnt);
+
+                    fragment = new EditThursday();
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.replace(R.id.content_frame, fragment);
+                    ft.commit();
                 }
             });
             bsat.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getActivity(), "Kindly press YES to go to next day or NO to proceed", Toast.LENGTH_SHORT).show();
+                    getEnteredSubjects();
+                    sessionManager.friSubjects(msub1,msub2,msub3,msub4,msub5,msub6,msub7);
+                    sessionManager.setCountFri(cnt);
+
+                    fragment = new EditSaturday();
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.replace(R.id.content_frame, fragment);
+                    ft.commit();
                 }
             });
             bsun.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getActivity(), "Kindly press YES to go to next day or NO to proceed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Kindly press OK to go to next day", Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -152,75 +342,32 @@ public class EditFriday extends Fragment {
 
         return view;
     }
-    public int save(){
-        int countFri=0;
-        int i,j,pos=0,flag=0;
-        frisub1=fris1.getText().toString();
-        frisub2=fris2.getText().toString();
-        frisub3=fris3.getText().toString();
-        frisub4=fris4.getText().toString();
-        frisub5=fris5.getText().toString();
-        frisub6=fris6.getText().toString();
-        frisub7=fris7.getText().toString();
+    public void getEnteredSubjects()
+    {
+        cnt=0;
+        msub1=mons1.getText().toString();
+        msub2=mons2.getText().toString();
+        msub3=mons3.getText().toString();
+        msub4=mons4.getText().toString();
+        msub5=mons5.getText().toString();
+        msub6=mons6.getText().toString();
+        msub7=mons7.getText().toString();
 
-        subjectOfFriday[0]=frisub1;
-        subjectOfFriday[1]=frisub2;
-        subjectOfFriday[2]=frisub3;
-        subjectOfFriday[3]=frisub4;
-        subjectOfFriday[4]=frisub5;
-        subjectOfFriday[5]=frisub6;
-        subjectOfFriday[6]=frisub7;
-
-        for(i=0;i<7;i++)
-        {
-            flag=0;
-            if(!subjectOfFriday[i].equals(""))
-            {
-                for(j=0;j<sizeof;j++)
-                {
-                    if(subjectOfFriday[i].equals(totalSubjects[j]))
-                    {
-                        flag=1;
-                        break;
-                    }
-                }
-            }
-            else
-                flag=1;
-            if(flag==0)
-            {
-                pos=i+1;
-                break;
-            }
-        }
-
-        if(!frisub1.equals(""))
-            countFri++;
-        if(!frisub2.equals(""))
-            countFri++;
-        if(!frisub3.equals(""))
-            countFri++;
-        if(!frisub4.equals(""))
-            countFri++;
-        if(!frisub5.equals(""))
-            countFri++;
-        if(!frisub6.equals(""))
-            countFri++;
-        if(!frisub7.equals(""))
-            countFri++;
-
-        if(flag==1)
-        {
-            new SessionManager(getContext()).friSubjects(frisub1,frisub2,frisub3,frisub4,frisub5,frisub6,frisub7);
-            new SessionManager(getContext()).setCountFri(countFri);
-        }
-        else
-        {
-            Toast.makeText(getActivity(), "Subject "+pos+" doesn't match with entered subjects", Toast.LENGTH_LONG).show();
-        }
-        return flag;
+        if(!msub1.equals(""))
+            cnt++;
+        if(!msub2.equals(""))
+            cnt++;
+        if(!msub3.equals(""))
+            cnt++;
+        if(!msub4.equals(""))
+            cnt++;
+        if(!msub5.equals(""))
+            cnt++;
+        if(!msub6.equals(""))
+            cnt++;
+        if(!msub7.equals(""))
+            cnt++;
     }
-
     @Override
     public void onViewCreated(View view,Bundle savedInstanceState){
         super.onViewCreated(view,savedInstanceState);

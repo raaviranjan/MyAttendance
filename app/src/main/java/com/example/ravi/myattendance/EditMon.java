@@ -18,10 +18,11 @@ import android.widget.Toast;
 
 public class EditMon extends Fragment {
     Button bmon,btue,bwed,bthu,bfri,bsat,bsun,buttonOk;
-    TextView mons1,mons2,mons3,mons4,mons5,mons6,mons7;
+    TextView mons1,mons2,mons3,mons4,mons5,mons6,mons7,clickPlus;
     ImageButton IBd1,IBd2,IBd3,IBd4,IBd5,IBd6,IBd7,IBAddSub;
     Fragment fragment=null;
     SessionManager sessionManager;
+    String msub1,msub2,msub3,msub4,msub5,msub6,msub7;
     int sizeof,count;
     String[] totalSubjects;
     String[] exactSub;
@@ -52,6 +53,7 @@ public class EditMon extends Fragment {
         mons5=(TextView) view.findViewById(R.id.mons5);
         mons6=(TextView) view.findViewById(R.id.mons6);
         mons7=(TextView) view.findViewById(R.id.mons7);
+        clickPlus=(TextView) view.findViewById(R.id.clickPlus);
 
         IBd1=(ImageButton)view.findViewById(R.id.IBd1);
         IBd2=(ImageButton)view.findViewById(R.id.IBd2);
@@ -192,6 +194,15 @@ public class EditMon extends Fragment {
                     count++;
                 if(!mons7.getText().toString().equals(""))
                     count++;
+                msub1=mons1.getText().toString();
+                msub2=mons2.getText().toString();
+                msub3=mons3.getText().toString();
+                msub4=mons4.getText().toString();
+                msub5=mons5.getText().toString();
+                msub6=mons6.getText().toString();
+                msub7=mons7.getText().toString();
+
+
                 String as=String.valueOf(count);
                 Toast.makeText(getActivity(), as, Toast.LENGTH_SHORT).show();
             }
