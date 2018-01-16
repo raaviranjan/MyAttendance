@@ -312,6 +312,32 @@ public class SessionManager {
         return brr;
     }
 
+    public boolean setImageOfAttendancePage(Integer[] image,String imageArrayName)
+    {
+        editor.putInt(imageArrayName+"_size",image.length);
+        for (int m=0;m<image.length;m++)
+            editor.putInt(imageArrayName+"_"+m,image[m]);
+        return editor.commit();
+    }
+    public Integer[] getImageOfAttendancePage(String imageArrayName)
+    {
+        int bb=pref.getInt(imageArrayName+"_size",0);
+        Integer bbArray[]=new Integer[bb];
+        for (int m=0;m<bb;m++)
+            bbArray[m]=pref.getInt(imageArrayName+"_"+m,0);
+        return bbArray;
+    }
+    public boolean setFlag(boolean c)
+    {
+        editor.putBoolean("flagForAttendanceImage",c);
+        return editor.commit();
+    }
+    public boolean getFlag()
+    {
+        return pref.getBoolean("flagForAttendanceImage",false);
+    }
+
+
 
     /**
      * Check login method wil check user login status

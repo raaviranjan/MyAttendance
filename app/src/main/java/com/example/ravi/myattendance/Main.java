@@ -37,6 +37,8 @@ public class Main extends Fragment {
     SessionManager sessionManager;
     Integer[] getPreviousAttendedClass;
     Integer[] getPreviousTotalClass;
+    Integer[] imageAttendanceArray;
+    Integer[] getImageAttendanceArray;
     String[] totalSubjects;
     Calendar calendar;
     HashMap<String ,String> subj;
@@ -45,8 +47,9 @@ public class Main extends Fragment {
     HashMap<String ,String> subthu;
     HashMap<String ,String> subfri;
     HashMap<String ,String> subsat;
-    int a,sizeof,present1=0,absent1=0,present2=0,absent2=0,present3=0,absent3=0,present4=0,absent4=0,present5=0,absent5=0,
+    int sizeof,present1=0,absent1=0,present2=0,absent2=0,present3=0,absent3=0,present4=0,absent4=0,present5=0,absent5=0,
             present6=0,absent6=0,present7=0,absent7=0;
+    boolean flag;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState){
         View view=inflater.inflate(R.layout.main,viewGroup,false);
@@ -101,6 +104,14 @@ public class Main extends Fragment {
         mainTVSub6=(TextView)view.findViewById(R.id.mainTVSub6);
         mainTVSub7=(TextView)view.findViewById(R.id.mainTVSub7);
 
+        ivAfterMark1=(ImageView)view.findViewById(R.id.ivAfterMarking1);
+        ivAfterMark2=(ImageView)view.findViewById(R.id.ivAfterMarking2);
+        ivAfterMark3=(ImageView)view.findViewById(R.id.ivAfterMarking3);
+        ivAfterMark4=(ImageView)view.findViewById(R.id.ivAfterMarking4);
+        ivAfterMark5=(ImageView)view.findViewById(R.id.ivAfterMarking5);
+        ivAfterMark6=(ImageView)view.findViewById(R.id.ivAfterMarking6);
+        ivAfterMark7=(ImageView)view.findViewById(R.id.ivAfterMarking7);
+
         sessionManager=new SessionManager(getActivity());
         subj=sessionManager.getMonSubjects();
         subtue=sessionManager.getTueSubjects();
@@ -123,6 +134,74 @@ public class Main extends Fragment {
         getPreviousTotalClass=sessionManager.getTotal("classTotal");
         totalSubjects=sessionManager.loadArray("mySubject");
         sizeof=sessionManager.getSize();
+        flag=sessionManager.getFlag();
+
+        imageAttendanceArray=new Integer[21];
+
+        //here is the mistake;
+        if(flag)
+        {
+            for(int k=0;k<21;k++)
+                imageAttendanceArray[k]=0;
+            sessionManager.setImageOfAttendancePage(imageAttendanceArray,"ImageArrayAttendance");
+        }
+
+        getImageAttendanceArray=sessionManager.getImageOfAttendancePage("ImageArrayAttendance");
+        for(int ii=0;ii<21;ii++)
+            imageAttendanceArray[ii]=getImageAttendanceArray[ii];
+
+        /*if(getImageAttendanceArray[0]==1)
+            ivAfterMark1.setImageResource(R.drawable.right);
+        if(getImageAttendanceArray[1]==2)
+            ivAfterMark1.setImageResource(R.drawable.wrong);
+        if(getImageAttendanceArray[2]==4)
+            ivAfterMark2.setImageResource(R.drawable.right);
+        if(getImageAttendanceArray[3]==5)
+            ivAfterMark2.setImageResource(R.drawable.wrong);*/
+
+        if(getImageAttendanceArray[0]==1)
+            ivAfterMark1.setImageResource(R.drawable.right);
+        if(getImageAttendanceArray[1]==2)
+            ivAfterMark1.setImageResource(R.drawable.wrong);
+        if(getImageAttendanceArray[2]==3)
+            ivAfterMark1.setImageResource(R.drawable.unchecked);
+        if(getImageAttendanceArray[3]==4)
+            ivAfterMark2.setImageResource(R.drawable.right);
+        if(getImageAttendanceArray[4]==5)
+            ivAfterMark2.setImageResource(R.drawable.wrong);
+        if(getImageAttendanceArray[5]==6)
+            ivAfterMark2.setImageResource(R.drawable.unchecked);
+        if(getImageAttendanceArray[6]==7)
+            ivAfterMark3.setImageResource(R.drawable.right);
+        if(getImageAttendanceArray[7]==8)
+            ivAfterMark3.setImageResource(R.drawable.wrong);
+        if(getImageAttendanceArray[8]==9)
+            ivAfterMark3.setImageResource(R.drawable.unchecked);
+        if(getImageAttendanceArray[9]==10)
+            ivAfterMark4.setImageResource(R.drawable.right);
+        if(getImageAttendanceArray[10]==11)
+            ivAfterMark4.setImageResource(R.drawable.wrong);
+        if(getImageAttendanceArray[11]==12)
+            ivAfterMark4.setImageResource(R.drawable.unchecked);
+        if(getImageAttendanceArray[12]==13)
+            ivAfterMark5.setImageResource(R.drawable.right);
+        if(getImageAttendanceArray[13]==14)
+            ivAfterMark5.setImageResource(R.drawable.wrong);
+        if(getImageAttendanceArray[14]==15)
+            ivAfterMark5.setImageResource(R.drawable.unchecked);
+        if(getImageAttendanceArray[15]==16)
+            ivAfterMark6.setImageResource(R.drawable.right);
+        if(getImageAttendanceArray[16]==17)
+            ivAfterMark6.setImageResource(R.drawable.wrong);
+        if(getImageAttendanceArray[17]==18)
+            ivAfterMark6.setImageResource(R.drawable.unchecked);
+        if(getImageAttendanceArray[18]==19)
+            ivAfterMark7.setImageResource(R.drawable.right);
+        if(getImageAttendanceArray[19]==20)
+            ivAfterMark7.setImageResource(R.drawable.wrong);
+        if(getImageAttendanceArray[20]==21)
+            ivAfterMark7.setImageResource(R.drawable.unchecked);
+
 
         //Subject 1
         buttonToMark1=(Button)view.findViewById(R.id.buttonToMark1);
@@ -130,7 +209,6 @@ public class Main extends Fragment {
         iBReset1=(ImageButton)view.findViewById(R.id.iBReset1);
         iBWrong1=(ImageButton)view.findViewById(R.id.iBWrong1);
         iBRight1=(ImageButton)view.findViewById(R.id.iBRight1);
-        ivAfterMark1=(ImageView)view.findViewById(R.id.ivAfterMarking1);
 
         buttonToMark1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,6 +233,12 @@ public class Main extends Fragment {
                 setColorOfPercentageTextView(b,b,40,40,40,40,40,40);
                 sessionManager.setAttended(getPreviousAttendedClass,"classAttended");
                 sessionManager.setTotal(getPreviousTotalClass,"classTotal");
+                imageAttendanceArray[0]=1;
+                imageAttendanceArray[1]=0;
+                imageAttendanceArray[2]=0;
+                sessionManager.setImageOfAttendancePage(imageAttendanceArray,"ImageArrayAttendance");
+                sessionManager.setFlag(false);
+
                 String string=mainTVSub1.getText().toString();
                 Toast.makeText(getActivity(), "Attended "+string, Toast.LENGTH_SHORT).show();
             }
@@ -175,6 +259,11 @@ public class Main extends Fragment {
                 setColorOfPercentageTextView(b,b,40,40,40,40,40,40);
                 sessionManager.setAttended(getPreviousAttendedClass,"classAttended");
                 sessionManager.setTotal(getPreviousTotalClass,"classTotal");
+                imageAttendanceArray[0]=0;
+                imageAttendanceArray[1]=2;
+                imageAttendanceArray[2]=0;
+                sessionManager.setImageOfAttendancePage(imageAttendanceArray,"ImageArrayAttendance");
+                sessionManager.setFlag(false);
                 String string=mainTVSub1.getText().toString();
                 Toast.makeText(getActivity(), "Missed "+string, Toast.LENGTH_SHORT).show();
             }
@@ -197,6 +286,11 @@ public class Main extends Fragment {
                 setColorOfPercentageTextView(b,b,40,40,40,40,40,40);
                 sessionManager.setAttended(getPreviousAttendedClass,"classAttended");
                 sessionManager.setTotal(getPreviousTotalClass,"classTotal");
+                imageAttendanceArray[0]=0;
+                imageAttendanceArray[1]=0;
+                imageAttendanceArray[2]=3;
+                sessionManager.setImageOfAttendancePage(imageAttendanceArray,"ImageArrayAttendance");
+                sessionManager.setFlag(false);
                 Toast.makeText(getActivity(), "Reset", Toast.LENGTH_SHORT).show();
             }
         });
@@ -206,7 +300,6 @@ public class Main extends Fragment {
         iBReset2=(ImageButton)view.findViewById(R.id.iBReset2);
         iBWrong2=(ImageButton)view.findViewById(R.id.iBWrong2);
         iBRight2=(ImageButton)view.findViewById(R.id.iBRight2);
-        ivAfterMark2=(ImageView)view.findViewById(R.id.ivAfterMarking2);
 
         buttonToMark2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -231,6 +324,11 @@ public class Main extends Fragment {
                 setColorOfPercentageTextView(b,40,b,40,40,40,40,40);
                 sessionManager.setAttended(getPreviousAttendedClass,"classAttended");
                 sessionManager.setTotal(getPreviousTotalClass,"classTotal");
+                imageAttendanceArray[3]=4;
+                imageAttendanceArray[4]=0;
+                imageAttendanceArray[5]=0;
+                sessionManager.setImageOfAttendancePage(imageAttendanceArray,"ImageArrayAttendance");
+                sessionManager.setFlag(false);
                 String string=mainTVSub2.getText().toString();
                 Toast.makeText(getActivity(), "Attended "+string, Toast.LENGTH_SHORT).show();
             }
@@ -251,6 +349,11 @@ public class Main extends Fragment {
                 setColorOfPercentageTextView(b,40,b,40,40,40,40,40);
                 sessionManager.setAttended(getPreviousAttendedClass,"classAttended");
                 sessionManager.setTotal(getPreviousTotalClass,"classTotal");
+                imageAttendanceArray[3]=0;
+                imageAttendanceArray[4]=5;
+                imageAttendanceArray[5]=0;
+                sessionManager.setImageOfAttendancePage(imageAttendanceArray,"ImageArrayAttendance");
+                sessionManager.setFlag(false);
                 String string=mainTVSub2.getText().toString();
                 Toast.makeText(getActivity(), "Missed "+string, Toast.LENGTH_SHORT).show();
             }
@@ -273,6 +376,11 @@ public class Main extends Fragment {
                 setColorOfPercentageTextView(b,40,b,40,40,40,40,40);
                 sessionManager.setAttended(getPreviousAttendedClass,"classAttended");
                 sessionManager.setTotal(getPreviousTotalClass,"classTotal");
+                imageAttendanceArray[3]=0;
+                imageAttendanceArray[4]=0;
+                imageAttendanceArray[5]=6;
+                sessionManager.setImageOfAttendancePage(imageAttendanceArray,"ImageArrayAttendance");
+                sessionManager.setFlag(false);
                 Toast.makeText(getActivity(), "Reset", Toast.LENGTH_SHORT).show();
             }
         });
@@ -283,7 +391,6 @@ public class Main extends Fragment {
         iBReset3=(ImageButton)view.findViewById(R.id.iBReset3);
         iBWrong3=(ImageButton)view.findViewById(R.id.iBWrong3);
         iBRight3=(ImageButton)view.findViewById(R.id.iBRight3);
-        ivAfterMark3=(ImageView)view.findViewById(R.id.ivAfterMarking3);
 
         buttonToMark3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -308,6 +415,11 @@ public class Main extends Fragment {
                 setColorOfPercentageTextView(b,40,40,b,40,40,40,40);
                 sessionManager.setAttended(getPreviousAttendedClass,"classAttended");
                 sessionManager.setTotal(getPreviousTotalClass,"classTotal");
+                imageAttendanceArray[6]=7;
+                imageAttendanceArray[7]=0;
+                imageAttendanceArray[8]=0;
+                sessionManager.setImageOfAttendancePage(imageAttendanceArray,"ImageArrayAttendance");
+                sessionManager.setFlag(false);
                 String string=mainTVSub3.getText().toString();
                 Toast.makeText(getActivity(), "Attended "+string, Toast.LENGTH_SHORT).show();
             }
@@ -328,6 +440,11 @@ public class Main extends Fragment {
                 setColorOfPercentageTextView(b,40,40,b,40,40,40,40);
                 sessionManager.setAttended(getPreviousAttendedClass,"classAttended");
                 sessionManager.setTotal(getPreviousTotalClass,"classTotal");
+                imageAttendanceArray[6]=0;
+                imageAttendanceArray[7]=8;
+                imageAttendanceArray[8]=0;
+                sessionManager.setImageOfAttendancePage(imageAttendanceArray,"ImageArrayAttendance");
+                sessionManager.setFlag(false);
                 String string=mainTVSub3.getText().toString();
                 Toast.makeText(getActivity(), "Missed "+string, Toast.LENGTH_SHORT).show();
             }
@@ -350,6 +467,11 @@ public class Main extends Fragment {
                 setColorOfPercentageTextView(b,40,40,b,40,40,40,40);
                 sessionManager.setAttended(getPreviousAttendedClass,"classAttended");
                 sessionManager.setTotal(getPreviousTotalClass,"classTotal");
+                imageAttendanceArray[6]=0;
+                imageAttendanceArray[7]=0;
+                imageAttendanceArray[8]=9;
+                sessionManager.setImageOfAttendancePage(imageAttendanceArray,"ImageArrayAttendance");
+                sessionManager.setFlag(false);
                 Toast.makeText(getActivity(), "Reset", Toast.LENGTH_SHORT).show();
             }
         });
@@ -360,7 +482,6 @@ public class Main extends Fragment {
         iBReset4=(ImageButton)view.findViewById(R.id.iBReset4);
         iBWrong4=(ImageButton)view.findViewById(R.id.iBWrong4);
         iBRight4=(ImageButton)view.findViewById(R.id.iBRight4);
-        ivAfterMark4=(ImageView)view.findViewById(R.id.ivAfterMarking4);
 
         buttonToMark4.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -385,6 +506,11 @@ public class Main extends Fragment {
                 setColorOfPercentageTextView(b,40,40,40,b,40,40,40);
                 sessionManager.setAttended(getPreviousAttendedClass,"classAttended");
                 sessionManager.setTotal(getPreviousTotalClass,"classTotal");
+                imageAttendanceArray[9]=10;
+                imageAttendanceArray[10]=0;
+                imageAttendanceArray[11]=0;
+                sessionManager.setImageOfAttendancePage(imageAttendanceArray,"ImageArrayAttendance");
+                sessionManager.setFlag(false);
                 String string=mainTVSub4.getText().toString();
                 Toast.makeText(getActivity(), "Attended "+string, Toast.LENGTH_SHORT).show();
             }
@@ -405,6 +531,11 @@ public class Main extends Fragment {
                 setColorOfPercentageTextView(b,40,40,40,b,40,40,40);
                 sessionManager.setAttended(getPreviousAttendedClass,"classAttended");
                 sessionManager.setTotal(getPreviousTotalClass,"classTotal");
+                imageAttendanceArray[9]=0;
+                imageAttendanceArray[10]=11;
+                imageAttendanceArray[11]=0;
+                sessionManager.setImageOfAttendancePage(imageAttendanceArray,"ImageArrayAttendance");
+                sessionManager.setFlag(false);
                 String string=mainTVSub4.getText().toString();
                 Toast.makeText(getActivity(), "Missed "+string, Toast.LENGTH_SHORT).show();
             }
@@ -427,6 +558,11 @@ public class Main extends Fragment {
                 setColorOfPercentageTextView(b,40,40,40,b,40,40,40);
                 sessionManager.setAttended(getPreviousAttendedClass,"classAttended");
                 sessionManager.setTotal(getPreviousTotalClass,"classTotal");
+                imageAttendanceArray[9]=0;
+                imageAttendanceArray[10]=0;
+                imageAttendanceArray[11]=12;
+                sessionManager.setImageOfAttendancePage(imageAttendanceArray,"ImageArrayAttendance");
+                sessionManager.setFlag(false);
                 Toast.makeText(getActivity(), "Reset", Toast.LENGTH_SHORT).show();
             }
         });
@@ -437,7 +573,6 @@ public class Main extends Fragment {
         iBReset5=(ImageButton)view.findViewById(R.id.iBReset5);
         iBWrong5=(ImageButton)view.findViewById(R.id.iBWrong5);
         iBRight5=(ImageButton)view.findViewById(R.id.iBRight5);
-        ivAfterMark5=(ImageView)view.findViewById(R.id.ivAfterMarking5);
 
         buttonToMark5.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -462,6 +597,11 @@ public class Main extends Fragment {
                 setColorOfPercentageTextView(b,40,40,40,40,b,40,40);
                 sessionManager.setAttended(getPreviousAttendedClass,"classAttended");
                 sessionManager.setTotal(getPreviousTotalClass,"classTotal");
+                imageAttendanceArray[12]=13;
+                imageAttendanceArray[13]=0;
+                imageAttendanceArray[14]=0;
+                sessionManager.setImageOfAttendancePage(imageAttendanceArray,"ImageArrayAttendance");
+                sessionManager.setFlag(false);
                 String string=mainTVSub5.getText().toString();
                 Toast.makeText(getActivity(), "Attended "+string, Toast.LENGTH_SHORT).show();
             }
@@ -482,6 +622,11 @@ public class Main extends Fragment {
                 setColorOfPercentageTextView(b,40,40,40,40,b,40,40);
                 sessionManager.setAttended(getPreviousAttendedClass,"classAttended");
                 sessionManager.setTotal(getPreviousTotalClass,"classTotal");
+                imageAttendanceArray[12]=0;
+                imageAttendanceArray[13]=14;
+                imageAttendanceArray[14]=0;
+                sessionManager.setImageOfAttendancePage(imageAttendanceArray,"ImageArrayAttendance");
+                sessionManager.setFlag(false);
                 String string=mainTVSub5.getText().toString();
                 Toast.makeText(getActivity(), "Missed "+string, Toast.LENGTH_SHORT).show();
             }
@@ -504,6 +649,11 @@ public class Main extends Fragment {
                 setColorOfPercentageTextView(b,40,40,40,40,b,40,40);
                 sessionManager.setAttended(getPreviousAttendedClass,"classAttended");
                 sessionManager.setTotal(getPreviousTotalClass,"classTotal");
+                imageAttendanceArray[12]=0;
+                imageAttendanceArray[13]=0;
+                imageAttendanceArray[14]=15;
+                sessionManager.setImageOfAttendancePage(imageAttendanceArray,"ImageArrayAttendance");
+                sessionManager.setFlag(false);
                 Toast.makeText(getActivity(), "Reset", Toast.LENGTH_SHORT).show();
             }
         });
@@ -514,7 +664,6 @@ public class Main extends Fragment {
         iBReset6=(ImageButton)view.findViewById(R.id.iBReset6);
         iBWrong6=(ImageButton)view.findViewById(R.id.iBWrong6);
         iBRight6=(ImageButton)view.findViewById(R.id.iBRight6);
-        ivAfterMark6=(ImageView)view.findViewById(R.id.ivAfterMarking6);
 
         buttonToMark6.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -539,6 +688,11 @@ public class Main extends Fragment {
                 setColorOfPercentageTextView(b,40,40,40,40,40,b,40);
                 sessionManager.setAttended(getPreviousAttendedClass,"classAttended");
                 sessionManager.setTotal(getPreviousTotalClass,"classTotal");
+                imageAttendanceArray[15]=16;
+                imageAttendanceArray[16]=0;
+                imageAttendanceArray[17]=0;
+                sessionManager.setImageOfAttendancePage(imageAttendanceArray,"ImageArrayAttendance");
+                sessionManager.setFlag(false);
                 String string=mainTVSub6.getText().toString();
                 Toast.makeText(getActivity(), "Attended "+string, Toast.LENGTH_SHORT).show();
             }
@@ -559,6 +713,11 @@ public class Main extends Fragment {
                 setColorOfPercentageTextView(b,40,40,40,40,40,b,40);
                 sessionManager.setAttended(getPreviousAttendedClass,"classAttended");
                 sessionManager.setTotal(getPreviousTotalClass,"classTotal");
+                imageAttendanceArray[15]=0;
+                imageAttendanceArray[16]=17;
+                imageAttendanceArray[17]=0;
+                sessionManager.setImageOfAttendancePage(imageAttendanceArray,"ImageArrayAttendance");
+                sessionManager.setFlag(false);
                 String string=mainTVSub6.getText().toString();
                 Toast.makeText(getActivity(), "Missed "+string, Toast.LENGTH_SHORT).show();
             }
@@ -581,6 +740,11 @@ public class Main extends Fragment {
                 setColorOfPercentageTextView(b,40,40,40,40,40,b,40);
                 sessionManager.setAttended(getPreviousAttendedClass,"classAttended");
                 sessionManager.setTotal(getPreviousTotalClass,"classTotal");
+                imageAttendanceArray[15]=0;
+                imageAttendanceArray[16]=0;
+                imageAttendanceArray[17]=18;
+                sessionManager.setImageOfAttendancePage(imageAttendanceArray,"ImageArrayAttendance");
+                sessionManager.setFlag(false);
                 Toast.makeText(getActivity(), "Reset", Toast.LENGTH_SHORT).show();
             }
         });
@@ -591,7 +755,6 @@ public class Main extends Fragment {
         iBReset7=(ImageButton)view.findViewById(R.id.iBReset7);
         iBWrong7=(ImageButton)view.findViewById(R.id.iBWrong7);
         iBRight7=(ImageButton)view.findViewById(R.id.iBRight7);
-        ivAfterMark7=(ImageView)view.findViewById(R.id.ivAfterMarking7);
 
         buttonToMark7.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -616,6 +779,11 @@ public class Main extends Fragment {
                 setColorOfPercentageTextView(b,40,40,40,40,40,40,b);
                 sessionManager.setAttended(getPreviousAttendedClass,"classAttended");
                 sessionManager.setTotal(getPreviousTotalClass,"classTotal");
+                imageAttendanceArray[18]=19;
+                imageAttendanceArray[19]=0;
+                imageAttendanceArray[20]=0;
+                sessionManager.setImageOfAttendancePage(imageAttendanceArray,"ImageArrayAttendance");
+                sessionManager.setFlag(false);
                 String string=mainTVSub7.getText().toString();
                 Toast.makeText(getActivity(), "Attended "+string, Toast.LENGTH_SHORT).show();
             }
@@ -636,6 +804,11 @@ public class Main extends Fragment {
                 setColorOfPercentageTextView(b,40,40,40,40,40,40,b);
                 sessionManager.setAttended(getPreviousAttendedClass,"classAttended");
                 sessionManager.setTotal(getPreviousTotalClass,"classTotal");
+                imageAttendanceArray[18]=0;
+                imageAttendanceArray[19]=20;
+                imageAttendanceArray[20]=0;
+                sessionManager.setImageOfAttendancePage(imageAttendanceArray,"ImageArrayAttendance");
+                sessionManager.setFlag(false);
                 String string=mainTVSub7.getText().toString();
                 Toast.makeText(getActivity(), "Missed "+string, Toast.LENGTH_SHORT).show();
             }
@@ -658,6 +831,11 @@ public class Main extends Fragment {
                 setColorOfPercentageTextView(b,40,40,40,40,40,40,b);
                 sessionManager.setAttended(getPreviousAttendedClass,"classAttended");
                 sessionManager.setTotal(getPreviousTotalClass,"classTotal");
+                imageAttendanceArray[18]=0;
+                imageAttendanceArray[19]=0;
+                imageAttendanceArray[20]=21;
+                sessionManager.setImageOfAttendancePage(imageAttendanceArray,"ImageArrayAttendance");
+                sessionManager.setFlag(false);
                 Toast.makeText(getActivity(), "Reset", Toast.LENGTH_SHORT).show();
             }
         });

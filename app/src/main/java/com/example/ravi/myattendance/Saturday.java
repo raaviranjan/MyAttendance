@@ -1,14 +1,19 @@
 package com.example.ravi.myattendance;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -16,21 +21,28 @@ import android.widget.Toast;
  */
 
 public class Saturday extends Fragment {
-    Button bmon,btue,bwed,bthu,bfri,bsat,bsun,buttonDone;
-    EditText sats1,sats2,sats3,sats4,sats5,sats6,sats7;
-    String satsub1,satsub2,satsub3,satsub4,satsub5,satsub6,satsub7;
+    Button bmon,btue,bwed,bthu,bfri,bsat,bsun,buttonOk;
+    TextView mons1,mons2,mons3,mons4,mons5,mons6,mons7,clickPlus,scheduleTV;
+    String msub1,msub2,msub3,msub4,msub5,msub6,msub7;
+    ImageButton IBd1,IBd2,IBd3,IBd4,IBd5,IBd6,IBd7,IBAddSub;
     Fragment fragment=null;
     SessionManager sessionManager;
-    String[] subjectOfSaturday;
+    int sizeof,count=0,cnt;
+    String[] totalSubjects;
+    String[] exactSub;
+    Integer[] attended;
+    Integer[] total;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState){
 
-        View view=inflater.inflate(R.layout.saturday,viewGroup,false);
+        View view=inflater.inflate(R.layout.mon,viewGroup,false);
 
         sessionManager=new SessionManager(getActivity());
-        subjectOfSaturday=new String[7];
-        final int sizeof=sessionManager.getSize();
-        final String[] totalSubjects=sessionManager.loadArray("mySubject");
+        sizeof=sessionManager.getSize();
+        totalSubjects=sessionManager.loadArray("mySubject");
+        exactSub=new String[sizeof];
+        for(int i=0;i<sizeof;i++)
+            exactSub[i]=totalSubjects[i];
 
         bmon=(Button)view.findViewById(R.id.bmon);
         btue=(Button)view.findViewById(R.id.btue);
@@ -39,90 +51,219 @@ public class Saturday extends Fragment {
         bfri=(Button)view.findViewById(R.id.bfri);
         bsat=(Button)view.findViewById(R.id.bsat);
         bsun=(Button)view.findViewById(R.id.bsun);
-        buttonDone=(Button)view.findViewById(R.id.buttonOksat);
+        buttonOk=(Button)view.findViewById(R.id.buttonOk);
 
-        sats1=(EditText)view.findViewById(R.id.sats1);
-        sats2=(EditText)view.findViewById(R.id.sats2);
-        sats3=(EditText)view.findViewById(R.id.sats3);
-        sats4=(EditText)view.findViewById(R.id.sats4);
-        sats5=(EditText)view.findViewById(R.id.sats5);
-        sats6=(EditText)view.findViewById(R.id.sats6);
-        sats7=(EditText)view.findViewById(R.id.sats7);
+        mons1=(TextView)view.findViewById(R.id.mons1);
+        mons2=(TextView)view.findViewById(R.id.mons2);
+        mons3=(TextView)view.findViewById(R.id.mons3);
+        mons4=(TextView)view.findViewById(R.id.mons4);
+        mons5=(TextView)view.findViewById(R.id.mons5);
+        mons6=(TextView)view.findViewById(R.id.mons6);
+        mons7=(TextView)view.findViewById(R.id.mons7);
+        clickPlus=(TextView) view.findViewById(R.id.clickPlus);
+        scheduleTV=(TextView) view.findViewById(R.id.scheduleTV);
 
-        buttonDone.setOnClickListener(new View.OnClickListener() {
+        bsat.setTextColor(Color.parseColor("#FF4081"));
+        scheduleTV.setText("Saturday Schedule");
+
+        IBd1=(ImageButton)view.findViewById(R.id.IBd1);
+        IBd2=(ImageButton)view.findViewById(R.id.IBd2);
+        IBd3=(ImageButton)view.findViewById(R.id.IBd3);
+        IBd4=(ImageButton)view.findViewById(R.id.IBd4);
+        IBd5=(ImageButton)view.findViewById(R.id.IBd5);
+        IBd6=(ImageButton)view.findViewById(R.id.IBd6);
+        IBd7=(ImageButton)view.findViewById(R.id.IBd7);
+        IBAddSub=(ImageButton)view.findViewById(R.id.IBAddSub);
+
+        IBd1.setVisibility(View.GONE);
+        IBd2.setVisibility(View.GONE);
+        IBd3.setVisibility(View.GONE);
+        IBd4.setVisibility(View.GONE);
+        IBd5.setVisibility(View.GONE);
+        IBd6.setVisibility(View.GONE);
+        IBd7.setVisibility(View.GONE);
+
+        IBAddSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int countSat=0;
-                int i,j,pos=0,flag=0;
-                satsub1=sats1.getText().toString();
-                satsub2=sats2.getText().toString();
-                satsub3=sats3.getText().toString();
-                satsub4=sats4.getText().toString();
-                satsub5=sats5.getText().toString();
-                satsub6=sats6.getText().toString();
-                satsub7=sats7.getText().toString();
-
-                subjectOfSaturday[0]=satsub1;
-                subjectOfSaturday[1]=satsub2;
-                subjectOfSaturday[2]=satsub3;
-                subjectOfSaturday[3]=satsub4;
-                subjectOfSaturday[4]=satsub5;
-                subjectOfSaturday[5]=satsub6;
-                subjectOfSaturday[6]=satsub7;
-
-
-                for(i=0;i<7;i++)
-                {
-                    flag=0;
-                    if(!subjectOfSaturday[i].equals(""))
-                    {
-                        for(j=0;j<sizeof;j++)
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Select Subjects for Saturday");
+                builder.setItems(exactSub, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int item) {
+                        // Do something with the selection
+                        //count++;
+                        clickPlus.setVisibility(View.GONE);
+                        if(mons1.getText().equals(""))
                         {
-                            if(subjectOfSaturday[i].equals(totalSubjects[j]))
-                            {
-                                flag=1;
-                                break;
-                            }
+                            mons1.setVisibility(View.VISIBLE);
+                            IBd1.setVisibility(View.VISIBLE);
+                            mons1.setText(exactSub[item]);
                         }
+                        else if(mons2.getText().equals(""))
+                        {
+                            mons2.setVisibility(View.VISIBLE);
+                            IBd2.setVisibility(View.VISIBLE);
+                            mons2.setText(exactSub[item]);
+                        }
+                        else if(mons3.getText().equals(""))
+                        {
+                            mons3.setVisibility(View.VISIBLE);
+                            IBd3.setVisibility(View.VISIBLE);
+                            mons3.setText(exactSub[item]);
+                        }
+                        else if(mons4.getText().equals(""))
+                        {
+                            mons4.setVisibility(View.VISIBLE);
+                            IBd4.setVisibility(View.VISIBLE);
+                            mons4.setText(exactSub[item]);
+                        }
+                        else if(mons5.getText().equals(""))
+                        {
+                            mons5.setVisibility(View.VISIBLE);
+                            IBd5.setVisibility(View.VISIBLE);
+                            mons5.setText(exactSub[item]);
+                        }
+                        else if(mons6.getText().equals(""))
+                        {
+                            mons6.setVisibility(View.VISIBLE);
+                            IBd6.setVisibility(View.VISIBLE);
+                            mons6.setText(exactSub[item]);
+                        }
+                        else if(mons7.getText().equals(""))
+                        {
+                            mons7.setVisibility(View.VISIBLE);
+                            IBd7.setVisibility(View.VISIBLE);
+                            mons7.setText(exactSub[item]);
+                        }
+                        else
+                            Toast.makeText(getActivity(), "Only 7 lectures allowed", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getActivity(), exactSub[item], Toast.LENGTH_SHORT).show();
                     }
-                    else
-                        flag=1;
-                    if(flag==0)
-                    {
-                        pos=i+1;
-                        break;
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+        });
+
+        IBd1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mons1.setVisibility(View.VISIBLE);
+                mons1.setText("");
+                IBd1.setVisibility(View.INVISIBLE);
+            }
+        });
+        IBd2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mons2.setVisibility(View.VISIBLE);
+                mons2.setText("");
+                IBd2.setVisibility(View.INVISIBLE);
+            }
+        });
+        IBd3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mons3.setVisibility(View.VISIBLE);
+                mons3.setText("");
+                IBd3.setVisibility(View.INVISIBLE);
+            }
+        });
+        IBd4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mons4.setVisibility(View.VISIBLE);
+                mons4.setText("");
+                IBd4.setVisibility(View.INVISIBLE);
+            }
+        });
+        IBd5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mons5.setVisibility(View.VISIBLE);
+                mons5.setText("");
+                IBd5.setVisibility(View.INVISIBLE);
+            }
+        });
+        IBd6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mons6.setVisibility(View.VISIBLE);
+                mons6.setText("");
+                IBd6.setVisibility(View.INVISIBLE);
+            }
+        });
+        IBd7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mons7.setVisibility(View.VISIBLE);
+                mons7.setText("");
+                IBd7.setVisibility(View.INVISIBLE);
+            }
+        });
+        buttonOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cnt=0;
+                msub1=mons1.getText().toString();
+                msub2=mons2.getText().toString();
+                msub3=mons3.getText().toString();
+                msub4=mons4.getText().toString();
+                msub5=mons5.getText().toString();
+                msub6=mons6.getText().toString();
+                msub7=mons7.getText().toString();
+
+                if(!msub1.equals(""))
+                    cnt++;
+                if(!msub2.equals(""))
+                    cnt++;
+                if(!msub3.equals(""))
+                    cnt++;
+                if(!msub4.equals(""))
+                    cnt++;
+                if(!msub5.equals(""))
+                    cnt++;
+                if(!msub6.equals(""))
+                    cnt++;
+                if(!msub7.equals(""))
+                    cnt++;
+                sessionManager.satSubjects(msub1,msub2,msub3,msub4,msub5,msub6,msub7);
+                sessionManager.setCountSat(cnt);
+
+                AlertDialog.Builder alertDialog=new AlertDialog.Builder(getActivity());
+                alertDialog.setTitle("Extra Previous Attendance?");
+                alertDialog.setPositiveButton("Yes",new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        fragment = new PreAttendance();
+                        FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        ft.replace(R.id.content_frame, fragment);
+                        ft.commit();
                     }
-                }
+                });
+                alertDialog.setNegativeButton("No",new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        attended=new Integer[20];
+                        total=new Integer[20];
+                        for(int j=0;j<20;j++)
+                        {
+                            attended[j]=0;
+                            total[j]=0;
+                        }
+                        sessionManager.setAttended(attended,"classAttended");
+                        sessionManager.setTotal(total,"classTotal");
+                        sessionManager.makeLogin();
+                        sessionManager.setFlag(true);
 
-                if(!satsub1.equals(""))
-                    countSat++;
-                if(!satsub2.equals(""))
-                    countSat++;
-                if(!satsub3.equals(""))
-                    countSat++;
-                if(!satsub4.equals(""))
-                    countSat++;
-                if(!satsub5.equals(""))
-                    countSat++;
-                if(!satsub6.equals(""))
-                    countSat++;
-                if(!satsub7.equals(""))
-                    countSat++;
-
-                if(flag==1)
-                {
-                    new SessionManager(getContext()).satSubjects(satsub1,satsub2,satsub3,satsub4,satsub5,satsub6,satsub7);
-                    new SessionManager(getContext()).setCountSat(countSat);
-
-                    fragment = new EnterPreAtten();
-                    FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    ft.replace(R.id.content_frame, fragment);
-                    ft.commit();
-                }
-                else
-                {
-                    Toast.makeText(getActivity(), "Subject "+pos+" doesn't match with entered subjects", Toast.LENGTH_LONG).show();
-                }
+                        fragment=new Main();
+                        FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        ft.replace(R.id.content_frame, fragment);
+                        ft.commit();
+                    }
+                });
+                AlertDialog al=alertDialog.create();
+                al.show();
             }
         });
 

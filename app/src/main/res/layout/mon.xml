@@ -243,6 +243,32 @@
             android:text="DONE"
             android:id="@+id/buttonOk"
             android:layout_gravity="center_horizontal" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="20dp"
+            android:id="@+id/LLSatWorkingDay"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Is Sat a working day?"
+                android:textSize="20dp"
+                android:textColor="#FFFFFF"/>
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="yes"
+                android:id="@+id/buttonOkfri"
+                android:layout_gravity="center_horizontal" />
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="No"
+                android:id="@+id/bNo"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

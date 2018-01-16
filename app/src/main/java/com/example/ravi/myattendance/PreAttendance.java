@@ -508,20 +508,10 @@ public class PreAttendance extends Fragment {
         }
         if(go==0)
         {
-            //Toast.makeText(getActivity(), attended[0]+" "+attended[1]+" "+attended[2]+" "+attended[3]+"   "+total[0]+" "+total[1]+" "+total[2]+" "+total[3], Toast.LENGTH_SHORT).show();
             sessionManager.setAttended(attended,"classAttended");
             sessionManager.setTotal(total,"classTotal");
             sessionManager.makeLogin();
-
-            /*SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
-            Date d = new Date();
-            String dayOfTheWeek = sdf.format(d);
-            SimpleDateFormat sdf1 = new SimpleDateFormat("EEEE, dd MMM yyyy");
-            Date d1 = new Date();
-            String dayAndDate = sdf1.format(d1);
-            sessionManager.setCalendarDetails(dayOfTheWeek,dayAndDate);*/
-            //HashMap<String ,String> today=sessionManager.getDay();
-            //String todayDate=today.get("day")+" "+today.get("day_date");
+            sessionManager.setFlag(true);
 
             Fragment fragment1=new Main();
             FragmentTransaction ft = getFragmentManager().beginTransaction();

@@ -55,8 +55,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         else
         {
-            /*Intent intent=new Intent(this,Welcome.class);
-            startActivity(intent);*/
             View navView=navigationView.inflateHeaderView(R.layout.nav_header_main);
             TextView nav_name=(TextView)navView.findViewById(R.id.textViewNavHeader);
             ImageView imageView=(ImageView)navView.findViewById(R.id.imageView);
@@ -156,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (itemId) {
             case R.id.nav_profile:
                 id=1;
-                fragment = new EditMon();
+                fragment = new Profile();
                 break;
             case R.id.nav_timetable:
                 id=2;
