@@ -38,7 +38,7 @@ public class PreAttendance extends Fragment {
     Integer[] attended;
     Integer[] total;
     SessionManager sessionManager;
-    //Calendar calendar;
+    Calendar calendar;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState) {
 
@@ -512,6 +512,13 @@ public class PreAttendance extends Fragment {
             sessionManager.setTotal(total,"classTotal");
             sessionManager.makeLogin();
             sessionManager.setFlag(true);
+
+            calendar=Calendar.getInstance();
+
+            SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
+            Date d = new Date();
+            String dayOfTheWeek = sdf.format(d);
+            sessionManager.setOpenDay(dayOfTheWeek);
 
             Fragment fragment1=new Main();
             FragmentTransaction ft = getFragmentManager().beginTransaction();

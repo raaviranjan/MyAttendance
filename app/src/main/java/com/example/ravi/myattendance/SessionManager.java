@@ -337,6 +337,16 @@ public class SessionManager {
         return pref.getBoolean("flagForAttendanceImage",false);
     }
 
+    public void setOpenDay(String a)
+    {
+        editor.putString("TodayTime",a);
+        editor.commit();
+    }
+    public String getOpenDay()
+    {
+        return pref.getString("TodayTime",null);
+    }
+
 
 
     /**

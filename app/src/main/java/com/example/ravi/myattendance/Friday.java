@@ -17,6 +17,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * Created by Ravi on 04-Oct-17.
  */
@@ -34,6 +38,7 @@ public class Friday extends Fragment {
     String[] exactSub;
     Integer[] attended;
     Integer[] total;
+    Calendar calendar;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState){
 
@@ -261,6 +266,13 @@ public class Friday extends Fragment {
                         sessionManager.setTotal(total,"classTotal");
                         sessionManager.makeLogin();
                         sessionManager.setFlag(true);
+
+                        calendar= Calendar.getInstance();
+
+                        SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
+                        Date d = new Date();
+                        String dayOfTheWeek = sdf.format(d);
+                        sessionManager.setOpenDay(dayOfTheWeek);
 
                         fragment=new Main();
                         FragmentTransaction ft = getFragmentManager().beginTransaction();

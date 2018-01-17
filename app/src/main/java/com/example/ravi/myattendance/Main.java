@@ -40,6 +40,7 @@ public class Main extends Fragment {
     Integer[] imageAttendanceArray;
     Integer[] getImageAttendanceArray;
     String[] totalSubjects;
+    String lastUpdateDay,currentDay;
     Calendar calendar;
     HashMap<String ,String> subj;
     HashMap<String ,String> subtue;
@@ -138,7 +139,14 @@ public class Main extends Fragment {
 
         imageAttendanceArray=new Integer[21];
 
-        //here is the mistake;
+        lastUpdateDay=sessionManager.getOpenDay();
+        currentDay=dayOfTheWeek;
+        if(!currentDay.equals(lastUpdateDay))
+        {
+            flag=true;
+            sessionManager.setOpenDay(currentDay);
+        }
+
         if(flag)
         {
             for(int k=0;k<21;k++)
@@ -149,15 +157,6 @@ public class Main extends Fragment {
         getImageAttendanceArray=sessionManager.getImageOfAttendancePage("ImageArrayAttendance");
         for(int ii=0;ii<21;ii++)
             imageAttendanceArray[ii]=getImageAttendanceArray[ii];
-
-        /*if(getImageAttendanceArray[0]==1)
-            ivAfterMark1.setImageResource(R.drawable.right);
-        if(getImageAttendanceArray[1]==2)
-            ivAfterMark1.setImageResource(R.drawable.wrong);
-        if(getImageAttendanceArray[2]==4)
-            ivAfterMark2.setImageResource(R.drawable.right);
-        if(getImageAttendanceArray[3]==5)
-            ivAfterMark2.setImageResource(R.drawable.wrong);*/
 
         if(getImageAttendanceArray[0]==1)
             ivAfterMark1.setImageResource(R.drawable.right);
