@@ -165,6 +165,7 @@
                     android:text="Click \n'+'\n button\n to\n add\n subjects"
                     android:gravity="center"
                     android:textSize="19dp"
+                    android:textColor="#FFFFFF"
                     android:id="@+id/clickPlus" />
             </LinearLayout>
             <LinearLayout
@@ -257,15 +258,15 @@
                 android:textSize="20dp"
                 android:textColor="#FFFFFF"/>
             <Button
-                android:layout_width="50dp"
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
-                android:text="yes"
+                android:text="Y"
                 android:id="@+id/buttonOkfri"
                 android:layout_gravity="center_horizontal" />
             <Button
-                android:layout_width="50dp"
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
-                android:text="No"
+                android:text="N"
                 android:id="@+id/bNo"/>
 
         </LinearLayout>

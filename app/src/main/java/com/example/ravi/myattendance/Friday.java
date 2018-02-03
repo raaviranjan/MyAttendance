@@ -77,7 +77,6 @@ public class Friday extends Fragment {
         scheduleTV=(TextView) view.findViewById(R.id.scheduleTV);
 
         bfri.setTextColor(Color.parseColor("#FF4081"));
-        buttonOk.setText("OK");
         scheduleTV.setText("Friday Schedule");
 
         IBd1=(ImageButton)view.findViewById(R.id.IBd1);
@@ -242,7 +241,7 @@ public class Friday extends Fragment {
                 sessionManager.setCountSat(0);
 
                 AlertDialog.Builder alertDialog=new AlertDialog.Builder(getActivity());
-                alertDialog.setTitle("Extra Previous Attendance?");
+                alertDialog.setTitle("Enter Previous Attendance?");
                 alertDialog.setPositiveButton("Yes",new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -283,48 +282,6 @@ public class Friday extends Fragment {
                 AlertDialog al=alertDialog.create();
                 al.show();
 
-            }
-        });
-        bmon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press YES to go to next day or NO to proceed", Toast.LENGTH_SHORT).show();
-            }
-        });
-        btue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press YES to go to next day or NO to proceed", Toast.LENGTH_SHORT).show();
-            }
-        });
-        bwed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press YES to go to next day or NO to proceed", Toast.LENGTH_SHORT).show();
-            }
-        });
-        bthu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press YES to go to next day or NO to proceed", Toast.LENGTH_SHORT).show();
-            }
-        });
-        bfri.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press YES to go to next day or NO to proceed", Toast.LENGTH_SHORT).show();
-            }
-        });
-        bsat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press YES to go to next day or NO to proceed", Toast.LENGTH_SHORT).show();
-            }
-        });
-        bsun.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press YES to go to next day or NO to proceed", Toast.LENGTH_SHORT).show();
             }
         });
         return view;

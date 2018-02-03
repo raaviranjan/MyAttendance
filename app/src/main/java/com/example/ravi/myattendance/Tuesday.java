@@ -62,7 +62,6 @@ public class Tuesday extends Fragment {
         scheduleTV=(TextView) view.findViewById(R.id.scheduleTV);
 
         btue.setTextColor(Color.parseColor("#FF4081"));
-        buttonOk.setText("OK");
         scheduleTV.setText("Tuesday Schedule");
 
         IBd1=(ImageButton)view.findViewById(R.id.IBd1);
@@ -204,85 +203,98 @@ public class Tuesday extends Fragment {
         buttonOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cnt=0;
-                msub1=mons1.getText().toString();
-                msub2=mons2.getText().toString();
-                msub3=mons3.getText().toString();
-                msub4=mons4.getText().toString();
-                msub5=mons5.getText().toString();
-                msub6=mons6.getText().toString();
-                msub7=mons7.getText().toString();
+                save();
+                AlertDialog.Builder alertDialog=new AlertDialog.Builder(getActivity());
+                alertDialog.setMessage("You haven't filled each working day. Do you wish to continue?");
+                alertDialog.setPositiveButton("Yes",new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        sessionManager.wedSubjects("","","","","","","");
+                        sessionManager.setCountWed(0);
+                        sessionManager.thuSubjects("","","","","","","");
+                        sessionManager.setCountThu(0);
+                        sessionManager.friSubjects("","","","","","","");
+                        sessionManager.setCountFri(0);
+                        sessionManager.satSubjects("","","","","","","");
+                        sessionManager.setCountSat(0);
 
-                if(!msub1.equals(""))
-                    cnt++;
-                if(!msub2.equals(""))
-                    cnt++;
-                if(!msub3.equals(""))
-                    cnt++;
-                if(!msub4.equals(""))
-                    cnt++;
-                if(!msub5.equals(""))
-                    cnt++;
-                if(!msub6.equals(""))
-                    cnt++;
-                if(!msub7.equals(""))
-                    cnt++;
-                sessionManager.tueSubjects(msub1,msub2,msub3,msub4,msub5,msub6,msub7);
-                sessionManager.setCountTue(cnt);
+                        fragment = new PreAttendance();
+                        FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        ft.replace(R.id.content_frame, fragment);
+                        ft.commit();
+                    }
+                });
+                alertDialog.setNegativeButton("No",new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
 
-                fragment = new Wednesday();
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.content_frame, fragment);
-                ft.commit();
+                    }
+                });
+                AlertDialog al=alertDialog.create();
+                al.show();
 
 
-            }
-        });
-        bmon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press OK to go to next day", Toast.LENGTH_SHORT).show();
-            }
-        });
-        btue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press OK to go to next day", Toast.LENGTH_SHORT).show();
             }
         });
         bwed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press OK to go to next day", Toast.LENGTH_SHORT).show();
+                save();
+                fragment = new Wednesday();
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.content_frame, fragment);
+                ft.commit();
             }
         });
         bthu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press OK to go to next day", Toast.LENGTH_SHORT).show();
+                save();
+                fragment = new Thursday();
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.content_frame, fragment);
+                ft.commit();
             }
         });
         bfri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press OK to go to next day", Toast.LENGTH_SHORT).show();
-            }
-        });
-        bsat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press OK to go to next day", Toast.LENGTH_SHORT).show();
-            }
-        });
-        bsun.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press OK to go to next day", Toast.LENGTH_SHORT).show();
+                save();
+                fragment = new Friday();
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.content_frame, fragment);
+                ft.commit();
             }
         });
         return view;
     }
+    public void save(){
+        cnt=0;
+        msub1=mons1.getText().toString();
+        msub2=mons2.getText().toString();
+        msub3=mons3.getText().toString();
+        msub4=mons4.getText().toString();
+        msub5=mons5.getText().toString();
+        msub6=mons6.getText().toString();
+        msub7=mons7.getText().toString();
 
+        if(!msub1.equals(""))
+            cnt++;
+        if(!msub2.equals(""))
+            cnt++;
+        if(!msub3.equals(""))
+            cnt++;
+        if(!msub4.equals(""))
+            cnt++;
+        if(!msub5.equals(""))
+            cnt++;
+        if(!msub6.equals(""))
+            cnt++;
+        if(!msub7.equals(""))
+            cnt++;
+        sessionManager.tueSubjects(msub1,msub2,msub3,msub4,msub5,msub6,msub7);
+        sessionManager.setCountTue(cnt);
+    }
     @Override
     public void onViewCreated(View view,Bundle savedInstanceState){
         super.onViewCreated(view,savedInstanceState);

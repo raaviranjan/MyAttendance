@@ -32,6 +32,8 @@
                     android:id="@+id/SubjectWiseTVSub1"
                     android:textStyle="bold|italic"
                     android:textSize="20dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:textColor="#000000"/>
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -95,6 +97,8 @@
                         android:id="@+id/SubjectWiseTVSub2"
                         android:textStyle="bold|italic"
                         android:textSize="20dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:textColor="#000000"/>
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -158,6 +162,8 @@
                         android:id="@+id/SubjectWiseTVSub3"
                         android:textStyle="bold|italic"
                         android:textSize="20dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:textColor="#000000"/>
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -221,6 +227,8 @@
                         android:id="@+id/SubjectWiseTVSub4"
                         android:textStyle="bold|italic"
                         android:textSize="20dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:textColor="#000000"/>
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -284,6 +292,8 @@
                         android:id="@+id/SubjectWiseTVSub5"
                         android:textStyle="bold|italic"
                         android:textSize="20dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:textColor="#000000"/>
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -347,6 +357,8 @@
                         android:id="@+id/SubjectWiseTVSub6"
                         android:textStyle="bold|italic"
                         android:textSize="20dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:textColor="#000000"/>
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -410,6 +422,8 @@
                         android:id="@+id/SubjectWiseTVSub7"
                         android:textStyle="bold|italic"
                         android:textSize="20dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:textColor="#000000"/>
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -473,6 +487,8 @@
                         android:id="@+id/SubjectWiseTVSub8"
                         android:textStyle="bold|italic"
                         android:textSize="20dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:textColor="#000000"/>
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -536,6 +552,8 @@
                         android:id="@+id/SubjectWiseTVSub9"
                         android:textStyle="bold|italic"
                         android:textSize="20dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:textColor="#000000"/>
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -599,6 +617,8 @@
                         android:id="@+id/SubjectWiseTVSub10"
                         android:textStyle="bold|italic"
                         android:textSize="20dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:textColor="#000000"/>
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -662,6 +682,8 @@
                         android:id="@+id/SubjectWiseTVSub11"
                         android:textStyle="bold|italic"
                         android:textSize="20dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:textColor="#000000"/>
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -725,6 +747,8 @@
                         android:id="@+id/SubjectWiseTVSub12"
                         android:textStyle="bold|italic"
                         android:textSize="20dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:textColor="#000000"/>
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -788,6 +812,8 @@
                         android:id="@+id/SubjectWiseTVSub13"
                         android:textStyle="bold|italic"
                         android:textSize="20dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:textColor="#000000"/>
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -851,6 +877,8 @@
                         android:id="@+id/SubjectWiseTVSub14"
                         android:textStyle="bold|italic"
                         android:textSize="20dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:textColor="#000000"/>
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -914,6 +942,8 @@
                         android:id="@+id/SubjectWiseTVSub15"
                         android:textStyle="bold|italic"
                         android:textSize="20dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:textColor="#000000"/>
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -977,6 +1007,8 @@
                         android:id="@+id/SubjectWiseTVSub16"
                         android:textStyle="bold|italic"
                         android:textSize="20dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:textColor="#000000"/>
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -1040,6 +1072,8 @@
                         android:id="@+id/SubjectWiseTVSub17"
                         android:textStyle="bold|italic"
                         android:textSize="20dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:textColor="#000000"/>
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -1103,6 +1137,8 @@
                         android:id="@+id/SubjectWiseTVSub18"
                         android:textStyle="bold|italic"
                         android:textSize="20dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:textColor="#000000"/>
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -1166,6 +1202,8 @@
                         android:id="@+id/SubjectWiseTVSub19"
                         android:textStyle="bold|italic"
                         android:textSize="20dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:textColor="#000000"/>
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -1229,6 +1267,8 @@
                         android:id="@+id/SubjectWiseTVSub20"
                         android:textStyle="bold|italic"
                         android:textSize="20dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:textColor="#000000"/>
                     <LinearLayout
                         android:layout_width="fill_parent"

@@ -31,6 +31,8 @@
                     android:text="Subject 1"
                     android:id="@+id/mainTVSub1"
                     android:textStyle="bold|italic"
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:textSize="20dp"
                     android:textColor="#000000"/>
                 <LinearLayout
@@ -194,6 +196,8 @@
                         android:id="@+id/mainTVSub2"
                         android:textStyle="bold|italic"
                         android:textSize="20dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:textColor="#000000"/>
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -356,6 +360,8 @@
                         android:id="@+id/mainTVSub3"
                         android:textStyle="bold|italic"
                         android:textSize="20dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:textColor="#000000"/>
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -518,6 +524,8 @@
                         android:id="@+id/mainTVSub4"
                         android:textStyle="bold|italic"
                         android:textSize="20dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:textColor="#000000"/>
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -680,6 +688,8 @@
                         android:id="@+id/mainTVSub5"
                         android:textStyle="bold|italic"
                         android:textSize="20dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:textColor="#000000"/>
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -842,6 +852,8 @@
                         android:id="@+id/mainTVSub6"
                         android:textStyle="bold|italic"
                         android:textSize="20dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:textColor="#000000"/>
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -1005,6 +1017,8 @@
                         android:id="@+id/mainTVSub7"
                         android:textStyle="bold|italic"
                         android:textSize="20dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:textColor="#000000"/>
                     <LinearLayout
                         android:layout_width="fill_parent"

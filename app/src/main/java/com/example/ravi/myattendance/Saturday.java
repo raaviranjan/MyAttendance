@@ -236,7 +236,7 @@ public class Saturday extends Fragment {
                 sessionManager.setCountSat(cnt);
 
                 AlertDialog.Builder alertDialog=new AlertDialog.Builder(getActivity());
-                alertDialog.setTitle("Extra Previous Attendance?");
+                alertDialog.setTitle("Enter Previous Attendance?");
                 alertDialog.setPositiveButton("Yes",new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -279,48 +279,6 @@ public class Saturday extends Fragment {
             }
         });
 
-        bmon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press DONE to proceed", Toast.LENGTH_SHORT).show();
-            }
-        });
-        btue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press DONE to proceed", Toast.LENGTH_SHORT).show();
-            }
-        });
-        bwed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press DONE to proceed", Toast.LENGTH_SHORT).show();
-            }
-        });
-        bthu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press DONE to proceed", Toast.LENGTH_SHORT).show();
-            }
-        });
-        bfri.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press DONE to proceed", Toast.LENGTH_SHORT).show();
-            }
-        });
-        bsat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press DONE to proceed", Toast.LENGTH_SHORT).show();
-            }
-        });
-        bsun.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press DONE to proceed", Toast.LENGTH_SHORT).show();
-            }
-        });
         return view;
     }
 

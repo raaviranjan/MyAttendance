@@ -876,6 +876,11 @@ public class Main extends Fragment {
             setColorOfPercentageTextView(e,a,b,c,d,e,f,g);
             setColorOfPercentageTextView(f,a,b,c,d,e,f,g);
             setColorOfPercentageTextView(g,a,b,c,d,e,f,g);
+            if(cnt==0)
+            {
+                sub1Layout.setVisibility(View.GONE);
+                offLayout.setVisibility(View.VISIBLE);
+            }
             if(cnt>=1)
             {
                 sub1Layout.setVisibility(View.VISIBLE);
@@ -951,6 +956,11 @@ public class Main extends Fragment {
             setColorOfPercentageTextView(e,a,b,c,d,e,f,g);
             setColorOfPercentageTextView(f,a,b,c,d,e,f,g);
             setColorOfPercentageTextView(g,a,b,c,d,e,f,g);
+            if(cnt==0)
+            {
+                sub1Layout.setVisibility(View.GONE);
+                offLayout.setVisibility(View.VISIBLE);
+            }
             if(cnt>=1)
             {
                 sub1Layout.setVisibility(View.VISIBLE);
@@ -1026,7 +1036,11 @@ public class Main extends Fragment {
             setColorOfPercentageTextView(e,a,b,c,d,e,f,g);
             setColorOfPercentageTextView(f,a,b,c,d,e,f,g);
             setColorOfPercentageTextView(g,a,b,c,d,e,f,g);
-
+            if(cnt==0)
+            {
+                sub1Layout.setVisibility(View.GONE);
+                offLayout.setVisibility(View.VISIBLE);
+            }
             if(cnt>=1)
             {
                 sub1Layout.setVisibility(View.VISIBLE);
@@ -1102,6 +1116,11 @@ public class Main extends Fragment {
             setColorOfPercentageTextView(e,a,b,c,d,e,f,g);
             setColorOfPercentageTextView(f,a,b,c,d,e,f,g);
             setColorOfPercentageTextView(g,a,b,c,d,e,f,g);
+            if(cnt==0)
+            {
+                sub1Layout.setVisibility(View.GONE);
+                offLayout.setVisibility(View.VISIBLE);
+            }
             if(cnt>=1)
             {
                 sub1Layout.setVisibility(View.VISIBLE);
@@ -1177,6 +1196,11 @@ public class Main extends Fragment {
             setColorOfPercentageTextView(e,a,b,c,d,e,f,g);
             setColorOfPercentageTextView(f,a,b,c,d,e,f,g);
             setColorOfPercentageTextView(g,a,b,c,d,e,f,g);
+            if(cnt==0)
+            {
+                sub1Layout.setVisibility(View.GONE);
+                offLayout.setVisibility(View.VISIBLE);
+            }
             if(cnt>=1)
             {
                 sub1Layout.setVisibility(View.VISIBLE);

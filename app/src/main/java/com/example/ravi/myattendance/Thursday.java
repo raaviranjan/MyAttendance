@@ -61,7 +61,6 @@ public class Thursday extends Fragment {
         scheduleTV=(TextView) view.findViewById(R.id.scheduleTV);
 
         bthu.setTextColor(Color.parseColor("#FF4081"));
-        buttonOk.setText("OK");
         scheduleTV.setText("Thursday Schedule");
 
         IBd1=(ImageButton)view.findViewById(R.id.IBd1);
@@ -202,86 +201,75 @@ public class Thursday extends Fragment {
         buttonOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cnt=0;
-                msub1=mons1.getText().toString();
-                msub2=mons2.getText().toString();
-                msub3=mons3.getText().toString();
-                msub4=mons4.getText().toString();
-                msub5=mons5.getText().toString();
-                msub6=mons6.getText().toString();
-                msub7=mons7.getText().toString();
+                save();
+                AlertDialog.Builder alertDialog=new AlertDialog.Builder(getActivity());
+                alertDialog.setMessage("You haven't filled each working day. Do you wish to continue?");
+                alertDialog.setPositiveButton("Yes",new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        sessionManager.friSubjects("","","","","","","");
+                        sessionManager.setCountFri(0);
+                        sessionManager.satSubjects("","","","","","","");
+                        sessionManager.setCountSat(0);
 
-                if(!msub1.equals(""))
-                    cnt++;
-                if(!msub2.equals(""))
-                    cnt++;
-                if(!msub3.equals(""))
-                    cnt++;
-                if(!msub4.equals(""))
-                    cnt++;
-                if(!msub5.equals(""))
-                    cnt++;
-                if(!msub6.equals(""))
-                    cnt++;
-                if(!msub7.equals(""))
-                    cnt++;
-                sessionManager.thuSubjects(msub1,msub2,msub3,msub4,msub5,msub6,msub7);
-                sessionManager.setCountThu(cnt);
+                        fragment = new PreAttendance();
+                        FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        ft.replace(R.id.content_frame, fragment);
+                        ft.commit();
+                    }
+                });
+                alertDialog.setNegativeButton("No",new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
 
+                    }
+                });
+                AlertDialog al=alertDialog.create();
+                al.show();
+
+
+            }
+        });
+
+        bfri.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                save();
                 fragment = new Friday();
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.content_frame, fragment);
                 ft.commit();
-
-
-            }
-        });
-
-        bmon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press OK to go to next day", Toast.LENGTH_SHORT).show();
-            }
-        });
-        btue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press OK to go to next day", Toast.LENGTH_SHORT).show();
-            }
-        });
-        bwed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press OK to go to next day", Toast.LENGTH_SHORT).show();
-            }
-        });
-        bthu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press OK to go to next day", Toast.LENGTH_SHORT).show();
-            }
-        });
-        bfri.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press OK to go to next day", Toast.LENGTH_SHORT).show();
-            }
-        });
-        bsat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press OK to go to next day", Toast.LENGTH_SHORT).show();
-            }
-        });
-        bsun.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Kindly press OK to go to next day", Toast.LENGTH_SHORT).show();
             }
         });
         return view;
     }
+    public void save(){
+        cnt=0;
+        msub1=mons1.getText().toString();
+        msub2=mons2.getText().toString();
+        msub3=mons3.getText().toString();
+        msub4=mons4.getText().toString();
+        msub5=mons5.getText().toString();
+        msub6=mons6.getText().toString();
+        msub7=mons7.getText().toString();
 
+        if(!msub1.equals(""))
+            cnt++;
+        if(!msub2.equals(""))
+            cnt++;
+        if(!msub3.equals(""))
+            cnt++;
+        if(!msub4.equals(""))
+            cnt++;
+        if(!msub5.equals(""))
+            cnt++;
+        if(!msub6.equals(""))
+            cnt++;
+        if(!msub7.equals(""))
+            cnt++;
+        sessionManager.thuSubjects(msub1,msub2,msub3,msub4,msub5,msub6,msub7);
+        sessionManager.setCountThu(cnt);
+    }
     @Override
     public void onViewCreated(View view,Bundle savedInstanceState){
         super.onViewCreated(view,savedInstanceState);
