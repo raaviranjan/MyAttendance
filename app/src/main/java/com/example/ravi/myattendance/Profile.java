@@ -10,7 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 
 import static android.R.attr.fragment;
 
@@ -33,6 +36,14 @@ public class Profile extends Fragment {
         String gender=str.get(SessionManager.KEY_GENDER);
         String att=str.get(SessionManager.KEY_ATTENDANCE);
 
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE", Locale.US);
+        Date d = new Date();
+        String dayOfTheWeek = sdf.format(d);
+        SimpleDateFormat sdf1 = new SimpleDateFormat("EEEE, dd MMM yyyy",Locale.US);
+        Date d1 = new Date();
+        String dayAndDate = sdf1.format(d1);
+        sessionManager.setCalendarDetails(dayOfTheWeek,dayAndDate);
+
         IVProfileMale=(ImageView)view.findViewById(R.id.IVProfileMale);
         TVProfileCriteria=(TextView)view.findViewById(R.id.TVProfileCriteria);
         TVProfileName=(TextView)view.findViewById(R.id.TVProfileName);
@@ -54,6 +65,7 @@ public class Profile extends Fragment {
     @Override
     public void onViewCreated(View view,Bundle savedInstanceState){
         super.onViewCreated(view,savedInstanceState);
-        getActivity().setTitle("Profile");
+        HashMap<String ,String> str1=sessionManager.getDay();
+        getActivity().setTitle(str1.get("day"));
     }
 }

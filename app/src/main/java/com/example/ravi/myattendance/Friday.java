@@ -273,7 +273,7 @@ public class Friday extends Fragment {
                         String dayOfTheWeek = sdf.format(d);
                         sessionManager.setOpenDay(dayOfTheWeek);
 
-                        fragment=new Main();
+                        fragment=new Profile();
                         FragmentTransaction ft = getFragmentManager().beginTransaction();
                         ft.replace(R.id.content_frame, fragment);
                         ft.commit();

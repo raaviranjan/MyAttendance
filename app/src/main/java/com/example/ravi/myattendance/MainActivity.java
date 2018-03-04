@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 imageView.setImageResource(R.drawable.male);
             nav_name.setText("Hello, "+string);
 
-            Fragment fragment2=new Main();
+            Fragment fragment2=new Profile();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_frame, fragment2);
             ft.commit();
@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (itemId) {
             case R.id.nav_profile:
                 id=1;
-                fragment = new Profile();
+                fragment = new Main2();
                 break;
             case R.id.nav_timetable:
                 id=2;
