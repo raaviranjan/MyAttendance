@@ -115,7 +115,7 @@
                 <ImageButton
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:src="@drawable/ic_restore_black_24dp"
+                    android:src="@drawable/wrong"
                     android:scaleType="fitCenter"
                     android:background="@null"
                     android:id="@+id/iBWrong1"
@@ -136,7 +136,7 @@
                 <ImageButton
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:src="@drawable/ic_restore_black_24dp"
+                    android:src="@drawable/right"
                     android:scaleType="fitCenter"
                     android:background="@null"
                     android:id="@+id/iBRight1" />
@@ -161,6 +161,13 @@
                 android:textSize="17dp"
                 android:layout_weight=".75"
                 android:id="@+id/tvOnTrack1"/>
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_restore_black_24dp"
+                android:scaleType="fitEnd"
+                android:layout_weight=".25"
+                android:id="@+id/ivAfterMarking1"/>
 
 
         </LinearLayout>

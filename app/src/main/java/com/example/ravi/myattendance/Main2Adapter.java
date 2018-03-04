@@ -1,105 +1,7 @@
 package com.example.ravi.myattendance;
-/*
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-
-
-
-import java.net.Inet4Address;
-import java.util.ArrayList;
-
-
-
-public class Main2Adapter extends RecyclerView.Adapter<Main2Adapter.ViewHolder1> {
-
-    private Context mContext;
-    private  ArrayList<Main2Blocks> mainlist;
-
-
-
-    public Main2Adapter(Context context,ArrayList<Main2Blocks> list) {
-        mContext=context;
-        mainlist=list;
-    }
-
-    public class ViewHolder1 extends RecyclerView.ViewHolder {
-
-        private TextView mainTVSub1,tvAttendedClass1,tvTotalClass1,tvPercentage1,tvOnTrack1,textView;
-        private Button buttonToMark1;
-        private LinearLayout linearLayoutToMark1;
-        private ImageButton iBRight1,iBWrong1,iBReset1;
-        private ImageView ivAfterMarking1;
-
-        private ViewHolder1(View row){
-
-            super(row);
-
-            textView=(TextView) row.findViewById(R.id.testtext);
-            mainTVSub1 =(TextView) row.findViewById(R.id.mainTVSub1);
-            tvAttendedClass1 =(TextView) row.findViewById(R.id.tvAttendedClass1);
-            tvTotalClass1 =(TextView) row.findViewById(R.id.tvTotalClass1);
-            tvPercentage1 =(TextView) row.findViewById(R.id.tvPercentage1);
-            tvOnTrack1 =(TextView) row.findViewById(R.id.tvOnTrack1);
-
-            ivAfterMarking1 = (ImageView) row.findViewById(R.id.ivAfterMarking1);
-
-            linearLayoutToMark1 = (LinearLayout) row.findViewById(R.id.linearLayoutToMark1);
-
-            iBRight1 =(ImageButton) row.findViewById(R.id.iBRight1);
-            iBWrong1 =(ImageButton) row.findViewById(R.id.iBWrong1);
-            iBReset1 =(ImageButton) row.findViewById(R.id.iBReset1);
-
-            buttonToMark1 =(Button) row.findViewById(R.id.buttonToMark1);
-
-        }
-    }*/
-
-
-/*
-    @Override
-    public ViewHolder1 onCreateViewHolder(ViewGroup parent, int viewType) {
-
-        View v1 = LayoutInflater.from(mContext).inflate(R.layout.test,parent,false);
-
-
-
-        return new ViewHolder1(v1);
-    }
-
-    @Override
-    public void onBindViewHolder(final ViewHolder1 holder, final int position) {
-        Main2Blocks main2Blocks=mainlist.get(position);
-
-        String s=main2Blocks.getSubjectName();
-
-        holder.textView.setText(s);
-
-    }
-
-
-    @Override
-    public int getItemCount() {
-        return mainlist.size();
-    }
-
-}*/
-
-
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -129,6 +31,7 @@ public class Main2Adapter extends RecyclerView.Adapter<Main2Adapter.MyViewHolder
         private LinearLayout linearLayoutToMark1;
         private ImageButton iBRight1,iBWrong1,iBReset1;
         private ImageView ivAfterMarking1;
+        private int present=0,absent=0;
 
         private MyViewHolder(View row){
 
@@ -138,7 +41,17 @@ public class Main2Adapter extends RecyclerView.Adapter<Main2Adapter.MyViewHolder
             tvAttendedClass1 =(TextView) row.findViewById(R.id.tvAttendedClass1);
             tvTotalClass1 =(TextView) row.findViewById(R.id.tvTotalClass1);
             tvPercentage1 =(TextView) row.findViewById(R.id.tvPercentage1);
+            tvOnTrack1=(TextView) row.findViewById(R.id.tvOnTrack1);
 
+            ivAfterMarking1 = (ImageView) row.findViewById(R.id.ivAfterMarking1);
+
+            linearLayoutToMark1 = (LinearLayout) row.findViewById(R.id.linearLayoutToMark1);
+
+            iBRight1 =(ImageButton) row.findViewById(R.id.iBRight1);
+            iBWrong1 =(ImageButton) row.findViewById(R.id.iBWrong1);
+            iBReset1 =(ImageButton) row.findViewById(R.id.iBReset1);
+
+            buttonToMark1 =(Button) row.findViewById(R.id.buttonToMark1);
         }
     }
 
@@ -154,11 +67,124 @@ public class Main2Adapter extends RecyclerView.Adapter<Main2Adapter.MyViewHolder
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-        Main2Blocks movie = moviesList.get(position);
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
+        Main2Blocks mb = moviesList.get(position);
 
-        holder.mainTVSub1.setText(movie.getSubjectName());
-        holder.tvAttendedClass1.setText(movie.getAttended());
+
+        holder.mainTVSub1.setText(mb.getSubjectName());
+        holder.tvAttendedClass1.setText(mb.getAttended());
+        holder.tvTotalClass1.setText(mb.getTotal());
+        holder.tvOnTrack1.setText(mb.getTrack());
+        holder.tvPercentage1.setText(mb.getPercent());
+        holder.tvPercentage1.setTextColor(Color.parseColor(mb.getColor()));
+
+        holder.buttonToMark1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.linearLayoutToMark1.setVisibility(View.VISIBLE);
+            }
+        });
+        holder.iBRight1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.present++;
+                holder.linearLayoutToMark1.setVisibility(View.GONE);
+                updateAttendance(position, holder.tvAttendedClass1,holder.tvTotalClass1,holder.tvPercentage1,
+                        holder.tvOnTrack1,1,holder.present,holder.absent);
+            }
+        });
+        holder.iBWrong1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.absent++;
+                holder.linearLayoutToMark1.setVisibility(View.GONE);
+                updateAttendance(position, holder.tvAttendedClass1,holder.tvTotalClass1,holder.tvPercentage1,
+                        holder.tvOnTrack1,0,holder.present,holder.absent);
+            }
+        });
+        holder.iBReset1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateAttendance(position, holder.tvAttendedClass1,holder.tvTotalClass1,holder.tvPercentage1,
+                        holder.tvOnTrack1,-1,holder.present,holder.absent);
+                holder.linearLayoutToMark1.setVisibility(View.GONE);
+                holder.present = 0;
+                holder.absent = 0;
+            }
+        });
+
+    }
+
+    private void updateAttendance(int position, TextView attended, TextView total,TextView percentTV,TextView onTrack,int value,
+                                  int presentPressedCount,int absentPressedCount) {
+
+
+        Main2Blocks mb = moviesList.get(position);
+
+        if(value==-1) {
+            mb.attendTV -= presentPressedCount;
+            mb.totTV -= presentPressedCount + absentPressedCount;
+        }
+        else {
+            mb.attendTV += value;
+            mb.totTV++;
+        }
+        attended.setText("Attended: "+mb.attendTV);
+        total.setText("Total: "+mb.totTV);
+
+        //calculating new attendance percentage
+        float x=0.0f;
+        String str="0";
+        String string="";
+        float x1,x2,x3,tempx,tempx1,tempx2;
+        x1=mb.attendTV;
+        x2=mb.totTV;
+        x3=100;
+        x=(x1/x2)*x3;
+        if(x==100)
+            str="100";
+        else
+            str=String.format(java.util.Locale.US,"%.1f",x);
+        percentTV.setText(str+"%");
+
+        //checking whether you are on track or not and setting the color accordingly
+        if(x<mb.getAttendanceCriteria())
+        {
+            percentTV.setTextColor(Color.parseColor("#B22222"));//red
+            tempx=x;
+            tempx1=x1;
+            tempx2=x2;
+            int cnt=0;
+            while(tempx<mb.getAttendanceCriteria())
+            {
+                tempx1++;
+                tempx2++;
+                cnt++;
+                tempx=(tempx1/tempx2)*x3;
+                if(tempx<mb.getAttendanceCriteria())
+                {
+                    continue;
+                }
+                else
+                {
+                    if(cnt==1)
+                        string="!!! Attend next class !!!";
+                    else
+                        string="!!! Attend next "+cnt+" classes !!!";
+                    break;
+                }
+
+            }
+        }
+        else
+        {
+            percentTV.setTextColor(Color.parseColor("#008000"));//green
+            string="!!! You are on track !!!";
+        }
+        onTrack.setText(string);
+
+        //calling saveChanges method of Product class to save the changes
+        mb.saveChanges(mb.attendTV,mb.totTV,mb.index);
 
     }
 

@@ -91,7 +91,7 @@
                 <ImageButton
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/reset"
+                    android:src="@drawable/ic_restore_black_24dp"
                     android:scaleType="fitCenter"
                     android:background="@null"
                     android:id="@+id/iBReset1"
@@ -114,7 +114,7 @@
                 <ImageButton
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:src="@drawable/wrong"
+                    android:src="@drawable/ic_restore_black_24dp"
                     android:scaleType="fitCenter"
                     android:background="@null"
                     android:id="@+id/iBWrong1"
@@ -135,7 +135,7 @@
                 <ImageButton
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:src="@drawable/right"
+                    android:src="@drawable/ic_restore_black_24dp"
                     android:scaleType="fitCenter"
                     android:background="@null"
                     android:id="@+id/iBRight1"
@@ -163,7 +163,7 @@
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/unchecked"
+                android:src="@drawable/ic_restore_black_24dp"
                 android:scaleType="fitEnd"
                 android:layout_weight=".25"
                 android:id="@+id/ivAfterMarking1"/>
@@ -255,7 +255,7 @@
                     <ImageButton
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/reset"
+                        android:src="@drawable/ic_restore_black_24dp"
                         android:scaleType="fitCenter"
                         android:background="@null"
                         android:id="@+id/iBReset2"
@@ -278,7 +278,7 @@
                     <ImageButton
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:src="@drawable/wrong"
+                        android:src="@drawable/ic_restore_black_24dp"
                         android:scaleType="fitCenter"
                         android:background="@null"
                         android:id="@+id/iBWrong2"
@@ -299,7 +299,7 @@
                     <ImageButton
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:src="@drawable/right"
+                        android:src="@drawable/ic_restore_black_24dp"
                         android:scaleType="fitCenter"
                         android:background="@null"
                         android:id="@+id/iBRight2"
@@ -327,7 +327,7 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/unchecked"
+                    android:src="@drawable/ic_restore_black_24dp"
                     android:scaleType="fitEnd"
                     android:layout_weight=".25"
                     android:id="@+id/ivAfterMarking2"/>
@@ -419,7 +419,7 @@
                     <ImageButton
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/reset"
+                        android:src="@drawable/ic_restore_black_24dp"
                         android:scaleType="fitCenter"
                         android:background="@null"
                         android:id="@+id/iBReset3"
@@ -442,7 +442,7 @@
                     <ImageButton
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:src="@drawable/wrong"
+                        android:src="@drawable/ic_restore_black_24dp"
                         android:scaleType="fitCenter"
                         android:background="@null"
                         android:id="@+id/iBWrong3"
@@ -463,7 +463,7 @@
                     <ImageButton
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:src="@drawable/right"
+                        android:src="@drawable/ic_restore_black_24dp"
                         android:scaleType="fitCenter"
                         android:background="@null"
                         android:id="@+id/iBRight3"
@@ -491,7 +491,7 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/unchecked"
+                    android:src="@drawable/ic_restore_black_24dp"
                     android:scaleType="fitEnd"
                     android:layout_weight=".25"
                     android:id="@+id/ivAfterMarking3"/>
@@ -583,7 +583,7 @@
                     <ImageButton
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/reset"
+                        android:src="@drawable/ic_restore_black_24dp"
                         android:scaleType="fitCenter"
                         android:background="@null"
                         android:id="@+id/iBReset4"
@@ -606,7 +606,7 @@
                     <ImageButton
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:src="@drawable/wrong"
+                        android:src="@drawable/ic_restore_black_24dp"
                         android:scaleType="fitCenter"
                         android:background="@null"
                         android:id="@+id/iBWrong4"
@@ -627,7 +627,7 @@
                     <ImageButton
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:src="@drawable/right"
+                        android:src="@drawable/ic_restore_black_24dp"
                         android:scaleType="fitCenter"
                         android:background="@null"
                         android:id="@+id/iBRight4"
@@ -655,7 +655,7 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/unchecked"
+                    android:src="@drawable/ic_restore_black_24dp"
                     android:scaleType="fitEnd"
                     android:layout_weight=".25"
                     android:id="@+id/ivAfterMarking4"/>
@@ -747,7 +747,7 @@
                     <ImageButton
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/reset"
+                        android:src="@drawable/ic_restore_black_24dp"
                         android:scaleType="fitCenter"
                         android:background="@null"
                         android:id="@+id/iBReset5"
@@ -770,7 +770,7 @@
                     <ImageButton
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:src="@drawable/wrong"
+                        android:src="@drawable/ic_restore_black_24dp"
                         android:scaleType="fitCenter"
                         android:background="@null"
                         android:id="@+id/iBWrong5"
@@ -791,7 +791,7 @@
                     <ImageButton
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:src="@drawable/right"
+                        android:src="@drawable/ic_restore_black_24dp"
                         android:scaleType="fitCenter"
                         android:background="@null"
                         android:id="@+id/iBRight5"
@@ -819,7 +819,7 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/unchecked"
+                    android:src="@drawable/ic_restore_black_24dp"
                     android:scaleType="fitEnd"
                     android:layout_weight=".25"
                     android:id="@+id/ivAfterMarking5"/>
@@ -911,7 +911,7 @@
                     <ImageButton
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/reset"
+                        android:src="@drawable/ic_restore_black_24dp"
                         android:scaleType="fitCenter"
                         android:background="@null"
                         android:id="@+id/iBReset6"
@@ -934,7 +934,7 @@
                     <ImageButton
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:src="@drawable/wrong"
+                        android:src="@drawable/ic_restore_black_24dp"
                         android:scaleType="fitCenter"
                         android:background="@null"
                         android:id="@+id/iBWrong6"
@@ -955,7 +955,7 @@
                     <ImageButton
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:src="@drawable/right"
+                        android:src="@drawable/ic_restore_black_24dp"
                         android:scaleType="fitCenter"
                         android:background="@null"
                         android:id="@+id/iBRight6"
@@ -983,7 +983,7 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/unchecked"
+                    android:src="@drawable/ic_restore_black_24dp"
                     android:scaleType="fitEnd"
                     android:layout_weight=".25"
                     android:id="@+id/ivAfterMarking6"/>
@@ -1076,7 +1076,7 @@
                     <ImageButton
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/reset"
+                        android:src="@drawable/ic_restore_black_24dp"
                         android:scaleType="fitCenter"
                         android:background="@null"
                         android:id="@+id/iBReset7"
@@ -1099,7 +1099,7 @@
                     <ImageButton
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:src="@drawable/wrong"
+                        android:src="@drawable/ic_restore_black_24dp"
                         android:scaleType="fitCenter"
                         android:background="@null"
                         android:id="@+id/iBWrong7"
@@ -1120,7 +1120,7 @@
                     <ImageButton
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:src="@drawable/right"
+                        android:src="@drawable/ic_restore_black_24dp"
                         android:scaleType="fitCenter"
                         android:background="@null"
                         android:id="@+id/iBRight7"
@@ -1148,7 +1148,7 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/unchecked"
+                    android:src="@drawable/ic_restore_black_24dp"
                     android:scaleType="fitEnd"
                     android:layout_weight=".25"
                     android:id="@+id/ivAfterMarking7"/>

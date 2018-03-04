@@ -158,48 +158,48 @@ public class Main extends Fragment {
         for(int ii=0;ii<21;ii++)
             imageAttendanceArray[ii]=getImageAttendanceArray[ii];
 
-        if(getImageAttendanceArray[0]==1)
-            ivAfterMark1.setImageResource(R.drawable.right);
+        /*if(getImageAttendanceArray[0]==1)
+            ivAfterMark1.setImageResource(R.drawable.ic_restore_black_24dp);
         if(getImageAttendanceArray[1]==2)
-            ivAfterMark1.setImageResource(R.drawable.wrong);
+            ivAfterMark1.setImageResource(R.drawable.ic_restore_black_24dp);
         if(getImageAttendanceArray[2]==3)
-            ivAfterMark1.setImageResource(R.drawable.unchecked);
+            ivAfterMark1.setImageResource(R.drawable.ic_restore_black_24dp);
         if(getImageAttendanceArray[3]==4)
-            ivAfterMark2.setImageResource(R.drawable.right);
+            ivAfterMark2.setImageResource(R.drawable.ic_restore_black_24dp);
         if(getImageAttendanceArray[4]==5)
-            ivAfterMark2.setImageResource(R.drawable.wrong);
+            ivAfterMark2.setImageResource(R.drawable.ic_restore_black_24dp);
         if(getImageAttendanceArray[5]==6)
-            ivAfterMark2.setImageResource(R.drawable.unchecked);
+            ivAfterMark2.setImageResource(R.drawable.ic_restore_black_24dp);
         if(getImageAttendanceArray[6]==7)
-            ivAfterMark3.setImageResource(R.drawable.right);
+            ivAfterMark3.setImageResource(R.drawable.ic_restore_black_24dp);
         if(getImageAttendanceArray[7]==8)
-            ivAfterMark3.setImageResource(R.drawable.wrong);
+            ivAfterMark3.setImageResource(R.drawable.ic_restore_black_24dp);
         if(getImageAttendanceArray[8]==9)
-            ivAfterMark3.setImageResource(R.drawable.unchecked);
+            ivAfterMark3.setImageResource(R.drawable.ic_restore_black_24dp);
         if(getImageAttendanceArray[9]==10)
-            ivAfterMark4.setImageResource(R.drawable.right);
+            ivAfterMark4.setImageResource(R.drawable.ic_restore_black_24dp);
         if(getImageAttendanceArray[10]==11)
-            ivAfterMark4.setImageResource(R.drawable.wrong);
+            ivAfterMark4.setImageResource(R.drawable.ic_restore_black_24dp);
         if(getImageAttendanceArray[11]==12)
-            ivAfterMark4.setImageResource(R.drawable.unchecked);
+            ivAfterMark4.setImageResource(R.drawable.ic_restore_black_24dp);
         if(getImageAttendanceArray[12]==13)
-            ivAfterMark5.setImageResource(R.drawable.right);
+            ivAfterMark5.setImageResource(R.drawable.ic_restore_black_24dp);
         if(getImageAttendanceArray[13]==14)
-            ivAfterMark5.setImageResource(R.drawable.wrong);
+            ivAfterMark5.setImageResource(R.drawable.ic_restore_black_24dp);
         if(getImageAttendanceArray[14]==15)
-            ivAfterMark5.setImageResource(R.drawable.unchecked);
+            ivAfterMark5.setImageResource(R.drawable.ic_restore_black_24dp);
         if(getImageAttendanceArray[15]==16)
-            ivAfterMark6.setImageResource(R.drawable.right);
+            ivAfterMark6.setImageResource(R.drawable.ic_restore_black_24dp);
         if(getImageAttendanceArray[16]==17)
-            ivAfterMark6.setImageResource(R.drawable.wrong);
+            ivAfterMark6.setImageResource(R.drawable.ic_restore_black_24dp);
         if(getImageAttendanceArray[17]==18)
-            ivAfterMark6.setImageResource(R.drawable.unchecked);
+            ivAfterMark6.setImageResource(R.drawable.ic_restore_black_24dp);
         if(getImageAttendanceArray[18]==19)
-            ivAfterMark7.setImageResource(R.drawable.right);
+            ivAfterMark7.setImageResource(R.drawable.ic_restore_black_24dp);
         if(getImageAttendanceArray[19]==20)
-            ivAfterMark7.setImageResource(R.drawable.wrong);
+            ivAfterMark7.setImageResource(R.drawable.ic_restore_black_24dp);
         if(getImageAttendanceArray[20]==21)
-            ivAfterMark7.setImageResource(R.drawable.unchecked);
+            ivAfterMark7.setImageResource(R.drawable.ic_restore_black_24dp);*/
 
 
         //Subject 1
@@ -222,7 +222,7 @@ public class Main extends Fragment {
                 int b;
                 buttonToMark1.setText("Attendance Marked. Reset?");
                 linearLayoutToMark1.setVisibility(View.GONE);
-                ivAfterMark1.setImageResource(R.drawable.right);
+                ivAfterMark1.setImageResource(R.drawable.ic_restore_black_24dp);
                 b=matchForSubjectWiseMarking(0);
                 getPreviousAttendedClass[b]++;
                 getPreviousTotalClass[b]++;
@@ -249,7 +249,7 @@ public class Main extends Fragment {
                 int b;
                 buttonToMark1.setText("Attendance Marked. Reset?");
                 linearLayoutToMark1.setVisibility(View.GONE);
-                ivAfterMark1.setImageResource(R.drawable.wrong);
+                ivAfterMark1.setImageResource(R.drawable.ic_restore_black_24dp);
                 b=matchForSubjectWiseMarking(0);
                 getPreviousTotalClass[b]++;
                 tvAttendedClass1.setText("Attended: "+getPreviousAttendedClass[b]);
@@ -273,7 +273,7 @@ public class Main extends Fragment {
                 int b;
                 buttonToMark1.setText("Click To Mark Attendance");
                 linearLayoutToMark1.setVisibility(View.GONE);
-                ivAfterMark1.setImageResource(R.drawable.unchecked);
+                ivAfterMark1.setImageResource(R.drawable.ic_restore_black_24dp);
                 b=matchForSubjectWiseMarking(0);
                 getPreviousTotalClass[b]-=(present1+absent1);
                 getPreviousAttendedClass[b]-=present1;
@@ -313,7 +313,7 @@ public class Main extends Fragment {
                 int b;
                 buttonToMark2.setText("Attendance Marked. Reset?");
                 linearLayoutToMark2.setVisibility(View.GONE);
-                ivAfterMark2.setImageResource(R.drawable.right);
+                ivAfterMark2.setImageResource(R.drawable.ic_restore_black_24dp);
                 b=matchForSubjectWiseMarking(1);
                 getPreviousAttendedClass[b]++;
                 getPreviousTotalClass[b]++;
@@ -339,7 +339,7 @@ public class Main extends Fragment {
                 int b;
                 buttonToMark2.setText("Attendance Marked. Reset?");
                 linearLayoutToMark2.setVisibility(View.GONE);
-                ivAfterMark2.setImageResource(R.drawable.wrong);
+                ivAfterMark2.setImageResource(R.drawable.ic_restore_black_24dp);
                 b=matchForSubjectWiseMarking(1);
                 getPreviousTotalClass[b]++;
                 tvAttendedClass2.setText("Attended: "+getPreviousAttendedClass[b]);
@@ -363,7 +363,7 @@ public class Main extends Fragment {
                 int b;
                 buttonToMark2.setText("Click To Mark Attendance");
                 linearLayoutToMark2.setVisibility(View.GONE);
-                ivAfterMark2.setImageResource(R.drawable.unchecked);
+                ivAfterMark2.setImageResource(R.drawable.ic_restore_black_24dp);
                 b=matchForSubjectWiseMarking(1);
                 getPreviousTotalClass[b]-=(present2+absent2);
                 getPreviousAttendedClass[b]-=present2;
@@ -404,7 +404,7 @@ public class Main extends Fragment {
                 int b;
                 buttonToMark3.setText("Attendance Marked. Reset?");
                 linearLayoutToMark3.setVisibility(View.GONE);
-                ivAfterMark3.setImageResource(R.drawable.right);
+                ivAfterMark3.setImageResource(R.drawable.ic_restore_black_24dp);
                 b=matchForSubjectWiseMarking(2);
                 getPreviousAttendedClass[b]++;
                 getPreviousTotalClass[b]++;
@@ -430,7 +430,7 @@ public class Main extends Fragment {
                 int b;
                 buttonToMark3.setText("Attendance Marked. Reset?");
                 linearLayoutToMark3.setVisibility(View.GONE);
-                ivAfterMark3.setImageResource(R.drawable.wrong);
+                ivAfterMark3.setImageResource(R.drawable.ic_restore_black_24dp);
                 b=matchForSubjectWiseMarking(2);
                 getPreviousTotalClass[b]++;
                 tvAttendedClass3.setText("Attended: "+getPreviousAttendedClass[b]);
@@ -454,7 +454,7 @@ public class Main extends Fragment {
                 int b;
                 buttonToMark3.setText("Click To Mark Attendance");
                 linearLayoutToMark3.setVisibility(View.GONE);
-                ivAfterMark3.setImageResource(R.drawable.unchecked);
+                ivAfterMark3.setImageResource(R.drawable.ic_restore_black_24dp);
                 b=matchForSubjectWiseMarking(2);
                 getPreviousTotalClass[b]-=(present3+absent3);
                 getPreviousAttendedClass[b]-=present3;
@@ -495,7 +495,7 @@ public class Main extends Fragment {
                 int b;
                 buttonToMark4.setText("Attendance Marked. Reset?");
                 linearLayoutToMark4.setVisibility(View.GONE);
-                ivAfterMark4.setImageResource(R.drawable.right);
+                ivAfterMark4.setImageResource(R.drawable.ic_restore_black_24dp);
                 b=matchForSubjectWiseMarking(3);
                 getPreviousAttendedClass[b]++;
                 getPreviousTotalClass[b]++;
@@ -521,7 +521,7 @@ public class Main extends Fragment {
                 int b;
                 buttonToMark4.setText("Attendance Marked. Reset?");
                 linearLayoutToMark4.setVisibility(View.GONE);
-                ivAfterMark4.setImageResource(R.drawable.wrong);
+                ivAfterMark4.setImageResource(R.drawable.ic_restore_black_24dp);
                 b=matchForSubjectWiseMarking(3);
                 getPreviousTotalClass[b]++;
                 tvAttendedClass4.setText("Attended: "+getPreviousAttendedClass[b]);
@@ -545,7 +545,7 @@ public class Main extends Fragment {
                 int b;
                 buttonToMark4.setText("Click To Mark Attendance");
                 linearLayoutToMark4.setVisibility(View.GONE);
-                ivAfterMark4.setImageResource(R.drawable.unchecked);
+                ivAfterMark4.setImageResource(R.drawable.ic_restore_black_24dp);
                 b=matchForSubjectWiseMarking(3);
                 getPreviousTotalClass[b]-=(present4+absent4);
                 getPreviousAttendedClass[b]-=present4;
@@ -586,7 +586,7 @@ public class Main extends Fragment {
                 int b;
                 buttonToMark5.setText("Attendance Marked. Reset?");
                 linearLayoutToMark5.setVisibility(View.GONE);
-                ivAfterMark5.setImageResource(R.drawable.right);
+                ivAfterMark5.setImageResource(R.drawable.ic_restore_black_24dp);
                 b=matchForSubjectWiseMarking(4);
                 getPreviousAttendedClass[b]++;
                 getPreviousTotalClass[b]++;
@@ -612,7 +612,7 @@ public class Main extends Fragment {
                 int b;
                 buttonToMark5.setText("Attendance Marked. Reset?");
                 linearLayoutToMark5.setVisibility(View.GONE);
-                ivAfterMark5.setImageResource(R.drawable.wrong);
+                ivAfterMark5.setImageResource(R.drawable.ic_restore_black_24dp);
                 b=matchForSubjectWiseMarking(4);
                 getPreviousTotalClass[b]++;
                 tvAttendedClass5.setText("Attended: "+getPreviousAttendedClass[b]);
@@ -636,7 +636,7 @@ public class Main extends Fragment {
                 int b;
                 buttonToMark5.setText("Click To Mark Attendance");
                 linearLayoutToMark5.setVisibility(View.GONE);
-                ivAfterMark5.setImageResource(R.drawable.unchecked);
+                ivAfterMark5.setImageResource(R.drawable.ic_restore_black_24dp);
                 b=matchForSubjectWiseMarking(4);
                 getPreviousTotalClass[b]-=(present5+absent5);
                 getPreviousAttendedClass[b]-=present5;
@@ -677,7 +677,7 @@ public class Main extends Fragment {
                 int b;
                 buttonToMark6.setText("Attendance Marked. Reset?");
                 linearLayoutToMark6.setVisibility(View.GONE);
-                ivAfterMark6.setImageResource(R.drawable.right);
+                ivAfterMark6.setImageResource(R.drawable.ic_restore_black_24dp);
                 b=matchForSubjectWiseMarking(5);
                 getPreviousAttendedClass[b]++;
                 getPreviousTotalClass[b]++;
@@ -703,7 +703,7 @@ public class Main extends Fragment {
                 int b;
                 buttonToMark6.setText("Attendance Marked. Reset?");
                 linearLayoutToMark6.setVisibility(View.GONE);
-                ivAfterMark6.setImageResource(R.drawable.wrong);
+                ivAfterMark6.setImageResource(R.drawable.ic_restore_black_24dp);
                 b=matchForSubjectWiseMarking(5);
                 getPreviousTotalClass[b]++;
                 tvAttendedClass6.setText("Attended: "+getPreviousAttendedClass[b]);
@@ -727,7 +727,7 @@ public class Main extends Fragment {
                 int b;
                 buttonToMark6.setText("Click To Mark Attendance");
                 linearLayoutToMark6.setVisibility(View.GONE);
-                ivAfterMark6.setImageResource(R.drawable.unchecked);
+                ivAfterMark6.setImageResource(R.drawable.ic_restore_black_24dp);
                 b=matchForSubjectWiseMarking(5);
                 getPreviousTotalClass[b]-=(present6+absent6);
                 getPreviousAttendedClass[b]-=present6;
@@ -768,7 +768,7 @@ public class Main extends Fragment {
                 int b;
                 buttonToMark7.setText("Attendance Marked. Reset?");
                 linearLayoutToMark7.setVisibility(View.GONE);
-                ivAfterMark7.setImageResource(R.drawable.right);
+                ivAfterMark7.setImageResource(R.drawable.ic_restore_black_24dp);
                 b=matchForSubjectWiseMarking(6);
                 getPreviousAttendedClass[b]++;
                 getPreviousTotalClass[b]++;
@@ -794,7 +794,7 @@ public class Main extends Fragment {
                 int b;
                 buttonToMark7.setText("Attendance Marked. Reset?");
                 linearLayoutToMark7.setVisibility(View.GONE);
-                ivAfterMark7.setImageResource(R.drawable.wrong);
+                ivAfterMark7.setImageResource(R.drawable.ic_restore_black_24dp);
                 b=matchForSubjectWiseMarking(6);
                 getPreviousTotalClass[b]++;
                 tvAttendedClass7.setText("Attended: "+getPreviousAttendedClass[b]);
@@ -818,7 +818,7 @@ public class Main extends Fragment {
                 int b;
                 buttonToMark7.setText("Click To Mark Attendance");
                 linearLayoutToMark7.setVisibility(View.GONE);
-                ivAfterMark7.setImageResource(R.drawable.unchecked);
+                ivAfterMark7.setImageResource(R.drawable.ic_restore_black_24dp);
                 b=matchForSubjectWiseMarking(6);
                 getPreviousTotalClass[b]-=(present7+absent7);
                 getPreviousAttendedClass[b]-=present7;
