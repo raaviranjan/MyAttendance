@@ -256,7 +256,7 @@ public class EditSaturday extends Fragment {
                     sessionManager.satSubjects(msub1,msub2,msub3,msub4,msub5,msub6,msub7);
                     sessionManager.setCountSat(cnt);
 
-                    fragment = new Main();
+                    fragment = new Main2();
                     FragmentTransaction ft = getFragmentManager().beginTransaction();
                     ft.replace(R.id.content_frame, fragment);
                     ft.commit();

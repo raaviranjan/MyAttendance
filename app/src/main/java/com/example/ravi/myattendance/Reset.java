@@ -31,7 +31,7 @@ public class Reset extends Fragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Toast.makeText(getActivity(), "Good decision", Toast.LENGTH_SHORT).show();
-                Fragment fragment = new Main();
+                Fragment fragment = new Main2();
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.content_frame, fragment);
                 ft.commit();

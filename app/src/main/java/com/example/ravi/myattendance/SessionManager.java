@@ -196,6 +196,30 @@ public class SessionManager {
         editor.commit();
 
     }
+
+    public void setImageAfterMarking(String s1,String s2,String s3,String s4,String s5,String s6,String s7){
+        editor.putString("first",s1);
+        editor.putString("second",s2);
+        editor.putString("third",s3);
+        editor.putString("fourth",s4);
+        editor.putString("fifth",s5);
+        editor.putString("sixth",s6);
+        editor.putString("seventh",s7);
+
+        editor.commit();
+    }
+    public HashMap<String, String> getImageAfterMarking(){
+        HashMap<String, String> mark = new HashMap<String, String>();
+        mark.put("first", pref.getString("first", null));
+        mark.put("second", pref.getString("second", null));
+        mark.put("third", pref.getString("third", null));
+        mark.put("fourth", pref.getString("fourth", null));
+        mark.put("fifth", pref.getString("fifth", null));
+        mark.put("sixth", pref.getString("sixth", null));
+        mark.put("seventh", pref.getString("seventh", null));
+
+        return mark;
+    }
     //calendar details
     public void setCalendarDetails(String day,String day_date){
         editor.putString("day",day);
@@ -312,21 +336,6 @@ public class SessionManager {
         return brr;
     }
 
-    public boolean setImageOfAttendancePage(Integer[] image,String imageArrayName)
-    {
-        editor.putInt(imageArrayName+"_size",image.length);
-        for (int m=0;m<image.length;m++)
-            editor.putInt(imageArrayName+"_"+m,image[m]);
-        return editor.commit();
-    }
-    public Integer[] getImageOfAttendancePage(String imageArrayName)
-    {
-        int bb=pref.getInt(imageArrayName+"_size",0);
-        Integer bbArray[]=new Integer[bb];
-        for (int m=0;m<bb;m++)
-            bbArray[m]=pref.getInt(imageArrayName+"_"+m,0);
-        return bbArray;
-    }
     public boolean setFlag(boolean c)
     {
         editor.putBoolean("flagForAttendanceImage",c);

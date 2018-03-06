@@ -257,7 +257,7 @@ public class EditThursday extends Fragment {
                     sessionManager.thuSubjects(msub1,msub2,msub3,msub4,msub5,msub6,msub7);
                     sessionManager.setCountThu(cnt);
 
-                    fragment = new Main();
+                    fragment = new Main2();
                     FragmentTransaction ft = getFragmentManager().beginTransaction();
                     ft.replace(R.id.content_frame, fragment);
                     ft.commit();

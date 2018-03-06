@@ -520,7 +520,7 @@ public class PreAttendance extends Fragment {
             String dayOfTheWeek = sdf.format(d);
             sessionManager.setOpenDay(dayOfTheWeek);
 
-            Fragment fragment1=new Main();
+            Fragment fragment1=new Main2();
             FragmentTransaction ft = getFragmentManager().beginTransaction();
             ft.replace(R.id.content_frame, fragment1);
             ft.commit();

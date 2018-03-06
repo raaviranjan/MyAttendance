@@ -96,9 +96,7 @@
                     android:scaleType="fitCenter"
                     android:background="@null"
                     android:id="@+id/iBReset1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="4dp"/>
+                    android:layout_gravity="center_horizontal" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -113,8 +111,8 @@
                 android:layout_weight=".33"
                 android:gravity="center">
                 <ImageButton
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/wrong"
                     android:scaleType="fitCenter"
                     android:background="@null"
@@ -134,8 +132,8 @@
                 android:layout_weight=".34"
                 android:gravity="center">
                 <ImageButton
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/right"
                     android:scaleType="fitCenter"
                     android:background="@null"
@@ -164,7 +162,7 @@
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/ic_restore_black_24dp"
+                android:src="@drawable/border_percentage"
                 android:scaleType="fitEnd"
                 android:layout_weight=".25"
                 android:id="@+id/ivAfterMarking1"/>

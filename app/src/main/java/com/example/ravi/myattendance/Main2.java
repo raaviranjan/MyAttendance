@@ -35,7 +35,9 @@ public class Main2 extends Fragment {
     SessionManager sessionManager;
     Integer[] getPreviousAttendedClass;
     Integer[] getPreviousTotalClass;
+    Integer[] imageAttendanceArray;
     String[] totalSubjects;
+    String lastUpdateDay,currentDay;
     Calendar calendar;
     private Context context;
     int sizeof;
@@ -46,8 +48,10 @@ public class Main2 extends Fragment {
     HashMap<String ,String> subfri;
     HashMap<String ,String> subsat;
     HashMap<String ,String> str;
+    HashMap<String ,String> mark;
     String att;
     float attend;
+    boolean flag;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.abc2, viewGroup, false);
@@ -65,8 +69,6 @@ public class Main2 extends Fragment {
         subfri=sessionManager.getFriSubjects();
         subsat=sessionManager.getSatSubjects();
 
-        //calendar=Calendar.getInstance();
-
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE", Locale.US);
         Date d = new Date();
         String dayOfTheWeek = sdf.format(d);
@@ -74,6 +76,23 @@ public class Main2 extends Fragment {
         Date d1 = new Date();
         String dayAndDate = sdf1.format(d1);
         sessionManager.setCalendarDetails(dayOfTheWeek,dayAndDate);
+
+        imageAttendanceArray=new Integer[3];
+        flag=sessionManager.getFlag();
+        lastUpdateDay=sessionManager.getOpenDay();
+        currentDay=dayOfTheWeek;
+        if(!currentDay.equals(lastUpdateDay))
+        {
+            flag=true;
+            sessionManager.setOpenDay(currentDay);
+        }
+
+        if(flag)
+        {
+            sessionManager.setImageAfterMarking("0reset","1reset","2reset","3reset","4reset","5reset","6reset");
+        }
+
+        mark = sessionManager.getImageAfterMarking() ;
 
         //getting the attendance criteria of the user
         str=sessionManager.getUserDetails();
@@ -87,7 +106,7 @@ public class Main2 extends Fragment {
 
         blocks=new ArrayList<>();
 
-        getProduct();
+        getSubjects();
 
         adapter = new Main2Adapter(getContext(),blocks);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context);
@@ -98,13 +117,12 @@ public class Main2 extends Fragment {
         return view;
     }
 
-    public void getProduct() {
-        int cnt,i;
+    public void getSubjects() {
+        int cnt;
         HashMap<String ,String> today=sessionManager.getDay();
         String todayDay=today.get("day");
-        String s="Monday";
 
-        if(s.equals("Monday")) {
+        if(todayDay.equals("Monday")) {
             cnt = sessionManager.getCountMon();
             int a=setPreAttendance(subj.get(SessionManager.KEY_MON_SUB_1));
             int b=setPreAttendance(subj.get(SessionManager.KEY_MON_SUB_2));
@@ -116,40 +134,40 @@ public class Main2 extends Fragment {
             if (cnt >= 1) {
                 blocks.add(new Main2Blocks(subj.get(SessionManager.KEY_MON_SUB_1),
                         "Attended: "+getPreviousAttendedClass[a], "Total: "+getPreviousTotalClass[a],
-                        percentageTextView(a)+"%", setColorOfPercentageTextView(a),a,context,attend));
+                        percentageTextView(a)+"%", setColorOfPercentageTextView(a),a,context,attend,mark.get("first")));
             }
             if (cnt >= 2) {
                 blocks.add(new Main2Blocks(subj.get(SessionManager.KEY_MON_SUB_2),
                         ("Attended: "+getPreviousAttendedClass[b]),("Total: "+getPreviousTotalClass[b]),
-                        (percentageTextView(b)+"%"),setColorOfPercentageTextView(b),b,context,attend));
+                        (percentageTextView(b)+"%"),setColorOfPercentageTextView(b),b,context,attend,mark.get("second")));
             }
             if (cnt >= 3) {
                 blocks.add(new Main2Blocks(subj.get(SessionManager.KEY_MON_SUB_3),
                         ("Attended: "+getPreviousAttendedClass[c]),("Total: "+getPreviousTotalClass[c]),
-                        (percentageTextView(c)+"%"),setColorOfPercentageTextView(c),c,context,attend));
+                        (percentageTextView(c)+"%"),setColorOfPercentageTextView(c),c,context,attend,mark.get("third")));
             }
             if (cnt >= 4) {
                 blocks.add(new Main2Blocks(subj.get(SessionManager.KEY_MON_SUB_4),
                         ("Attended: "+getPreviousAttendedClass[d]),("Total: "+getPreviousTotalClass[d]),
-                        (percentageTextView(d)+"%"),setColorOfPercentageTextView(d),d,context,attend));
+                        (percentageTextView(d)+"%"),setColorOfPercentageTextView(d),d,context,attend,mark.get("fourth")));
             }
             if (cnt >= 5) {
                 blocks.add(new Main2Blocks(subj.get(SessionManager.KEY_MON_SUB_5),
                         ("Attended: "+getPreviousAttendedClass[e]),("Total: "+getPreviousTotalClass[e]),
-                        (percentageTextView(e)+"%"),setColorOfPercentageTextView(e),e,context,attend));
+                        (percentageTextView(e)+"%"),setColorOfPercentageTextView(e),e,context,attend,mark.get("fifth")));
             }
             if (cnt >= 6) {
                 blocks.add(new Main2Blocks(subj.get(SessionManager.KEY_MON_SUB_6),
                         ("Attended: "+getPreviousAttendedClass[f]),("Total: "+getPreviousTotalClass[f]),
-                        (percentageTextView(f)+"%"),setColorOfPercentageTextView(f),f,context,attend));
+                        (percentageTextView(f)+"%"),setColorOfPercentageTextView(f),f,context,attend,mark.get("sixth")));
             }
             if (cnt >= 7) {
                 blocks.add(new Main2Blocks(subj.get(SessionManager.KEY_MON_SUB_7),
                         ("Attended: "+getPreviousAttendedClass[g]),("Total: "+getPreviousTotalClass[g]),
-                        (percentageTextView(g)+"%"),setColorOfPercentageTextView(g),g,context,attend));
+                        (percentageTextView(g)+"%"),setColorOfPercentageTextView(g),g,context,attend,mark.get("seventh")));
             }
         }
-        /*if(todayDay.equals("Tuesday")) {
+        if(todayDay.equals("Tuesday")) {
             cnt = sessionManager.getCountTue();
             int a=setPreAttendance(subtue.get(SessionManager.KEY_TUE_SUB_1));
             int b=setPreAttendance(subtue.get(SessionManager.KEY_TUE_SUB_2));
@@ -159,39 +177,39 @@ public class Main2 extends Fragment {
             int f=setPreAttendance(subtue.get(SessionManager.KEY_TUE_SUB_6));
             int g=setPreAttendance(subtue.get(SessionManager.KEY_TUE_SUB_7));
             if (cnt >= 1) {
-                blocks.add(new Product(subtue.get(SessionManager.KEY_TUE_SUB_1),
+                blocks.add(new Main2Blocks(subtue.get(SessionManager.KEY_TUE_SUB_1),
                         ("Attended: "+getPreviousAttendedClass[a]),("Total: "+getPreviousTotalClass[a]),
-                        (percentageTextView(a)+"%"),setColorOfPercentageTextView(a),a,context,attend));
+                        (percentageTextView(a)+"%"),setColorOfPercentageTextView(a),a,context,attend,mark.get("first")));
             }
             if (cnt >= 2) {
-                blocks.add(new Product(subtue.get(SessionManager.KEY_TUE_SUB_2),
+                blocks.add(new Main2Blocks(subtue.get(SessionManager.KEY_TUE_SUB_2),
                         ("Attended: "+getPreviousAttendedClass[b]),("Total: "+getPreviousTotalClass[b]),
-                        (percentageTextView(b)+"%"),setColorOfPercentageTextView(b),b,context,attend));
+                        (percentageTextView(b)+"%"),setColorOfPercentageTextView(b),b,context,attend,mark.get("second")));
             }
             if (cnt >= 3) {
-                blocks.add(new Product(subtue.get(SessionManager.KEY_TUE_SUB_3),
+                blocks.add(new Main2Blocks(subtue.get(SessionManager.KEY_TUE_SUB_3),
                         ("Attended: "+getPreviousAttendedClass[c]),("Total: "+getPreviousTotalClass[c]),
-                        (percentageTextView(c)+"%"),setColorOfPercentageTextView(c),c,context,attend));
+                        (percentageTextView(c)+"%"),setColorOfPercentageTextView(c),c,context,attend,mark.get("third")));
             }
             if (cnt >= 4) {
-                blocks.add(new Product(subtue.get(SessionManager.KEY_TUE_SUB_4),
+                blocks.add(new Main2Blocks(subtue.get(SessionManager.KEY_TUE_SUB_4),
                         ("Attended: "+getPreviousAttendedClass[d]),("Total: "+getPreviousTotalClass[d]),
-                        (percentageTextView(d)+"%"),setColorOfPercentageTextView(d),d,context,attend));
+                        (percentageTextView(d)+"%"),setColorOfPercentageTextView(d),d,context,attend,mark.get("fourth")));
             }
             if (cnt >= 5) {
-                blocks.add(new Product(subtue.get(SessionManager.KEY_TUE_SUB_5),
+                blocks.add(new Main2Blocks(subtue.get(SessionManager.KEY_TUE_SUB_5),
                         ("Attended: "+getPreviousAttendedClass[e]),("Total: "+getPreviousTotalClass[e]),
-                        (percentageTextView(e)+"%"),setColorOfPercentageTextView(e),e,context,attend));
+                        (percentageTextView(e)+"%"),setColorOfPercentageTextView(e),e,context,attend,mark.get("fifth")));
             }
             if (cnt >= 6) {
-                blocks.add(new Product(subtue.get(SessionManager.KEY_TUE_SUB_6),
+                blocks.add(new Main2Blocks(subtue.get(SessionManager.KEY_TUE_SUB_6),
                         ("Attended: "+getPreviousAttendedClass[f]),("Total: "+getPreviousTotalClass[f]),
-                        (percentageTextView(f)+"%"),setColorOfPercentageTextView(f),f,context,attend));
+                        (percentageTextView(f)+"%"),setColorOfPercentageTextView(f),f,context,attend,mark.get("sixth")));
             }
             if (cnt >= 7) {
-                blocks.add(new Product(subtue.get(SessionManager.KEY_TUE_SUB_7),
+                blocks.add(new Main2Blocks(subtue.get(SessionManager.KEY_TUE_SUB_7),
                         ("Attended: "+getPreviousAttendedClass[g]),("Total: "+getPreviousTotalClass[g]),
-                        (percentageTextView(g)+"%"),setColorOfPercentageTextView(g),g,context,attend));
+                        (percentageTextView(g)+"%"),setColorOfPercentageTextView(g),g,context,attend,mark.get("seventh")));
             }
         }
         if(todayDay.equals("Wednesday")) {
@@ -204,39 +222,39 @@ public class Main2 extends Fragment {
             int f=setPreAttendance(subwed.get(SessionManager.KEY_WED_SUB_6));
             int g=setPreAttendance(subwed.get(SessionManager.KEY_WED_SUB_7));
             if (cnt >= 1) {
-                blocks.add(new Product(subwed.get(SessionManager.KEY_WED_SUB_1),
+                blocks.add(new Main2Blocks(subwed.get(SessionManager.KEY_WED_SUB_1),
                         ("Attended: "+getPreviousAttendedClass[a]),("Total: "+getPreviousTotalClass[a]),
-                        (percentageTextView(a)+"%"),setColorOfPercentageTextView(a),a,context,attend));
+                        (percentageTextView(a)+"%"),setColorOfPercentageTextView(a),a,context,attend,mark.get("first")));
             }
             if (cnt >= 2) {
-                blocks.add(new Product(subwed.get(SessionManager.KEY_WED_SUB_2),
+                blocks.add(new Main2Blocks(subwed.get(SessionManager.KEY_WED_SUB_2),
                         ("Attended: "+getPreviousAttendedClass[b]),("Total: "+getPreviousTotalClass[b]),
-                        (percentageTextView(b)+"%"),setColorOfPercentageTextView(b),b,context,attend));
+                        (percentageTextView(b)+"%"),setColorOfPercentageTextView(b),b,context,attend,mark.get("second")));
             }
             if (cnt >= 3) {
-                blocks.add(new Product(subwed.get(SessionManager.KEY_WED_SUB_3),
+                blocks.add(new Main2Blocks(subwed.get(SessionManager.KEY_WED_SUB_3),
                         ("Attended: "+getPreviousAttendedClass[c]),("Total: "+getPreviousTotalClass[c]),
-                        (percentageTextView(c)+"%"),setColorOfPercentageTextView(c),c,context,attend));
+                        (percentageTextView(c)+"%"),setColorOfPercentageTextView(c),c,context,attend,mark.get("third")));
             }
             if (cnt >= 4) {
-                blocks.add(new Product(subwed.get(SessionManager.KEY_WED_SUB_4),
+                blocks.add(new Main2Blocks(subwed.get(SessionManager.KEY_WED_SUB_4),
                         ("Attended: "+getPreviousAttendedClass[d]),("Total: "+getPreviousTotalClass[d]),
-                        (percentageTextView(d)+"%"),setColorOfPercentageTextView(d),d,context,attend));
+                        (percentageTextView(d)+"%"),setColorOfPercentageTextView(d),d,context,attend,mark.get("fourth")));
             }
             if (cnt >= 5) {
-                blocks.add(new Product(subwed.get(SessionManager.KEY_WED_SUB_5),
+                blocks.add(new Main2Blocks(subwed.get(SessionManager.KEY_WED_SUB_5),
                         ("Attended: "+getPreviousAttendedClass[e]),("Total: "+getPreviousTotalClass[e]),
-                        (percentageTextView(e)+"%"),setColorOfPercentageTextView(e),e,context,attend));
+                        (percentageTextView(e)+"%"),setColorOfPercentageTextView(e),e,context,attend,mark.get("fifth")));
             }
             if (cnt >= 6) {
-                blocks.add(new Product(subwed.get(SessionManager.KEY_WED_SUB_6),
+                blocks.add(new Main2Blocks(subwed.get(SessionManager.KEY_WED_SUB_6),
                         ("Attended: "+getPreviousAttendedClass[f]),("Total: "+getPreviousTotalClass[f]),
-                        (percentageTextView(f)+"%"),setColorOfPercentageTextView(f),f,context,attend));
+                        (percentageTextView(f)+"%"),setColorOfPercentageTextView(f),f,context,attend,mark.get("sixth")));
             }
             if (cnt >= 7) {
-                blocks.add(new Product(subwed.get(SessionManager.KEY_WED_SUB_7),
+                blocks.add(new Main2Blocks(subwed.get(SessionManager.KEY_WED_SUB_7),
                         ("Attended: "+getPreviousAttendedClass[g]),("Total: "+getPreviousTotalClass[g]),
-                        (percentageTextView(g)+"%"),setColorOfPercentageTextView(g),g,context,attend));
+                        (percentageTextView(g)+"%"),setColorOfPercentageTextView(g),g,context,attend,mark.get("seventh")));
             }
         }
         if(todayDay.equals("Thursday")) {
@@ -249,39 +267,39 @@ public class Main2 extends Fragment {
             int f=setPreAttendance(subthu.get(SessionManager.KEY_THU_SUB_6));
             int g=setPreAttendance(subthu.get(SessionManager.KEY_THU_SUB_7));
             if (cnt >= 1) {
-                blocks.add(new Product(subthu.get(SessionManager.KEY_THU_SUB_1),
+                blocks.add(new Main2Blocks(subthu.get(SessionManager.KEY_THU_SUB_1),
                         ("Attended: "+getPreviousAttendedClass[a]),("Total: "+getPreviousTotalClass[a]),
-                        (percentageTextView(a)+"%"),setColorOfPercentageTextView(a),a,context,attend));
+                        (percentageTextView(a)+"%"),setColorOfPercentageTextView(a),a,context,attend,mark.get("first")));
             }
             if (cnt >= 2) {
-                blocks.add(new Product(subthu.get(SessionManager.KEY_THU_SUB_2),
+                blocks.add(new Main2Blocks(subthu.get(SessionManager.KEY_THU_SUB_2),
                         ("Attended: "+getPreviousAttendedClass[b]),("Total: "+getPreviousTotalClass[b]),
-                        (percentageTextView(b)+"%"),setColorOfPercentageTextView(b),b,context,attend));
+                        (percentageTextView(b)+"%"),setColorOfPercentageTextView(b),b,context,attend,mark.get("second")));
             }
             if (cnt >= 3) {
-                blocks.add(new Product(subthu.get(SessionManager.KEY_THU_SUB_3),
+                blocks.add(new Main2Blocks(subthu.get(SessionManager.KEY_THU_SUB_3),
                         ("Attended: "+getPreviousAttendedClass[c]),("Total: "+getPreviousTotalClass[c]),
-                        (percentageTextView(c)+"%"),setColorOfPercentageTextView(c),c,context,attend));
+                        (percentageTextView(c)+"%"),setColorOfPercentageTextView(c),c,context,attend,mark.get("third")));
             }
             if (cnt >= 4) {
-                blocks.add(new Product(subthu.get(SessionManager.KEY_THU_SUB_4),
+                blocks.add(new Main2Blocks(subthu.get(SessionManager.KEY_THU_SUB_4),
                         ("Attended: "+getPreviousAttendedClass[d]),("Total: "+getPreviousTotalClass[d]),
-                        (percentageTextView(d)+"%"),setColorOfPercentageTextView(d),d,context,attend));
+                        (percentageTextView(d)+"%"),setColorOfPercentageTextView(d),d,context,attend,mark.get("fourth")));
             }
             if (cnt >= 5) {
-                blocks.add(new Product(subthu.get(SessionManager.KEY_THU_SUB_5),
+                blocks.add(new Main2Blocks(subthu.get(SessionManager.KEY_THU_SUB_5),
                         ("Attended: "+getPreviousAttendedClass[e]),("Total: "+getPreviousTotalClass[e]),
-                        (percentageTextView(e)+"%"),setColorOfPercentageTextView(e),e,context,attend));
+                        (percentageTextView(e)+"%"),setColorOfPercentageTextView(e),e,context,attend,mark.get("fifth")));
             }
             if (cnt >= 6) {
-                blocks.add(new Product(subthu.get(SessionManager.KEY_THU_SUB_6),
+                blocks.add(new Main2Blocks(subthu.get(SessionManager.KEY_THU_SUB_6),
                         ("Attended: "+getPreviousAttendedClass[f]),("Total: "+getPreviousTotalClass[f]),
-                        (percentageTextView(f)+"%"),setColorOfPercentageTextView(f),f,context,attend));
+                        (percentageTextView(f)+"%"),setColorOfPercentageTextView(f),f,context,attend,mark.get("sixth")));
             }
             if (cnt >= 7) {
-                blocks.add(new Product(subthu.get(SessionManager.KEY_THU_SUB_7),
+                blocks.add(new Main2Blocks(subthu.get(SessionManager.KEY_THU_SUB_7),
                         ("Attended: "+getPreviousAttendedClass[g]),("Total: "+getPreviousTotalClass[g]),
-                        (percentageTextView(g)+"%"),setColorOfPercentageTextView(g),g,context,attend));
+                        (percentageTextView(g)+"%"),setColorOfPercentageTextView(g),g,context,attend,mark.get("seventh")));
             }
         }
         if(todayDay.equals("Friday"))
@@ -297,45 +315,45 @@ public class Main2 extends Fragment {
             int g=setPreAttendance(subfri.get(SessionManager.KEY_FRI_SUB_7));
             if(cnt>=1)
             {
-                blocks.add(new Product(subfri.get(SessionManager.KEY_FRI_SUB_1),
+                blocks.add(new Main2Blocks(subfri.get(SessionManager.KEY_FRI_SUB_1),
                         ("Attended: "+getPreviousAttendedClass[a]),("Total: "+getPreviousTotalClass[a]),
-                        (percentageTextView(a)+"%"),setColorOfPercentageTextView(a),a,context,attend));
+                        (percentageTextView(a)+"%"),setColorOfPercentageTextView(a),a,context,attend,mark.get("first")));
             }
             if(cnt>=2)
             {
-                blocks.add(new Product(subfri.get(SessionManager.KEY_FRI_SUB_2),
+                blocks.add(new Main2Blocks(subfri.get(SessionManager.KEY_FRI_SUB_2),
                         ("Attended: "+getPreviousAttendedClass[b]),("Total: "+getPreviousTotalClass[b]),
-                        (percentageTextView(b)+"%"),setColorOfPercentageTextView(b),b,context,attend));
+                        (percentageTextView(b)+"%"),setColorOfPercentageTextView(b),b,context,attend,mark.get("second")));
             }
             if(cnt>=3)
             {
-                blocks.add(new Product(subfri.get(SessionManager.KEY_FRI_SUB_3),
+                blocks.add(new Main2Blocks(subfri.get(SessionManager.KEY_FRI_SUB_3),
                         ("Attended: "+getPreviousAttendedClass[c]),("Total: "+getPreviousTotalClass[c]),
-                        (percentageTextView(c)+"%"),setColorOfPercentageTextView(c),c,context,attend));
+                        (percentageTextView(c)+"%"),setColorOfPercentageTextView(c),c,context,attend,mark.get("third")));
             }
             if(cnt>=4)
             {
-                blocks.add(new Product(subfri.get(SessionManager.KEY_FRI_SUB_4),
+                blocks.add(new Main2Blocks(subfri.get(SessionManager.KEY_FRI_SUB_4),
                         ("Attended: "+getPreviousAttendedClass[d]),("Total: "+getPreviousTotalClass[d]),
-                        (percentageTextView(d)+"%"),setColorOfPercentageTextView(d),d,context,attend));
+                        (percentageTextView(d)+"%"),setColorOfPercentageTextView(d),d,context,attend,mark.get("fourth")));
             }
             if(cnt>=5)
             {
-                blocks.add(new Product(subfri.get(SessionManager.KEY_FRI_SUB_5),
+                blocks.add(new Main2Blocks(subfri.get(SessionManager.KEY_FRI_SUB_5),
                         ("Attended: "+getPreviousAttendedClass[e]),("Total: "+getPreviousTotalClass[e]),
-                        (percentageTextView(e)+"%"),setColorOfPercentageTextView(e),e,context,attend));
+                        (percentageTextView(e)+"%"),setColorOfPercentageTextView(e),e,context,attend,mark.get("fifth")));
             }
             if(cnt>=6)
             {
-                blocks.add(new Product(subfri.get(SessionManager.KEY_FRI_SUB_6),
+                blocks.add(new Main2Blocks(subfri.get(SessionManager.KEY_FRI_SUB_6),
                         ("Attended: "+getPreviousAttendedClass[f]),("Total: "+getPreviousTotalClass[f]),
-                        (percentageTextView(f)+"%"),setColorOfPercentageTextView(f),f,context,attend));
+                        (percentageTextView(f)+"%"),setColorOfPercentageTextView(f),f,context,attend,mark.get("sixth")));
             }
             if(cnt>=7)
             {
-                blocks.add(new Product(subfri.get(SessionManager.KEY_FRI_SUB_7),
+                blocks.add(new Main2Blocks(subfri.get(SessionManager.KEY_FRI_SUB_7),
                         ("Attended: "+getPreviousAttendedClass[g]),("Total: "+getPreviousTotalClass[g]),
-                        (percentageTextView(g)+"%"),setColorOfPercentageTextView(g),g,context,attend));
+                        (percentageTextView(g)+"%"),setColorOfPercentageTextView(g),g,context,attend,mark.get("seventh")));
             }
         }
         if(todayDay.equals("Saturday")) {
@@ -348,41 +366,41 @@ public class Main2 extends Fragment {
             int f=setPreAttendance(subsat.get(SessionManager.KEY_SAT_SUB_6));
             int g=setPreAttendance(subsat.get(SessionManager.KEY_SAT_SUB_7));
             if (cnt >= 1) {
-                blocks.add(new Product(subsat.get(SessionManager.KEY_SAT_SUB_1),
+                blocks.add(new Main2Blocks(subsat.get(SessionManager.KEY_SAT_SUB_1),
                         ("Attended: "+getPreviousAttendedClass[a]),("Total: "+getPreviousTotalClass[a]),
-                        (percentageTextView(a)+"%"),setColorOfPercentageTextView(a),a,context,attend));
+                        (percentageTextView(a)+"%"),setColorOfPercentageTextView(a),a,context,attend,mark.get("first")));
             }
             if (cnt >= 2) {
-                blocks.add(new Product(subsat.get(SessionManager.KEY_SAT_SUB_2),
+                blocks.add(new Main2Blocks(subsat.get(SessionManager.KEY_SAT_SUB_2),
                         ("Attended: "+getPreviousAttendedClass[b]),("Total: "+getPreviousTotalClass[b]),
-                        (percentageTextView(b)+"%"),setColorOfPercentageTextView(b),b,context,attend));
+                        (percentageTextView(b)+"%"),setColorOfPercentageTextView(b),b,context,attend,mark.get("second")));
             }
             if (cnt >= 3) {
-                blocks.add(new Product(subsat.get(SessionManager.KEY_SAT_SUB_3),
+                blocks.add(new Main2Blocks(subsat.get(SessionManager.KEY_SAT_SUB_3),
                         ("Attended: "+getPreviousAttendedClass[c]),("Total: "+getPreviousTotalClass[c]),
-                        (percentageTextView(c)+"%"),setColorOfPercentageTextView(c),c,context,attend));
+                        (percentageTextView(c)+"%"),setColorOfPercentageTextView(c),c,context,attend,mark.get("third")));
             }
             if (cnt >= 4) {
-                blocks.add(new Product(subsat.get(SessionManager.KEY_SAT_SUB_4),
+                blocks.add(new Main2Blocks(subsat.get(SessionManager.KEY_SAT_SUB_4),
                         ("Attended: "+getPreviousAttendedClass[d]),("Total: "+getPreviousTotalClass[d]),
-                        (percentageTextView(d)+"%"),setColorOfPercentageTextView(d),d,context,attend));
+                        (percentageTextView(d)+"%"),setColorOfPercentageTextView(d),d,context,attend,mark.get("fourth")));
             }
             if (cnt >= 5) {
-                blocks.add(new Product(subsat.get(SessionManager.KEY_SAT_SUB_5),
+                blocks.add(new Main2Blocks(subsat.get(SessionManager.KEY_SAT_SUB_5),
                         ("Attended: "+getPreviousAttendedClass[e]),("Total: "+getPreviousTotalClass[e]),
-                        (percentageTextView(e)+"%"),setColorOfPercentageTextView(e),e,context,attend));
+                        (percentageTextView(e)+"%"),setColorOfPercentageTextView(e),e,context,attend,mark.get("fifth")));
             }
             if (cnt >= 6) {
-                blocks.add(new Product(subsat.get(SessionManager.KEY_SAT_SUB_6),
+                blocks.add(new Main2Blocks(subsat.get(SessionManager.KEY_SAT_SUB_6),
                         ("Attended: "+getPreviousAttendedClass[f]),("Total: "+getPreviousTotalClass[f]),
-                        (percentageTextView(f)+"%"),setColorOfPercentageTextView(f),f,context,attend));
+                        (percentageTextView(f)+"%"),setColorOfPercentageTextView(f),f,context,attend,mark.get("sixth")));
             }
             if (cnt >= 7) {
-                blocks.add(new Product(subsat.get(SessionManager.KEY_SAT_SUB_7),
+                blocks.add(new Main2Blocks(subsat.get(SessionManager.KEY_SAT_SUB_7),
                         ("Attended: "+getPreviousAttendedClass[g]),("Total: "+getPreviousTotalClass[g]),
-                        (percentageTextView(g)+"%"),setColorOfPercentageTextView(g),g,context,attend));
+                        (percentageTextView(g)+"%"),setColorOfPercentageTextView(g),g,context,attend,mark.get("seventh")));
             }
-        }*/
+        }
 
     }
     public int setPreAttendance(String period)
@@ -461,14 +479,8 @@ public class Main2 extends Fragment {
     @Override
     public void onViewCreated(View view,Bundle savedInstanceState){
         super.onViewCreated(view,savedInstanceState);
-        getActivity().setTitle("Main2");
+        HashMap<String ,String> today=sessionManager.getDay();
+        String todayDay=today.get("day_date");
+        getActivity().setTitle(todayDay);
     }
-
-
-
-
-
-
-
-
 }

@@ -43,7 +43,7 @@ public class ResetAttendance extends Fragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Toast.makeText(getActivity(), "Good decision", Toast.LENGTH_SHORT).show();
-                Fragment fragment = new Main();
+                Fragment fragment = new Main2();
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.content_frame, fragment);
                 ft.commit();
@@ -69,7 +69,7 @@ public class ResetAttendance extends Fragment {
         alertDialog.setNegativeButton("No",new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Fragment fragment = new Main();
+                Fragment fragment = new Main2();
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.content_frame, fragment);
                 ft.commit();

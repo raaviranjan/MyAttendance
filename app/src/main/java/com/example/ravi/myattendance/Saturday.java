@@ -269,7 +269,7 @@ public class Saturday extends Fragment {
                         sessionManager.setOpenDay(dayOfTheWeek);
                         */
 
-                        fragment=new Profile();
+                        fragment=new Main2();
                         FragmentTransaction ft = getFragmentManager().beginTransaction();
                         ft.replace(R.id.content_frame, fragment);
                         ft.commit();

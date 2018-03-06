@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.net.ConnectException;
 import java.util.List;
@@ -26,12 +27,14 @@ public class Main2Adapter extends RecyclerView.Adapter<Main2Adapter.MyViewHolder
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+
         private TextView mainTVSub1,tvAttendedClass1,tvTotalClass1,tvPercentage1,tvOnTrack1,textView;
         private Button buttonToMark1;
         private LinearLayout linearLayoutToMark1;
         private ImageButton iBRight1,iBWrong1,iBReset1;
         private ImageView ivAfterMarking1;
         private int present=0,absent=0;
+        private String string;
 
         private MyViewHolder(View row){
 
@@ -52,11 +55,9 @@ public class Main2Adapter extends RecyclerView.Adapter<Main2Adapter.MyViewHolder
             iBReset1 =(ImageButton) row.findViewById(R.id.iBReset1);
 
             buttonToMark1 =(Button) row.findViewById(R.id.buttonToMark1);
+
         }
     }
-
-
-
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -68,8 +69,8 @@ public class Main2Adapter extends RecyclerView.Adapter<Main2Adapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        Main2Blocks mb = moviesList.get(position);
 
+        final Main2Blocks mb = moviesList.get(position);
 
         holder.mainTVSub1.setText(mb.getSubjectName());
         holder.tvAttendedClass1.setText(mb.getAttended());
@@ -77,11 +78,20 @@ public class Main2Adapter extends RecyclerView.Adapter<Main2Adapter.MyViewHolder
         holder.tvOnTrack1.setText(mb.getTrack());
         holder.tvPercentage1.setText(mb.getPercent());
         holder.tvPercentage1.setTextColor(Color.parseColor(mb.getColor()));
+        if(mb.getMark().contains("reset"))
+            holder.ivAfterMarking1.setImageResource(R.drawable.border_percentage);
+        else if(mb.getMark().contains("bunked"))
+            holder.ivAfterMarking1.setImageResource(R.drawable.wrong);
+        else if(mb.getMark().contains("attended"))
+            holder.ivAfterMarking1.setImageResource(R.drawable.right);
 
         holder.buttonToMark1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 holder.linearLayoutToMark1.setVisibility(View.VISIBLE);
+                holder.string=String.valueOf(holder.getAdapterPosition());
+                //Toast.makeText(context, String.valueOf(holder.getAdapterPosition()), Toast.LENGTH_SHORT).show();
+
             }
         });
         holder.iBRight1.setOnClickListener(new View.OnClickListener() {
@@ -89,8 +99,11 @@ public class Main2Adapter extends RecyclerView.Adapter<Main2Adapter.MyViewHolder
             public void onClick(View view) {
                 holder.present++;
                 holder.linearLayoutToMark1.setVisibility(View.GONE);
+                holder.ivAfterMarking1.setImageResource(R.drawable.right);
+                holder.string=holder.string+"attended";
+                Toast.makeText(context, "Attended \"" + mb.getSubjectName() + "\"", Toast.LENGTH_SHORT).show();
                 updateAttendance(position, holder.tvAttendedClass1,holder.tvTotalClass1,holder.tvPercentage1,
-                        holder.tvOnTrack1,1,holder.present,holder.absent);
+                        holder.tvOnTrack1,1,holder.present,holder.absent,holder.string);
             }
         });
         holder.iBWrong1.setOnClickListener(new View.OnClickListener() {
@@ -98,26 +111,36 @@ public class Main2Adapter extends RecyclerView.Adapter<Main2Adapter.MyViewHolder
             public void onClick(View view) {
                 holder.absent++;
                 holder.linearLayoutToMark1.setVisibility(View.GONE);
+                holder.ivAfterMarking1.setImageResource(R.drawable.wrong);
+                holder.string=holder.string+"bunked";
+                Toast.makeText(context, "Bunked \"" + mb.getSubjectName() + "\"", Toast.LENGTH_SHORT).show();
+
                 updateAttendance(position, holder.tvAttendedClass1,holder.tvTotalClass1,holder.tvPercentage1,
-                        holder.tvOnTrack1,0,holder.present,holder.absent);
+                        holder.tvOnTrack1,0,holder.present,holder.absent,holder.string);
             }
         });
         holder.iBReset1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateAttendance(position, holder.tvAttendedClass1,holder.tvTotalClass1,holder.tvPercentage1,
-                        holder.tvOnTrack1,-1,holder.present,holder.absent);
                 holder.linearLayoutToMark1.setVisibility(View.GONE);
+                holder.ivAfterMarking1.setImageResource(R.drawable.border_percentage);
+                if(holder.present > 0 || holder.absent > 0)
+                    holder.string=holder.string+"reset";
+                else
+                    holder.string="z";
+                Toast.makeText(context,"Reset", Toast.LENGTH_SHORT).show();
+                updateAttendance(position, holder.tvAttendedClass1,holder.tvTotalClass1,holder.tvPercentage1,
+                        holder.tvOnTrack1,-1,holder.present,holder.absent,holder.string);
                 holder.present = 0;
                 holder.absent = 0;
+
             }
         });
 
     }
 
     private void updateAttendance(int position, TextView attended, TextView total,TextView percentTV,TextView onTrack,int value,
-                                  int presentPressedCount,int absentPressedCount) {
-
+                                  int presentPressedCount,int absentPressedCount, String s) {
 
         Main2Blocks mb = moviesList.get(position);
 
@@ -129,6 +152,7 @@ public class Main2Adapter extends RecyclerView.Adapter<Main2Adapter.MyViewHolder
             mb.attendTV += value;
             mb.totTV++;
         }
+
         attended.setText("Attended: "+mb.attendTV);
         total.setText("Total: "+mb.totTV);
 
@@ -184,7 +208,7 @@ public class Main2Adapter extends RecyclerView.Adapter<Main2Adapter.MyViewHolder
         onTrack.setText(string);
 
         //calling saveChanges method of Product class to save the changes
-        mb.saveChanges(mb.attendTV,mb.totTV,mb.index);
+        mb.saveChanges(mb.attendTV,mb.totTV,mb.index,s);
 
     }
 

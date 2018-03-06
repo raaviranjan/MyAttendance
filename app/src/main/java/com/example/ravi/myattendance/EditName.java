@@ -73,7 +73,7 @@ public class EditName extends Fragment implements SeekBar.OnSeekBarChangeListene
 
 
                     Toast.makeText(getActivity(), "Changes Saved Successfully", Toast.LENGTH_SHORT).show();
-                    fragment = new Main();
+                    fragment = new Main2();
                     FragmentTransaction ft = getFragmentManager().beginTransaction();
                     ft.replace(R.id.content_frame, fragment);
                     ft.commit();

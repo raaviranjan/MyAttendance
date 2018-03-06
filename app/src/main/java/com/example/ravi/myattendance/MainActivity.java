@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 imageView.setImageResource(R.drawable.male);
             nav_name.setText("Hello, "+string);
 
-            Fragment fragment2=new Profile();
+            Fragment fragment2=new Main2();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_frame, fragment2);
             ft.commit();
@@ -79,18 +79,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        /*DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }*/
         if(id>0)
         {
             id=0;
             if(sessionManager.isLoggedIn())
             {
-                Fragment fragment1=new Main();
+                Fragment fragment1=new Main2();
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.content_frame, fragment1);
                 ft.commit();
@@ -154,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (itemId) {
             case R.id.nav_profile:
                 id=1;
-                fragment = new Main2();
+                fragment = new Profile();
                 break;
             case R.id.nav_timetable:
                 id=2;

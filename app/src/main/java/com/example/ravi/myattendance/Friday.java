@@ -266,14 +266,14 @@ public class Friday extends Fragment {
                         sessionManager.makeLogin();
                         sessionManager.setFlag(true);
 
-                        calendar= Calendar.getInstance();
+                        /*calendar= Calendar.getInstance();
 
                         SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
                         Date d = new Date();
                         String dayOfTheWeek = sdf.format(d);
-                        sessionManager.setOpenDay(dayOfTheWeek);
+                        sessionManager.setOpenDay(dayOfTheWeek);*/
 
-                        fragment=new Profile();
+                        fragment=new Main2();
                         FragmentTransaction ft = getFragmentManager().beginTransaction();
                         ft.replace(R.id.content_frame, fragment);
                         ft.commit();
