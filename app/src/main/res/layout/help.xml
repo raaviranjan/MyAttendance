@@ -8,144 +8,60 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/help_btn"
             android:text="-> Setting Up MY ATTENDANCE"
-            android:gravity="left"
-            android:layout_marginLeft="-10dp"
-            android:textColor="#FFFFFF"
-            android:id="@+id/bSetUp"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title" />
+            android:id="@+id/bSetUp" />
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:singleLine="false"
-            android:textSize="17dp"
+            style="@style/help_textView"
             android:id="@+id/tvSetUp"
-            android:visibility="gone"
-            android:textColor="#FFFFFF"
             android:text="-> Provide your name, attendance criteria and gender.\n-> Enter subjects, schedule and previous attendance if you want.\n-> Refer other sections of the page for more details."/>
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/help_btn"
             android:text="-> Entering Subjects"
-            android:gravity="left"
-            android:id="@+id/bEnterSub"
-            android:layout_marginLeft="-10dp"
-            android:textColor="#FFFFFF"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"/>
+            android:id="@+id/bEnterSub" />
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:singleLine="false"
-            android:textSize="17dp"
+            style="@style/help_textView"
             android:id="@+id/tvEnterSub"
-            android:visibility="gone"
-            android:textColor="#FFFFFF"
             android:text="-> Enter a subject.\n-> Keep clicking '+' button to add more subjects.\n-> You can add maximum 20 subjects."/>
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/help_btn"
             android:text="-> Entering Schedule"
-            android:gravity="left"
-            android:layout_marginLeft="-10dp"
-            android:textColor="#FFFFFF"
-            android:id="@+id/bEnterSch"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"/>
+            android:id="@+id/bEnterSch" />
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:singleLine="false"
-            android:textSize="17dp"
+            style="@style/help_textView"
             android:id="@+id/tvEnterSch"
-            android:visibility="gone"
-            android:textColor="#FFFFFF"
             android:text="-> Fill the subjects in the given 7 fields for a day.\n-> Fill the subjects from top to bottom. For Example, if you have 4 subjects on Mon, fill those 4 subjects in the first 4 fields and leave next 3 fields blank.\n-> Click 'Next' when you are done for a day."/>
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/help_btn"
             android:text="-> Entering Previous Attendance"
-            android:gravity="left"
-            android:id="@+id/bEnterPreAtt"
-            android:layout_marginLeft="-10dp"
-            android:textColor="#FFFFFF"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"/>
+            android:id="@+id/bEnterPreAtt" />
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:singleLine="false"
-            android:textSize="17dp"
-            android:visibility="gone"
+            style="@style/help_textView"
             android:id="@+id/tvEnterPreAtt"
-            android:textColor="#FFFFFF"
             android:text="-> Enter previous attendance for the subjects of the semester.\n-> Keep clicking 'More' to get more subject fields.\n-> You will get fields equal to the no of subjects you entered in the SUBJECTS page."/>
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/help_btn"
             android:text="-> Marking Attendance"
-            android:gravity="left"
-            android:id="@+id/bMarkAtt"
-            android:layout_marginLeft="-10dp"
-            android:textColor="#FFFFFF"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"/>
+            android:id="@+id/bMarkAtt" />
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:singleLine="false"
-            android:textSize="17dp"
-            android:visibility="gone"
-            android:textColor="#FFFFFF"
+            style="@style/help_textView"
             android:id="@+id/tvMarkAtt"
             android:text="-> Click on 'CLICK TO MARK ATTENDANCE' to mark your attendance.\n-> You will not be able to RESET today's attendance once you close the app."/>
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/help_btn"
             android:text="-> Marking Extra Class Attendance"
-            android:gravity="left"
-            android:id="@+id/bMarkExtraAtt"
-            android:layout_marginLeft="-10dp"
-            android:textColor="#FFFFFF"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"/>
+            android:id="@+id/bMarkExtraAtt" />
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:singleLine="false"
-            android:textSize="17dp"
+            style="@style/help_textView"
             android:id="@+id/tvMarkExtraAtt"
-            android:visibility="gone"
-            android:textColor="#FFFFFF"
             android:text="-> Click 'Extra Class' in navigation drawer.\n-> Click the subject of which you want to mark the attendance.\n-> Click 'Present' or 'Absent'."/>
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/help_btn"
             android:text="-> Reset MY ATTENDANCE"
-            android:gravity="left"
-            android:id="@+id/bReset"
-            android:layout_marginLeft="-10dp"
-            android:textColor="#FFFFFF"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"/>
+            android:id="@+id/bReset" />
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:singleLine="false"
-            android:textSize="17dp"
-            android:visibility="gone"
+            style="@style/help_textView"
             android:id="@+id/tvReset"
-            android:textColor="#FFFFFF"
             android:text="-> Click 'Reset' in navigation drawer.\n-> Be CAREFUL, it will erase all your data.\n-> You can also erase your data manually by going to App Info in Setting of your android device."/>
 
     </LinearLayout>

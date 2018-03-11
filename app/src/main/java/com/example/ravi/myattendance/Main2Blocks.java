@@ -13,7 +13,6 @@ public class Main2Blocks {
     int attendTV,totTV,index;
     float attendanceCriteria;
     Context context;
-    Integer[] image = new Integer[3];
 
     public Main2Blocks(String subject, String attended, String total, String percent,
                        String track, int index, Context context, float attendance, String mark){

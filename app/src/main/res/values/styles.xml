@@ -17,4 +17,78 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <!-- Style for each button in extra class layout -->
+    <style name="extra_class_button" parent="AppTheme">
+        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_height">120dp</item>
+        <item name="android:textStyle">bold|italic</item>
+        <item name="android:background">@drawable/round</item>
+        <item name="android:singleLine">false</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.SearchResult.Subtitle</item>
+    </style>
+
+    <!-- Style for linear layout in extra class layout -->
+    <style name="extra_class_linearLayout" parent="AppTheme">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_weight">.5</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_marginBottom">17dp</item>
+    </style>
+
+    <!-- Style for each button in help layout -->
+    <style name="help_btn" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">start</item>
+        <item name="android:layout_marginLeft">-10dp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.SearchResult.Subtitle</item>
+
+    </style>
+
+    <!-- Style for each textView in help layout -->
+    <style name="help_textView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">30dp</item>
+        <item name="android:singleLine">false</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <!-- Style for each textView containing subject name in pre attendance layout -->
+    <style name="pre_attendance_subject_textView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+
+
+    <!-- Style for each linearLayout containing editText in pre attendance layout -->
+    <style name="pre_attendance_editText1">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:hint">0</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:gravity">center</item>
+        <item name="android:inputType">number</item>
+        <item name="android:digits">0123456789</item>
+    </style>
+
+    <style name="pre_attendance_editText2" parent="pre_attendance_editText1">
+        <item name="android:layout_marginRight">30dp</item>
+    </style>
+
+    <style name="pre_attendance_editText3" parent="pre_attendance_editText1">
+        <item name="android:layout_marginLeft">30dp</item>
+    </style>
+
 </resources>

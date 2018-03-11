@@ -13,7 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.net.ConnectException;
 import java.util.List;
 
 public class Main2Adapter extends RecyclerView.Adapter<Main2Adapter.MyViewHolder> {
@@ -28,7 +27,7 @@ public class Main2Adapter extends RecyclerView.Adapter<Main2Adapter.MyViewHolder
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView mainTVSub1,tvAttendedClass1,tvTotalClass1,tvPercentage1,tvOnTrack1,textView;
+        private TextView mainTVSub1,tvAttendedClass1,tvTotalClass1,tvPercentage1,tvOnTrack1;
         private Button buttonToMark1;
         private LinearLayout linearLayoutToMark1;
         private ImageButton iBRight1,iBWrong1,iBReset1;

@@ -29,16 +29,15 @@ import java.util.Locale;
  */
 
 public class Main2 extends Fragment {
+
     private RecyclerView recyclerView;
     private  Main2Adapter adapter;
     ArrayList<Main2Blocks> blocks ;
     SessionManager sessionManager;
     Integer[] getPreviousAttendedClass;
     Integer[] getPreviousTotalClass;
-    Integer[] imageAttendanceArray;
     String[] totalSubjects;
     String lastUpdateDay,currentDay;
-    Calendar calendar;
     private Context context;
     int sizeof;
     HashMap<String ,String> subj;
@@ -53,13 +52,14 @@ public class Main2 extends Fragment {
     float attend;
     boolean flag;
     LinearLayout offLayout;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.abc2, viewGroup, false);
 
         context=getContext();
-        recyclerView = (RecyclerView) view.findViewById(R.id.customRecyclerView);
 
+        recyclerView = (RecyclerView) view.findViewById(R.id.customRecyclerView);
         offLayout = (LinearLayout) view.findViewById(R.id.offLayout);
 
         sessionManager=new SessionManager(getActivity());
@@ -72,6 +72,7 @@ public class Main2 extends Fragment {
         subfri=sessionManager.getFriSubjects();
         subsat=sessionManager.getSatSubjects();
 
+        //storing today's day and date
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE", Locale.US);
         Date d = new Date();
         String dayOfTheWeek = sdf.format(d);
@@ -80,7 +81,6 @@ public class Main2 extends Fragment {
         String dayAndDate = sdf1.format(d1);
         sessionManager.setCalendarDetails(dayOfTheWeek,dayAndDate);
 
-        imageAttendanceArray=new Integer[3];
         flag=sessionManager.getFlag();
         lastUpdateDay=sessionManager.getOpenDay();
         currentDay=dayOfTheWeek;
@@ -129,13 +129,13 @@ public class Main2 extends Fragment {
 
             cnt = sessionManager.getCountMon();
 
-            int a=setPreAttendance(subj.get(SessionManager.KEY_MON_SUB_1));
-            int b=setPreAttendance(subj.get(SessionManager.KEY_MON_SUB_2));
-            int c=setPreAttendance(subj.get(SessionManager.KEY_MON_SUB_3));
-            int d=setPreAttendance(subj.get(SessionManager.KEY_MON_SUB_4));
-            int e=setPreAttendance(subj.get(SessionManager.KEY_MON_SUB_5));
-            int f=setPreAttendance(subj.get(SessionManager.KEY_MON_SUB_6));
-            int g=setPreAttendance(subj.get(SessionManager.KEY_MON_SUB_7));
+            int a=matchForSubjectNumber(subj.get(SessionManager.KEY_MON_SUB_1));
+            int b=matchForSubjectNumber(subj.get(SessionManager.KEY_MON_SUB_2));
+            int c=matchForSubjectNumber(subj.get(SessionManager.KEY_MON_SUB_3));
+            int d=matchForSubjectNumber(subj.get(SessionManager.KEY_MON_SUB_4));
+            int e=matchForSubjectNumber(subj.get(SessionManager.KEY_MON_SUB_5));
+            int f=matchForSubjectNumber(subj.get(SessionManager.KEY_MON_SUB_6));
+            int g=matchForSubjectNumber(subj.get(SessionManager.KEY_MON_SUB_7));
 
             if(cnt == 0){
                 offLayout.setVisibility(View.VISIBLE);
@@ -182,13 +182,13 @@ public class Main2 extends Fragment {
 
             cnt = sessionManager.getCountTue();
 
-            int a=setPreAttendance(subtue.get(SessionManager.KEY_TUE_SUB_1));
-            int b=setPreAttendance(subtue.get(SessionManager.KEY_TUE_SUB_2));
-            int c=setPreAttendance(subtue.get(SessionManager.KEY_TUE_SUB_3));
-            int d=setPreAttendance(subtue.get(SessionManager.KEY_TUE_SUB_4));
-            int e=setPreAttendance(subtue.get(SessionManager.KEY_TUE_SUB_5));
-            int f=setPreAttendance(subtue.get(SessionManager.KEY_TUE_SUB_6));
-            int g=setPreAttendance(subtue.get(SessionManager.KEY_TUE_SUB_7));
+            int a=matchForSubjectNumber(subtue.get(SessionManager.KEY_TUE_SUB_1));
+            int b=matchForSubjectNumber(subtue.get(SessionManager.KEY_TUE_SUB_2));
+            int c=matchForSubjectNumber(subtue.get(SessionManager.KEY_TUE_SUB_3));
+            int d=matchForSubjectNumber(subtue.get(SessionManager.KEY_TUE_SUB_4));
+            int e=matchForSubjectNumber(subtue.get(SessionManager.KEY_TUE_SUB_5));
+            int f=matchForSubjectNumber(subtue.get(SessionManager.KEY_TUE_SUB_6));
+            int g=matchForSubjectNumber(subtue.get(SessionManager.KEY_TUE_SUB_7));
 
             if(cnt == 0){
                 offLayout.setVisibility(View.VISIBLE);
@@ -235,13 +235,13 @@ public class Main2 extends Fragment {
 
             cnt = sessionManager.getCountWed();
 
-            int a=setPreAttendance(subwed.get(SessionManager.KEY_WED_SUB_1));
-            int b=setPreAttendance(subwed.get(SessionManager.KEY_WED_SUB_2));
-            int c=setPreAttendance(subwed.get(SessionManager.KEY_WED_SUB_3));
-            int d=setPreAttendance(subwed.get(SessionManager.KEY_WED_SUB_4));
-            int e=setPreAttendance(subwed.get(SessionManager.KEY_WED_SUB_5));
-            int f=setPreAttendance(subwed.get(SessionManager.KEY_WED_SUB_6));
-            int g=setPreAttendance(subwed.get(SessionManager.KEY_WED_SUB_7));
+            int a=matchForSubjectNumber(subwed.get(SessionManager.KEY_WED_SUB_1));
+            int b=matchForSubjectNumber(subwed.get(SessionManager.KEY_WED_SUB_2));
+            int c=matchForSubjectNumber(subwed.get(SessionManager.KEY_WED_SUB_3));
+            int d=matchForSubjectNumber(subwed.get(SessionManager.KEY_WED_SUB_4));
+            int e=matchForSubjectNumber(subwed.get(SessionManager.KEY_WED_SUB_5));
+            int f=matchForSubjectNumber(subwed.get(SessionManager.KEY_WED_SUB_6));
+            int g=matchForSubjectNumber(subwed.get(SessionManager.KEY_WED_SUB_7));
 
             if(cnt == 0){
                 offLayout.setVisibility(View.VISIBLE);
@@ -288,13 +288,13 @@ public class Main2 extends Fragment {
 
             cnt = sessionManager.getCountThu();
 
-            int a=setPreAttendance(subthu.get(SessionManager.KEY_THU_SUB_1));
-            int b=setPreAttendance(subthu.get(SessionManager.KEY_THU_SUB_2));
-            int c=setPreAttendance(subthu.get(SessionManager.KEY_THU_SUB_3));
-            int d=setPreAttendance(subthu.get(SessionManager.KEY_THU_SUB_4));
-            int e=setPreAttendance(subthu.get(SessionManager.KEY_THU_SUB_5));
-            int f=setPreAttendance(subthu.get(SessionManager.KEY_THU_SUB_6));
-            int g=setPreAttendance(subthu.get(SessionManager.KEY_THU_SUB_7));
+            int a=matchForSubjectNumber(subthu.get(SessionManager.KEY_THU_SUB_1));
+            int b=matchForSubjectNumber(subthu.get(SessionManager.KEY_THU_SUB_2));
+            int c=matchForSubjectNumber(subthu.get(SessionManager.KEY_THU_SUB_3));
+            int d=matchForSubjectNumber(subthu.get(SessionManager.KEY_THU_SUB_4));
+            int e=matchForSubjectNumber(subthu.get(SessionManager.KEY_THU_SUB_5));
+            int f=matchForSubjectNumber(subthu.get(SessionManager.KEY_THU_SUB_6));
+            int g=matchForSubjectNumber(subthu.get(SessionManager.KEY_THU_SUB_7));
 
             if(cnt == 0){
                 offLayout.setVisibility(View.VISIBLE);
@@ -341,13 +341,13 @@ public class Main2 extends Fragment {
 
             cnt=sessionManager.getCountFri();
 
-            int a=setPreAttendance(subfri.get(SessionManager.KEY_FRI_SUB_1));
-            int b=setPreAttendance(subfri.get(SessionManager.KEY_FRI_SUB_2));
-            int c=setPreAttendance(subfri.get(SessionManager.KEY_FRI_SUB_3));
-            int d=setPreAttendance(subfri.get(SessionManager.KEY_FRI_SUB_4));
-            int e=setPreAttendance(subfri.get(SessionManager.KEY_FRI_SUB_5));
-            int f=setPreAttendance(subfri.get(SessionManager.KEY_FRI_SUB_6));
-            int g=setPreAttendance(subfri.get(SessionManager.KEY_FRI_SUB_7));
+            int a=matchForSubjectNumber(subfri.get(SessionManager.KEY_FRI_SUB_1));
+            int b=matchForSubjectNumber(subfri.get(SessionManager.KEY_FRI_SUB_2));
+            int c=matchForSubjectNumber(subfri.get(SessionManager.KEY_FRI_SUB_3));
+            int d=matchForSubjectNumber(subfri.get(SessionManager.KEY_FRI_SUB_4));
+            int e=matchForSubjectNumber(subfri.get(SessionManager.KEY_FRI_SUB_5));
+            int f=matchForSubjectNumber(subfri.get(SessionManager.KEY_FRI_SUB_6));
+            int g=matchForSubjectNumber(subfri.get(SessionManager.KEY_FRI_SUB_7));
 
             if(cnt == 0){
                 offLayout.setVisibility(View.VISIBLE);
@@ -401,13 +401,13 @@ public class Main2 extends Fragment {
 
             cnt = sessionManager.getCountSat();
 
-            int a=setPreAttendance(subsat.get(SessionManager.KEY_SAT_SUB_1));
-            int b=setPreAttendance(subsat.get(SessionManager.KEY_SAT_SUB_2));
-            int c=setPreAttendance(subsat.get(SessionManager.KEY_SAT_SUB_3));
-            int d=setPreAttendance(subsat.get(SessionManager.KEY_SAT_SUB_4));
-            int e=setPreAttendance(subsat.get(SessionManager.KEY_SAT_SUB_5));
-            int f=setPreAttendance(subsat.get(SessionManager.KEY_SAT_SUB_6));
-            int g=setPreAttendance(subsat.get(SessionManager.KEY_SAT_SUB_7));
+            int a=matchForSubjectNumber(subsat.get(SessionManager.KEY_SAT_SUB_1));
+            int b=matchForSubjectNumber(subsat.get(SessionManager.KEY_SAT_SUB_2));
+            int c=matchForSubjectNumber(subsat.get(SessionManager.KEY_SAT_SUB_3));
+            int d=matchForSubjectNumber(subsat.get(SessionManager.KEY_SAT_SUB_4));
+            int e=matchForSubjectNumber(subsat.get(SessionManager.KEY_SAT_SUB_5));
+            int f=matchForSubjectNumber(subsat.get(SessionManager.KEY_SAT_SUB_6));
+            int g=matchForSubjectNumber(subsat.get(SessionManager.KEY_SAT_SUB_7));
 
             if(cnt == 0){
                 offLayout.setVisibility(View.VISIBLE);
@@ -456,7 +456,7 @@ public class Main2 extends Fragment {
         }
 
     }
-    public int setPreAttendance(String period)
+    public int matchForSubjectNumber(String period)
     {
         //to which subject no of the entered sub list does the given subject of the day matches.
         int ret=0;

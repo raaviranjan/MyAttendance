@@ -98,13 +98,13 @@
                 android:layout_weight=".5">
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="47dp"
+                    android:layout_height="48dp"
                     android:hint="Click + to add sub1"
                     android:textSize="19dp"
                     android:id="@+id/mons1"
                     android:textColor="#FFFFFF"
                     android:gravity="center"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
@@ -238,17 +238,20 @@
                     android:id="@+id/IBd7" />
             </LinearLayout>
         </LinearLayout>
+
         <Button
+            android:id="@+id/buttonOk"
+            style="@android:style/Widget.Button.Inset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="DONE"
-            android:id="@+id/buttonOk"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:text="Done" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_margin="20dp"
+            android:gravity="center_horizontal"
             android:id="@+id/LLSatWorkingDay"
             android:visibility="gone">
             <TextView
@@ -260,12 +263,14 @@
             <Button
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
+                style="@android:style/Widget.Button.Inset"
                 android:text="Y"
                 android:id="@+id/buttonOkfri"
                 android:layout_gravity="center_horizontal" />
             <Button
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
+                style="@android:style/Widget.Button.Inset"
                 android:text="N"
                 android:id="@+id/bNo"/>
 
