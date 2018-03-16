@@ -117,11 +117,12 @@
         </LinearLayout>
 
         <Button
-            android:text="Ok"
+            android:id="@+id/button"
+            style="@android:style/Widget.Button.Inset"
             android:layout_width="111dp"
             android:layout_height="wrap_content"
-            android:id="@+id/button"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:text="Ok" />
     </LinearLayout>
 </ScrollView>
 

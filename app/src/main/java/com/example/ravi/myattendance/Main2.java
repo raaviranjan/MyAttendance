@@ -17,6 +17,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -52,12 +56,19 @@ public class Main2 extends Fragment {
     float attend;
     boolean flag;
     LinearLayout offLayout;
+    AdView mAdView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.abc2, viewGroup, false);
 
         context=getContext();
+
+        MobileAds.initialize(getActivity(), "ca-app-pub-3940256099942544~3347511713");
+        mAdView = view.findViewById(R.id.adView);
+        //banner ad
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("50F7BD1535D4AA905405E185DB25BBB7").build();
+        mAdView.loadAd(adRequest);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.customRecyclerView);
         offLayout = (LinearLayout) view.findViewById(R.id.offLayout);

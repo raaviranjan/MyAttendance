@@ -55,13 +55,15 @@
             android:id="@+id/mLayout">
 
         </LinearLayout>
+
         <Button
+            android:id="@+id/buttonDone"
+            style="@android:style/Widget.Button.Inset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="done"
+            android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:id="@+id/buttonDone"
-            android:layout_gravity="center"/>
+            android:text="Done" />
 
     </LinearLayout>
 
