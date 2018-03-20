@@ -60,7 +60,7 @@
             android:text="All Rights Reserved"
             android:textColor="#FFFFFF"
             android:textSize="17sp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"/>/>
+            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"/>
 
     </LinearLayout>
 

@@ -30,7 +30,7 @@
                     android:layout_height="wrap_content"
                     android:text="Subject 1"
                     android:id="@+id/mainTVSub1"
-                    android:textStyle="bold|italic"
+                    android:fontFamily="@font/aeh"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:textSize="20sp"

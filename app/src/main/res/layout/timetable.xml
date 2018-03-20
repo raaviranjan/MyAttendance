@@ -80,78 +80,50 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sub1"
-                android:textSize="20dp"
-                android:gravity="center"
-                android:textStyle="italic|bold"
-                android:visibility="gone"
                 android:id="@+id/TVTimetable1"
-                android:background="@drawable/border_for_timetable" />
+                style="@style/subject_name_textView"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sub2"
-                android:textSize="20dp"
-                android:gravity="center"
-                android:visibility="gone"
-                android:textStyle="italic|bold"
                 android:id="@+id/TVTimetable2"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/border_for_timetable"/>
+                style="@style/subject_name_textView"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sub3"
-                android:textSize="20dp"
-                android:visibility="gone"
-                android:gravity="center"
-                android:textStyle="italic|bold"
                 android:id="@+id/TVTimetable3"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/border_for_timetable"/>
+                style="@style/subject_name_textView"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sub4"
-                android:visibility="gone"
-                android:textSize="20dp"
-                android:gravity="center"
-                android:textStyle="italic|bold"
                 android:id="@+id/TVTimetable4"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/border_for_timetable"/>
+                style="@style/subject_name_textView"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sub5"
-                android:textSize="20dp"
-                android:gravity="center"
-                android:textStyle="italic|bold"
                 android:id="@+id/TVTimetable5"
-                android:visibility="gone"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/border_for_timetable"/>
+                style="@style/subject_name_textView"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sub6"
-                android:textSize="20dp"
-                android:gravity="center"
-                android:textStyle="italic|bold"
                 android:id="@+id/TVTimetable6"
                 android:layout_marginTop="10dp"
-                android:visibility="gone"
-                android:background="@drawable/border_for_timetable"/>
+                style="@style/subject_name_textView"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sub7"
-                android:textSize="20dp"
-                android:gravity="center"
-                android:textStyle="italic|bold"
                 android:id="@+id/TVTimetable7"
                 android:layout_marginTop="10dp"
-                android:visibility="gone"
-                android:background="@drawable/border_for_timetable"/>
+                style="@style/subject_name_textView"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -164,9 +136,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="!!! Relax !!!"
-                    android:textSize="25dp"
-                    android:textStyle="italic|bold"
-                    android:textColor="#000000"
+                    android:textSize="25sp"
+                    android:fontFamily="@font/aeh"
+                    android:textStyle="italic"
+                    android:textColor="@color/colorBlack"
                     android:gravity="center" />
                 <ImageView
                     android:layout_width="match_parent"
@@ -179,7 +152,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="It's your off today."
-                    android:textSize="25dp"
+                    android:textSize="25sp"
                     android:textStyle="italic"
                     android:gravity="center" />
 

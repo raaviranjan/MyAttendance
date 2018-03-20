@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/avenir_roman</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -89,6 +90,14 @@
 
     <style name="pre_attendance_editText3" parent="pre_attendance_editText1">
         <item name="android:layout_marginLeft">30dp</item>
+    </style>
+
+    <!-- Style for each textView containing subject name in timetable layout -->
+    <style name="subject_name_textView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:background">@drawable/border_for_timetable</item>
     </style>
 
 </resources>
