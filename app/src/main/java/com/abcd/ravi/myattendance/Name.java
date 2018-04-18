@@ -3,6 +3,7 @@ package com.abcd.ravi.myattendance;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,8 @@ public class Name extends Fragment implements SeekBar.OnSeekBarChangeListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState){
 
         View view = inflater.inflate(R.layout.name,viewGroup,false);
+
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
 
         editText=(EditText)view.findViewById(R.id.editText);
         seekBar=(SeekBar)view.findViewById(R.id.seekBar);

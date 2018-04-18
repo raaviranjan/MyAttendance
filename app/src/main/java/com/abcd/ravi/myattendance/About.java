@@ -1,5 +1,7 @@
 package com.abcd.ravi.myattendance;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,7 +18,15 @@ public class About extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.about, viewGroup, false);
-        b1=(Button)view.findViewById(R.id.bReset);
+        b1=(Button)view.findViewById(R.id.bRate);
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("market://details?id=com.abcd.ravi.myattendance"));
+                startActivity(intent);
+            }
+        });
         return view;
     }
     @Override

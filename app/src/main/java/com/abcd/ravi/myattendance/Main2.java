@@ -3,6 +3,7 @@ package com.abcd.ravi.myattendance;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -53,6 +54,8 @@ public class Main2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.abc2, viewGroup, false);
+
+        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
 
         context=getContext();
 

@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,33 +37,37 @@ public class Subjectwise extends Fragment {
         View view = inflater.inflate(R.layout.abc2, viewGroup, false);
 
         context=getContext();
-
-        recyclerView = (RecyclerView) view.findViewById(R.id.customRecyclerView);
-
         sessionManager=new SessionManager(getActivity());
 
-        getPreviousAttendedClass=sessionManager.getAttended("classAttended");//array of attended classes for each subject
-        getPreviousTotalClass=sessionManager.getTotal("classTotal");//array of total classes for each subject
-        totalSubjects=sessionManager.loadArray("mySubject");//array of total subjects
-        sizeof=sessionManager.getSize();//no of total subjects
+        if(sessionManager.isLoggedIn()) {
 
-        HashMap<String ,String> str=sessionManager.getUserDetails();
-        att=str.get(SessionManager.KEY_ATTENDANCE);
-        attend=Float.parseFloat(att);
+            recyclerView = (RecyclerView) view.findViewById(R.id.customRecyclerView);
 
-        blocks=new ArrayList<>();
+            getPreviousAttendedClass = sessionManager.getAttended("classAttended");//array of attended classes for each subject
+            getPreviousTotalClass = sessionManager.getTotal("classTotal");//array of total classes for each subject
+            totalSubjects = sessionManager.loadArray("mySubject");//array of total subjects
+            sizeof = sessionManager.getSize();//no of total subjects
 
-        for(int i=0;i<sizeof;i++){
-            blocks.add(new SubjectWiseBlock(totalSubjects[i], "Attended: "+getPreviousAttendedClass[i],
-                    "Total: "+getPreviousTotalClass[i],percent(getPreviousAttendedClass[i],getPreviousTotalClass[i]) + "%",
-                    onTrackTV(getPreviousAttendedClass[i],getPreviousTotalClass[i])));
+            HashMap<String, String> str = sessionManager.getUserDetails();
+            att = str.get(SessionManager.KEY_ATTENDANCE);
+            attend = Float.parseFloat(att);
+
+            blocks = new ArrayList<>();
+
+            for (int i = 0; i < sizeof; i++) {
+                blocks.add(new SubjectWiseBlock(totalSubjects[i], "Attended: " + getPreviousAttendedClass[i],
+                        "Total: " + getPreviousTotalClass[i], percent(getPreviousAttendedClass[i], getPreviousTotalClass[i]) + "%",
+                        onTrackTV(getPreviousAttendedClass[i], getPreviousTotalClass[i])));
+            }
+
+            adapter = new SubjectWiseAdapter(getContext(), blocks);
+            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context);
+            recyclerView.setLayoutManager(mLayoutManager);
+
+            recyclerView.setAdapter(adapter);
         }
-
-        adapter = new SubjectWiseAdapter(getContext(),blocks);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context);
-        recyclerView.setLayoutManager(mLayoutManager);
-
-        recyclerView.setAdapter(adapter);
+        else
+            Toast.makeText(getActivity(), "Fill the details first", Toast.LENGTH_SHORT).show();
 
         return view;
     }

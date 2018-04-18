@@ -42,7 +42,7 @@ public class Profile extends Fragment {
             TVProfileCriteria.setText("Attendance Criteria: "+att+"%");
         }
         else
-            Toast.makeText(getActivity(), "Nothing to display", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Fill the details first", Toast.LENGTH_SHORT).show();
 
 
 
